@@ -7,6 +7,7 @@ A multi-ticker quantitative trading system that uses Hidden Markov Models (HMM) 
 **Universe:** AAPL, MSFT, NVDA, AMZN, GOOGL, META, TSLA
 **Data:** 1-hour RTH bars (2021 → present)
 **Entry point:** `run.bat` → `src/recommend.py` → `src/dashboard.py`
+**GitHub:** https://github.com/dataguysaikat/HiddenMarkovModel
 
 ---
 

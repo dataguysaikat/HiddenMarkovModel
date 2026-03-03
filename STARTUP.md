@@ -1,5 +1,23 @@
 # HMM Regime Dashboard — Start & Stop Guide
 
+**GitHub:** https://github.com/dataguysaikat/HiddenMarkovModel
+
+---
+
+## New Machine Setup
+
+```bat
+git clone https://github.com/dataguysaikat/HiddenMarkovModel.git
+cd HiddenMarkovModel
+python -m venv .venv
+.venv\Scripts\pip install -r requirements.txt
+copy .env.example .env
+```
+
+Then follow the **Daily Workflow** below. On first launch, click **[Fit HMM]** in the dashboard sidebar to build the model cache.
+
+---
+
 ## Starting the Dashboard
 
 ### Option A — Double-click (easiest)

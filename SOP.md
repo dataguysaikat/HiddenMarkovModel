@@ -1,9 +1,10 @@
 # Standard Operating Procedure — HMM Regime Trading Dashboard
 
-**Version:** 1.1
+**Version:** 1.2
 **Last updated:** 2026-03-03
 **Application:** Hidden Markov Model Regime Detection + Options Auto-Trading
 **Universe:** AAPL, MSFT, NVDA, AMZN, GOOGL, META, TSLA
+**GitHub:** https://github.com/dataguysaikat/HiddenMarkovModel
 
 ---
 
@@ -11,16 +12,18 @@
 
 1. [Purpose & Scope](#1-purpose--scope)
 2. [System Overview](#2-system-overview)
-3. [Prerequisites & One-Time Setup](#3-prerequisites--one-time-setup)
-4. [Daily Operating Procedure](#4-daily-operating-procedure)
-5. [Dashboard Guide](#5-dashboard-guide)
-6. [Weekly Maintenance](#6-weekly-maintenance)
-7. [Adding or Removing Tickers](#7-adding-or-removing-tickers)
-8. [Paper Trading vs Live Trading](#8-paper-trading-vs-live-trading)
-9. [Adjusting Strategy Parameters](#9-adjusting-strategy-parameters)
-10. [Stopping the Application](#10-stopping-the-application)
-11. [Troubleshooting](#11-troubleshooting)
-12. [Configuration Reference](#12-configuration-reference)
+3. [Setting Up on a New Machine](#3-setting-up-on-a-new-machine)
+4. [Prerequisites & One-Time Setup (existing machine)](#4-prerequisites--one-time-setup-existing-machine)
+5. [Daily Operating Procedure](#5-daily-operating-procedure)
+6. [Dashboard Guide](#6-dashboard-guide)
+7. [Weekly Maintenance](#7-weekly-maintenance)
+8. [Pushing Updates to GitHub](#8-pushing-updates-to-github)
+9. [Adding or Removing Tickers](#9-adding-or-removing-tickers)
+10. [Paper Trading vs Live Trading](#10-paper-trading-vs-live-trading)
+11. [Adjusting Strategy Parameters](#11-adjusting-strategy-parameters)
+12. [Stopping the Application](#12-stopping-the-application)
+13. [Troubleshooting](#13-troubleshooting)
+14. [Configuration Reference](#14-configuration-reference)
 
 ---
 
@@ -65,11 +68,51 @@ run.bat
 
 ---
 
-## 3. Prerequisites & One-Time Setup
+## 3. Setting Up on a New Machine
+
+The full codebase and historical bar data are on GitHub. Clone and run in four steps.
+
+**GitHub repository:** https://github.com/dataguysaikat/HiddenMarkovModel
+
+### Step 1 — Clone the repository
+
+```bat
+git clone https://github.com/dataguysaikat/HiddenMarkovModel.git
+cd HiddenMarkovModel
+```
+
+### Step 2 — Create a virtual environment and install dependencies
+
+```bat
+python -m venv .venv
+.venv\Scripts\pip install -r requirements.txt
+```
+
+> **Note:** `hmmlearn` is not in `requirements.txt` (requires C++ Build Tools on Windows). The system works without it via the built-in pure-NumPy fallback. See Section 4 for optional install.
+
+### Step 3 — Configure credentials
+
+```bat
+copy .env.example .env
+```
+
+Open `.env` and fill in your Schwab API keys if using live trading. Leave `TRADE_MODE=paper` for paper trading — no keys needed.
+
+### Step 4 — Start ThetaData Terminal, then run
+
+```bat
+run.bat
+```
+
+The parquet files (`data/*.parquet`) are included in the repo so bar data is immediately available. Click **[Fit HMM]** in the dashboard sidebar on the first launch to build the model cache, then the system is fully operational.
+
+---
+
+## 4. Prerequisites & One-Time Setup (existing machine)
 
 These steps are completed once and do not need to be repeated on daily starts.
 
-### 3.1 Install Python dependencies
+### 4.1 Install Python dependencies
 
 ```bat
 cd C:\Users\saika\OneDrive\Documents\Saikat\Agents\HiddenMarkovModel
@@ -79,7 +122,7 @@ pip install -r requirements.txt
 
 > **Note:** `hmmlearn` is not in `requirements.txt` because it requires C++ Build Tools on Windows. The system runs without it using the built-in pure-NumPy fallback. If you want faster HMM fitting, install the C++ Build Tools from Microsoft and then run `pip install hmmlearn`.
 
-### 3.2 Import historical CSV data
+### 4.2 Import historical CSV data
 
 For each ticker, download the Barchart 1-hour intraday historical CSV and drop it in the `data/` folder. File names must start with the ticker symbol in lowercase (e.g., `aapl_intraday-60min_...csv`).
 
@@ -94,7 +137,7 @@ Or via terminal:
 python -c "from src.data_loader import import_csv_to_parquet; import_csv_to_parquet('AAPL')"
 ```
 
-### 3.3 Fit the initial HMM models
+### 4.3 Fit the initial HMM models
 
 On first run the `data/hmm_cache.pkl` file won't exist. Either:
 
@@ -103,7 +146,7 @@ On first run the `data/hmm_cache.pkl` file won't exist. Either:
 
 Once the cache exists, subsequent runs complete in under 30 seconds.
 
-### 3.4 (Optional) Schwab live trading authentication
+### 4.4 (Optional) Schwab live trading authentication
 
 For live order execution only — skip if using paper trading mode.
 
@@ -116,7 +159,7 @@ Follow the OAuth prompts. The resulting token file path should be set in the `SC
 
 ---
 
-## 4. Daily Operating Procedure
+## 5. Daily Operating Procedure
 
 ### Step 1 — Start ThetaData Terminal
 
@@ -187,7 +230,7 @@ Go to the **Options & Trading** tab (Tab 3):
 
 ---
 
-## 5. Dashboard Guide
+## 6. Dashboard Guide
 
 ### Tab 1 — Regime Overview
 
@@ -236,7 +279,7 @@ Row 2: Entry price  |  Current price / Close price  |  Max profit  |  Max loss  
 
 ---
 
-## 6. Weekly Maintenance
+## 7. Weekly Maintenance
 
 ### Deduplicate tracked trades (if recommend.py was run multiple times)
 
@@ -268,7 +311,44 @@ The recommend script uses the cache if it is less than 7 days old, then falls ba
 
 ---
 
-## 7. Adding or Removing Tickers
+## 8. Pushing Updates to GitHub
+
+Whenever you make changes (new tickers, config tweaks, code fixes), push them to GitHub so the repo stays current and other machines can pull the latest.
+
+```bat
+cd C:\Users\saika\OneDrive\Documents\Saikat\Agents\HiddenMarkovModel
+git add -p                        REM review and stage changes interactively
+REM  — or stage everything at once:
+git add config.json src/ data/*.parquet data/tracked_trades.json
+git commit -m "brief description of what changed"
+git push
+```
+
+On first push from a new machine you may be prompted for credentials. Enter your GitHub username (`dataguysaikat`) and a Personal Access Token (PAT) as the password — GitHub no longer accepts plain passwords over HTTPS.
+
+### Pulling updates on another machine
+
+```bat
+cd HiddenMarkovModel
+git pull
+```
+
+This brings in any code, config, or parquet changes committed from the primary machine.
+
+### What is and isn't tracked
+
+| Tracked (in repo) | Not tracked (in .gitignore) |
+|-------------------|-----------------------------|
+| `src/*.py` — all source code | `.venv/` — recreate with `pip install -r requirements.txt` |
+| `data/*.parquet` — bar history | `data/*.csv` — Barchart source files |
+| `data/tracked_trades.json` | `data/hmm_cache.pkl` — regenerated on first run |
+| `data/paper_trades.json` | `.env` — contains secrets, set up manually |
+| `config.json`, `requirements.txt`, `run.bat` | |
+| All `.md` documentation | |
+
+---
+
+## 9. Adding or Removing Tickers
 
 ### Adding a ticker
 
@@ -325,7 +405,7 @@ Click **[Fit HMM]** in the dashboard sidebar to include the new ticker in the mo
 
 ---
 
-## 8. Paper Trading vs Live Trading
+## 10. Paper Trading vs Live Trading
 
 ### Paper mode (default)
 
@@ -366,7 +446,7 @@ streamlit run src/dashboard.py
 
 ---
 
-## 9. Adjusting Strategy Parameters
+## 11. Adjusting Strategy Parameters
 
 ### Via the dashboard (recommended)
 
@@ -406,7 +486,7 @@ Edit `config.json` in the project root:
 
 ---
 
-## 10. Stopping the Application
+## 12. Stopping the Application
 
 ### Normal stop
 Press **Ctrl+C** in the Streamlit terminal window.
@@ -433,7 +513,7 @@ Get-NetTCPConnection -LocalPort 8501 |
 
 ---
 
-## 11. Troubleshooting
+## 13. Troubleshooting
 
 ### Dashboard opens but shows no regime data
 
@@ -516,7 +596,7 @@ For `hmmlearn` specifically, see Section 3.1.
 
 ---
 
-## 12. Configuration Reference
+## 14. Configuration Reference
 
 ### Files
 
