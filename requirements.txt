@@ -1,0 +1,15 @@
+streamlit>=1.32.2
+pandas>=2.2.1
+numpy>=2.0.0
+plotly>=5.20.0
+scikit-learn>=1.4.1
+# hmmlearn requires C++ Build Tools on Windows — install manually:
+#   pip install hmmlearn
+pyarrow>=15.0.2
+python-dateutil>=2.9.0
+pytz>=2024.1
+requests>=2.31.0
+yfinance>=0.2.50
+apscheduler>=3.10.0
+schwab-py>=1.5.0
+python-dotenv>=1.0.0

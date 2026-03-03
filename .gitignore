@@ -1,0 +1,30 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Secrets / credentials
+.env
+*.token.json
+schwab_token.json
+
+# Barchart source CSVs (parquets in data/ already contain this data)
+data/*.csv
+
+# HMM cache — regenerated automatically on dashboard startup
+data/hmm_cache.pkl
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code local settings
+.claude/

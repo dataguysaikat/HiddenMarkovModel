@@ -1,0 +1,21 @@
+{
+  "tickers": [
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "AMZN",
+    "GOOGL",
+    "META",
+    "TSLA"
+  ],
+
+  "option_strategy": {
+    "target_dte": 21,
+    "dte_min": 14,
+    "dte_max": 45,
+    "delta_vert": 0.40,
+    "delta_wing": 0.16,
+    "otm_pct": 0.03,
+    "strike_range": 20
+  }
+}

@@ -1,0 +1,24 @@
+@echo off
+REM Activate venv and launch the Streamlit dashboard
+
+if not exist ".venv\Scripts\activate.bat" (
+    echo ERROR: .venv not found. Run: python -m venv .venv ^&^& .venv\Scripts\pip install -r requirements.txt
+    exit /b 1
+)
+
+call .venv\Scripts\activate.bat
+
+REM Load .env if present
+if exist ".env" (
+    for /f "usebackq tokens=1,* delims==" %%A in (".env") do (
+        if not "%%A"=="" if not "%%A:~0,1%"=="#" set "%%A=%%B"
+    )
+)
+
+REM One-time Schwab OAuth: python -m src.broker auth
+
+REM Generate live option recommendations in a separate window (requires ThetaData terminal)
+start "HMM Recommendations" cmd /k ".venv\Scripts\python.exe -m src.recommend"
+
+REM Launch dashboard immediately
+streamlit run src/dashboard.py
