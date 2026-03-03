@@ -10,8 +10,8 @@ call .venv\Scripts\activate.bat
 
 REM Load .env if present
 if exist ".env" (
-    for /f "usebackq tokens=1,* delims==" %%A in (".env") do (
-        if not "%%A"=="" if not "%%A:~0,1%"=="#" set "%%A=%%B"
+    for /f "usebackq eol=# tokens=1,* delims==" %%A in (".env") do (
+        if not "%%A"=="" set "%%A=%%B"
     )
 )
 
