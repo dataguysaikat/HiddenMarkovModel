@@ -195,9 +195,24 @@ def get_scheduler(n_states: int = 4, trade_mode: str = "paper"):
             max_instances=1,
             coalesce=True,
         )
+        # Daily supervisor report — runs after EOD price update completes
+        from src.supervisor import eod_supervisor_job
+        scheduler.add_job(
+            func=eod_supervisor_job,
+            trigger=CronTrigger(
+                day_of_week="mon-fri",
+                hour=16,
+                minute=30,          # 25 min after price update — time for data to settle
+                timezone=NY_TZ,
+            ),
+            id="eod_supervisor",
+            name="EOD supervisor report",
+            max_instances=1,
+            coalesce=True,
+        )
         scheduler.start()
         _scheduler_started = True
-        print(f"[scheduler] started — HMM refresh Mon-Fri :30 ET, EOD price update 16:05 ET")
+        print(f"[scheduler] started — HMM refresh Mon-Fri :30 ET, EOD price 16:05 ET, supervisor 16:30 ET")
         return scheduler
 
 

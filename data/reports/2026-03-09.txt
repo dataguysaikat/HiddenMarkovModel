@@ -1,0 +1,86 @@
+
+============================================================
+  DAILY SUPERVISOR REPORT
+  2026-03-09 18:29 EDT
+============================================================
+
+MODEL HEALTH
+------------------------------------------------------------
+  No HMM cache found — models have not been fit today.
+
+TRADE SUMMARY
+------------------------------------------------------------
+  Open:    48 trades
+    AAPL   iron_condor            P&L $   -5.00 ( -0.8%)  DTE 11
+    MSFT   bear_put_spread        P&L $  -15.00 (-15.8%)  DTE 11
+    NVDA   bull_call_spread       P&L $  -30.50 (-34.7%)  DTE 11
+    AMZN   long_strangle          P&L $ +108.50 (+13.6%)  DTE 11
+    GOOGL  iron_condor            P&L $  +11.00 ( +1.7%)  DTE 11
+    META   iron_condor            P&L $  +11.50 ( +0.9%)  DTE 11
+    TSLA   iron_condor            P&L $  +49.50 ( +4.0%)  DTE 11
+    AAPL   long_strangle          P&L $  +73.50 (+10.4%)  DTE 11
+    MSFT   bear_put_spread        P&L $  -10.00 (-11.1%)  DTE 11
+    NVDA   bull_call_spread       P&L $  -17.50 (-19.9%)  DTE 11
+    AMZN   iron_condor            P&L $  -49.50 ( -8.2%)  DTE 11
+    GOOGL  long_strangle          P&L $ -190.50 (-17.7%)  DTE 11
+    META   long_strangle          P&L $ -127.00 ( -5.7%)  DTE 11
+    TSLA   iron_condor            P&L $  +44.00 ( +3.6%)  DTE 11
+    AAPL   iron_condor            P&L $  +20.00 ( +3.3%)  DTE 11
+    MSFT   long_strangle          P&L $ +218.50 (+19.0%)  DTE 11
+    NVDA   bull_call_spread       P&L $  +30.00 (+33.3%)  DTE 11
+    AMZN   iron_condor            P&L $  -37.00 ( -5.9%)  DTE 11
+    GOOGL  long_strangle          P&L $ -197.50 (-18.2%)  DTE 11
+    TSLA   iron_condor            P&L $  +10.50 ( +0.9%)  DTE 11
+    AAPL   iron_condor            P&L $  +56.00 ( +4.6%)  DTE 18
+    MSFT   long_strangle          P&L $ +108.00 ( +6.8%)  DTE 18
+    NVDA   long_strangle          P&L $  -82.00 ( -6.2%)  DTE 18
+    AMZN   iron_condor            P&L $  -70.00 ( -5.8%)  DTE 18
+    GOOGL  iron_condor            P&L $  +41.00 ( +3.4%)  DTE 18
+    META   iron_condor            P&L $  -24.00 ( -1.9%)  DTE 18
+    TSLA   iron_condor            P&L $   +3.50 ( +0.3%)  DTE 18
+    AAPL   iron_condor            P&L $  +42.00 ( +3.5%)  DTE 18
+    MSFT   long_strangle          P&L $  +10.50 ( +0.7%)  DTE 18
+    NVDA   long_strangle          P&L $  -37.00 ( -2.9%)  DTE 18
+    AMZN   iron_condor            P&L $  -89.00 ( -7.5%)  DTE 18
+    GOOGL  iron_condor            P&L $  +27.00 ( +2.3%)  DTE 18
+    META   iron_condor            P&L $  -28.00 ( -2.2%)  DTE 18
+    TSLA   iron_condor            P&L $   -9.50 ( -0.8%)  DTE 18
+    AAPL   iron_condor            P&L $  +29.00 ( +2.4%)  DTE 18
+    MSFT   long_strangle          P&L $  -45.50 ( -3.1%)  DTE 18
+    NVDA   long_strangle          P&L $   +0.00 ( +0.0%)  DTE 18
+    AMZN   iron_condor            P&L $  -30.50 ( -2.6%)  DTE 18
+    GOOGL  iron_condor            P&L $  +12.00 ( +1.0%)  DTE 18
+    META   iron_condor            P&L $   -8.50 ( -0.7%)  DTE 18
+    TSLA   iron_condor            P&L $  -27.50 ( -2.3%)  DTE 18
+    AAPL   iron_condor            P&L $   +0.00 ( +0.0%)  DTE 18
+    MSFT   bull_call_spread       P&L $   +0.00 ( +0.0%)  DTE 18
+    NVDA   bull_call_spread       P&L $   +0.00 ( +0.0%)  DTE 18
+    AMZN   bull_call_spread       P&L $   +0.00 ( +0.0%)  DTE 18
+    GOOGL  long_strangle          P&L $   +0.00 ( +0.0%)  DTE 18
+    META   long_strangle          P&L $   +0.00 ( +0.0%)  DTE 18
+    TSLA   bull_call_spread       P&L $   +0.00 ( +0.0%)  DTE 18
+                                             Total $ -225.00
+  Closed/Expired: 0 trades
+
+DATA QUALITY
+------------------------------------------------------------
+  AAPL    last bar: 2026-03-04 20:30:00+00:00
+  MSFT    last bar: 2026-03-04 20:30:00+00:00
+  NVDA    last bar: 2026-03-04 20:30:00+00:00
+  AMZN    last bar: 2026-03-04 20:30:00+00:00
+  GOOGL   last bar: 2026-03-04 20:30:00+00:00
+  META    last bar: 2026-03-04 20:30:00+00:00
+  TSLA    last bar: 2026-03-05 14:30:00+00:00
+  ThetaData: connected
+
+POLICY STATUS
+------------------------------------------------------------
+  No learned policy yet — retrain_policy.py has not produced results.
+
+IMPROVEMENT OPPORTUNITIES
+------------------------------------------------------------
+  * No actionable improvements identified at this time.
+
+============================================================
+  Report generated at 18:29:53 EDT
+============================================================
