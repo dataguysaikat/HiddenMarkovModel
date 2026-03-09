@@ -93,6 +93,12 @@ DELTA_WING   = _opt.get("delta_wing",   0.16)   # short leg delta for iron condo
 OTM_PCT      = _opt.get("otm_pct",      0.03)   # 3% OTM for strangle legs
 STRIKE_RANGE = _opt.get("strike_range", 20)     # strikes above/below ATM to fetch
 
+# Learned policy (written by src/retrain_policy.py after enough closed trades accumulate)
+_pol             = _cfg.get("learned_policy", {})
+_SKIP_REGIMES    = set(_pol.get("skip_regimes",    []))
+_CAUTION_REGIMES = set(_pol.get("caution_regimes", []))
+_MIN_CONFIDENCE  = float(_pol.get("min_confidence", 0.0))
+
 
 # ---------------------------------------------------------------------------
 # Strike selectors
@@ -216,6 +222,16 @@ def main():
         strat = rc.regime_type
         saved = False
 
+        # --- Apply learned policy (populated by src/retrain_policy.py) ---
+        if strat in _SKIP_REGIMES:
+            print(f"  [POLICY] Skipping {strat} — win rate too low from closed-trade history.")
+            continue
+        if _MIN_CONFIDENCE > 0 and conf < _MIN_CONFIDENCE:
+            print(f"  [POLICY] Skipping — confidence {conf:.0%} below required {_MIN_CONFIDENCE:.0%}.")
+            continue
+        if strat in _CAUTION_REGIMES:
+            print(f"  [CAUTION] {strat} has below-average win rate — proceeding cautiously.")
+
         try:
             if strat == "directional_bull":
                 lc = nearest_delta(calls, DELTA_VERT)
@@ -309,6 +325,12 @@ def main():
     print("Quotes from ThetaData terminal (real-time). "
           "Deltas/IV computed via Black-Scholes on mid price.")
     print("Use limit orders at mid or better.")
+    if _SKIP_REGIMES or _CAUTION_REGIMES or _MIN_CONFIDENCE > 0:
+        print(f"Active learned policy: skip={sorted(_SKIP_REGIMES) or 'none'}  "
+              f"caution={sorted(_CAUTION_REGIMES) or 'none'}  "
+              f"min_conf={_MIN_CONFIDENCE:.0%}")
+    else:
+        print("No learned policy yet. Run `python -m src.retrain_policy` after trades close.")
     print("=" * 92)
 
 

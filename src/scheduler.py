@@ -56,6 +56,7 @@ def _refresh_job(n_states: int = 4, trade_mode: str = "paper") -> None:
     from src.hmm_model import run_all_tickers
     from src.options import select_and_build_order
     from src.broker import execute_order
+    from src.trade_tracker import load_trades, check_regime_alerts, _save_all
 
     print(f"[scheduler] refresh started at {datetime.now(NY_TZ).strftime('%H:%M ET')}")
 
@@ -71,7 +72,23 @@ def _refresh_job(n_states: int = 4, trade_mode: str = "paper") -> None:
     bars = load_all_tickers()
     results = run_all_tickers(bars, n_states=n_states)
 
-    # 3. Execute paper trades
+    # 3. Check regime-change alerts for open tracked trades
+    try:
+        current_regime_types = {
+            ticker: res.characteristics[res.current_regime].regime_type
+            for ticker, res in results.items()
+            if not res.error and res.characteristics and res.current_regime in res.characteristics
+        }
+        trades = load_trades()
+        trades = check_regime_alerts(trades, current_regime_types)
+        _save_all(trades)
+        alerts = [t for t in trades if t.regime_alert]
+        if alerts:
+            print(f"[scheduler] REGIME ALERTS: {', '.join(t.ticker for t in alerts)}")
+    except Exception as e:
+        print(f"[scheduler] regime alert check error: {e}")
+
+    # 4. Execute paper trades (broker log)
     proposed = []
     for t, res in results.items():
         if res.error or not res.characteristics:

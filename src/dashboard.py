@@ -711,6 +711,13 @@ def _render_tab5():
                 "recommendations — they will be saved automatically.")
         return
 
+    # Global alert banner
+    alerted = [t for t in tracked if t.status == "open" and getattr(t, "regime_alert", "")]
+    if alerted:
+        tickers_alerted = ", ".join(t.ticker for t in alerted)
+        st.warning(f"**Regime alert** — original trade thesis may no longer hold for: "
+                   f"**{tickers_alerted}**. Review the trade cards below.")
+
     st.markdown("#### Recommendations")
     rec_rows = []
     for tr in tracked:
@@ -763,10 +770,14 @@ def _render_tab5():
         # Date-only for header to avoid truncation; full datetime inside card
         _opened_date = _opened[:10] if _opened else ""
         _opened_full = _opened[:16] if _opened else ""
-        label  = (f"{tr.ticker}  |  {tr.strategy}  |  exp {tr.expiry}  "
+        _alert = getattr(tr, "regime_alert", "")
+        _alert_prefix = "⚠ " if _alert else ""
+        label  = (f"{_alert_prefix}{tr.ticker}  |  {tr.strategy}  |  exp {tr.expiry}  "
                   f"|  P&L ${pnl_d:+.2f}  ({pct:+.1%})  |  {tr.status}"
                   f"  |  Open {_opened_date}")
-        with st.expander(label, expanded=False):
+        with st.expander(label, expanded=bool(_alert)):
+            if _alert:
+                st.warning(_alert)
             # Row 1: P&L metrics
             mc1, mc2, mc3, mc4, mc5, mc6 = st.columns(6)
             mc1.metric("Entry net", f"${tr.entry_net:.2f}")
