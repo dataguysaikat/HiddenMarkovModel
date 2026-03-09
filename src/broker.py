@@ -21,6 +21,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import tempfile
 import uuid
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -128,13 +129,26 @@ def load_paper_trades() -> list[TradeRecord]:
         return []
 
 
+def _atomic_write(path: Path, data: str) -> None:
+    """Write to a temp file then atomically rename — prevents corruption on concurrent access."""
+    path.parent.mkdir(exist_ok=True, parents=True)
+    fd, tmp = tempfile.mkstemp(dir=path.parent, suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(data)
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+
+
 def save_paper_trade(record: TradeRecord) -> None:
     trades = load_paper_trades()
     trades.append(record)
-    PAPER_TRADES_PATH.write_text(
-        json.dumps([asdict(t) for t in trades], indent=2),
-        encoding="utf-8",
-    )
+    _atomic_write(PAPER_TRADES_PATH, json.dumps([asdict(t) for t in trades], indent=2))
 
 
 # ---------------------------------------------------------------------------

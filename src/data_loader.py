@@ -24,7 +24,10 @@ _CONFIG_PATH = Path(__file__).parent.parent / "config.json"
 
 def _load_config() -> dict:
     if _CONFIG_PATH.exists():
-        return json.loads(_CONFIG_PATH.read_text(encoding="utf-8"))
+        try:
+            return json.loads(_CONFIG_PATH.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            print(f"WARNING: {_CONFIG_PATH} is malformed — using defaults.")
     return {}
 
 _config = _load_config()

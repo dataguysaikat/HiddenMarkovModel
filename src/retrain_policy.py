@@ -13,6 +13,8 @@ recommend.py reads "learned_policy" on startup to:
 from __future__ import annotations
 
 import json
+import os
+import tempfile
 from collections import defaultdict
 from pathlib import Path
 
@@ -122,12 +124,27 @@ def confidence_calibration(trades) -> float:
 
 def _load_config() -> dict:
     if _CONFIG_PATH.exists():
-        return json.loads(_CONFIG_PATH.read_text(encoding="utf-8"))
+        try:
+            return json.loads(_CONFIG_PATH.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as e:
+            print(f"WARNING: config.json parse error: {e}. Using defaults.")
     return {}
 
 
 def _save_config(cfg: dict) -> None:
-    _CONFIG_PATH.write_text(json.dumps(cfg, indent=2), encoding="utf-8")
+    """Atomic write to config.json — prevents corruption on concurrent access."""
+    _CONFIG_PATH.parent.mkdir(exist_ok=True, parents=True)
+    fd, tmp = tempfile.mkstemp(dir=_CONFIG_PATH.parent, suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(json.dumps(cfg, indent=2))
+        os.replace(tmp, _CONFIG_PATH)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
 
 
 def update_config(stats: dict, min_confidence: float) -> None:

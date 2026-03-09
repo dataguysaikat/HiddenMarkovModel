@@ -269,6 +269,8 @@ def run_all_tickers(
                 continue
 
             model, scaler, df_reg = fit_hmm(feats, n_states=n_states)
+            if df_reg.empty:
+                raise ValueError("Empty DataFrame after HMM fitting")
             # Adaptive vol threshold: 60th percentile of this ticker's vol_20
             # series. Prevents high-vol stocks (TSLA, NVDA) from having all
             # their states classified as vol_expansion due to a global constant.

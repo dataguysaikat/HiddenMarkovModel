@@ -12,6 +12,8 @@ P&L convention (per 1 contract = 100 shares):
 from __future__ import annotations
 
 import json
+import os
+import tempfile
 import uuid
 from dataclasses import asdict, dataclass, field
 from datetime import date, datetime, timezone
@@ -82,12 +84,24 @@ def load_trades() -> list[TrackedTrade]:
         return []
 
 
+def _atomic_write(path: Path, data: str) -> None:
+    """Write to a temp file then atomically rename — prevents corruption on concurrent access."""
+    path.parent.mkdir(exist_ok=True, parents=True)
+    fd, tmp = tempfile.mkstemp(dir=path.parent, suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(data)
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+
+
 def _save_all(trades: list[TrackedTrade]) -> None:
-    TRACKED_PATH.parent.mkdir(exist_ok=True, parents=True)
-    TRACKED_PATH.write_text(
-        json.dumps([asdict(t) for t in trades], indent=2),
-        encoding="utf-8",
-    )
+    _atomic_write(TRACKED_PATH, json.dumps([asdict(t) for t in trades], indent=2))
 
 
 def save_trade(trade: TrackedTrade) -> None:
@@ -363,9 +377,13 @@ def latest_pnl(trade: TrackedTrade) -> tuple[float, float]:
 
 
 def pnl_pct(trade: TrackedTrade) -> float:
-    """P&L as a percentage of max possible loss."""
+    """P&L as a percentage of risk (max_loss, or entry_net for unlimited-risk trades)."""
     _, pnl = latest_pnl(trade)
-    ref = abs(trade.max_loss) * 100 if trade.max_loss else 1
+    ml = trade.max_loss
+    if ml is None or ml == 0 or ml == float("inf"):
+        ref = abs(trade.entry_net) * 100   # fall back to cost basis for strangles
+    else:
+        ref = abs(ml) * 100
     return pnl / ref if ref else 0.0
 
 
@@ -466,6 +484,7 @@ def check_regime_alerts(
                     "to_regime":    current,
                     "pnl_at_alert": round(pnl_now, 2),
                 })
+                t.alert_log = t.alert_log[-50:]  # cap to prevent unbounded growth
             t.regime_alert = (
                 f"Regime shifted {t.regime_type} → {current} at {now_str}. "
                 f"Original thesis ({t.strategy}) may no longer apply — consider exiting."

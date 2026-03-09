@@ -12,7 +12,9 @@ Start once per process via get_scheduler().
 """
 from __future__ import annotations
 
+import os
 import pickle
+import tempfile
 import threading
 from datetime import datetime
 from pathlib import Path
@@ -109,8 +111,17 @@ def _refresh_job(n_states: int = 4, trade_mode: str = "paper") -> None:
         "updated_at": datetime.now(NY_TZ),
     }
     CACHE_PATH.parent.mkdir(exist_ok=True, parents=True)
-    with open(CACHE_PATH, "wb") as f:
-        pickle.dump(cache, f)
+    fd, tmp = tempfile.mkstemp(dir=CACHE_PATH.parent, suffix=".tmp")
+    try:
+        with os.fdopen(fd, "wb") as f:
+            pickle.dump(cache, f)
+        os.replace(tmp, CACHE_PATH)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
 
     print(f"[scheduler] refresh complete — {len(results)} tickers")
 

@@ -82,7 +82,11 @@ def _refresh_regime(cached: TickerResult, fresh_df) -> TickerResult:
 # Config — loaded from config.json at project root
 # ---------------------------------------------------------------------------
 _CONFIG_PATH = Path(__file__).parent.parent / "config.json"
-_cfg = json.loads(_CONFIG_PATH.read_text(encoding="utf-8")) if _CONFIG_PATH.exists() else {}
+try:
+    _cfg = json.loads(_CONFIG_PATH.read_text(encoding="utf-8")) if _CONFIG_PATH.exists() else {}
+except json.JSONDecodeError:
+    print(f"WARNING: {_CONFIG_PATH} is malformed — using defaults.")
+    _cfg = {}
 _opt = _cfg.get("option_strategy", {})
 
 TARGET_DTE   = _opt.get("target_dte",   21)
@@ -238,7 +242,9 @@ def main():
                 sc = next_strike_above(calls, lc["strike"]) if lc is not None else None
                 if lc is None or sc is None:
                     print("  Strategy: BULL CALL SPREAD -- insufficient strikes"); continue
-                net = max(round(lc["mid"] - sc["mid"], 2), 0.05)
+                net = round(lc["mid"] - sc["mid"], 2)
+                if net <= 0:
+                    print(f"  Strategy: BULL CALL SPREAD -- bad pricing (net={net:.2f}), skipping"); continue
                 wid = sc["strike"] - lc["strike"]
                 print(f"  Strategy: BULL CALL SPREAD  |  Confidence: {conf:.0%}")
                 print(_row_line("BUY",  exp, lc["strike"], "C", "ask", lc["ask"], lc["delta"], lc["iv"]))
@@ -256,7 +262,9 @@ def main():
                 sp = next_strike_below(puts, lp["strike"]) if lp is not None else None
                 if lp is None or sp is None:
                     print("  Strategy: BEAR PUT SPREAD -- insufficient strikes"); continue
-                net = max(round(lp["mid"] - sp["mid"], 2), 0.05)
+                net = round(lp["mid"] - sp["mid"], 2)
+                if net <= 0:
+                    print(f"  Strategy: BEAR PUT SPREAD -- bad pricing (net={net:.2f}), skipping"); continue
                 wid = lp["strike"] - sp["strike"]
                 print(f"  Strategy: BEAR PUT SPREAD  |  Confidence: {conf:.0%}")
                 print(_row_line("BUY",  exp, lp["strike"], "P", "ask", lp["ask"], lp["delta"], lp["iv"]))
@@ -275,6 +283,8 @@ def main():
                 if cl is None or pl is None:
                     print("  Strategy: LONG STRANGLE -- insufficient strikes"); continue
                 net = round(cl["mid"] + pl["mid"], 2)
+                if net <= 0:
+                    print(f"  Strategy: LONG STRANGLE -- bad pricing (net={net:.2f}), skipping"); continue
                 print(f"  Strategy: LONG STRANGLE  |  Confidence: {conf:.0%}")
                 print(_row_line("BUY", exp, cl["strike"], "C", "ask", cl["ask"], cl["delta"], cl["iv"]))
                 print(_row_line("BUY", exp, pl["strike"], "P", "ask", pl["ask"], pl["delta"], pl["iv"]))
@@ -295,7 +305,9 @@ def main():
                 lp = next_strike_below(puts,  sp["strike"], n=2)
                 if lc is None or lp is None:
                     print("  Strategy: IRON CONDOR -- no wing strikes found"); continue
-                cr = max(round((sc["mid"]+sp["mid"]) - (lc["mid"]+lp["mid"]), 2), 0.05)
+                cr = round((sc["mid"]+sp["mid"]) - (lc["mid"]+lp["mid"]), 2)
+                if cr <= 0:
+                    print(f"  Strategy: IRON CONDOR -- bad pricing (credit={cr:.2f}), skipping"); continue
                 ml = round(sc["strike"] - lc["strike"] - cr, 2)
                 print(f"  Strategy: IRON CONDOR  |  Confidence: {conf:.0%}")
                 print(_row_line("SELL", exp, sc["strike"], "C", "bid", sc["bid"], sc["delta"], sc["iv"]))
