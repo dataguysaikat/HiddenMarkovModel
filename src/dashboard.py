@@ -94,6 +94,95 @@ def _thetadata_available() -> bool:
 
 
 # ---------------------------------------------------------------------------
+# ThetaData order builder (mirrors recommend.py logic)
+# ---------------------------------------------------------------------------
+
+def _build_order_from_thetadata(ticker, rc, S, exp, calls, puts,
+                                delta_vert, delta_wing, otm_pct):
+    """Build order metadata from ThetaData chain DataFrames."""
+    from src.recommend import nearest_delta, nearest_strike, next_strike_above, next_strike_below
+    from src.options import STRATEGY_MAP
+
+    strat = STRATEGY_MAP.get(rc.regime_type, "iron_condor")
+    meta = {
+        "ticker": ticker, "regime_type": rc.regime_type,
+        "strategy": strat, "underlying_price": S, "expiry": exp,
+        "error": None, "legs": [], "est_net_price": 0.0,
+    }
+
+    try:
+        if strat == "bull_call_vertical":
+            lc = nearest_delta(calls, delta_vert)
+            sc = next_strike_above(calls, lc["strike"]) if lc is not None else None
+            if lc is None or sc is None:
+                meta["error"] = "Insufficient strikes for bull call spread"; return None, meta
+            net = round(lc["mid"] - sc["mid"], 2)
+            if net <= 0:
+                meta["error"] = f"Bad pricing (net={net:.2f})"; return None, meta
+            wid = sc["strike"] - lc["strike"]
+            meta["est_net_price"] = net
+            meta["legs"] = [
+                {"action": "BUY",  "right": "CALL", "strike": lc["strike"], "entry_mid": lc["mid"], "entry_ask": lc["ask"], "entry_bid": lc["bid"]},
+                {"action": "SELL", "right": "CALL", "strike": sc["strike"], "entry_mid": sc["mid"], "entry_ask": sc["ask"], "entry_bid": sc["bid"]},
+            ]
+
+        elif strat == "bear_put_vertical":
+            lp = nearest_delta(puts, -delta_vert)
+            sp = next_strike_below(puts, lp["strike"]) if lp is not None else None
+            if lp is None or sp is None:
+                meta["error"] = "Insufficient strikes for bear put spread"; return None, meta
+            net = round(lp["mid"] - sp["mid"], 2)
+            if net <= 0:
+                meta["error"] = f"Bad pricing (net={net:.2f})"; return None, meta
+            wid = lp["strike"] - sp["strike"]
+            meta["est_net_price"] = net
+            meta["legs"] = [
+                {"action": "BUY",  "right": "PUT", "strike": lp["strike"], "entry_mid": lp["mid"], "entry_ask": lp["ask"], "entry_bid": lp["bid"]},
+                {"action": "SELL", "right": "PUT", "strike": sp["strike"], "entry_mid": sp["mid"], "entry_ask": sp["ask"], "entry_bid": sp["bid"]},
+            ]
+
+        elif strat == "long_strangle":
+            cl = nearest_strike(calls, S * (1 + otm_pct))
+            pl = nearest_strike(puts,  S * (1 - otm_pct))
+            if cl is None or pl is None:
+                meta["error"] = "Insufficient strikes for strangle"; return None, meta
+            net = round(cl["mid"] + pl["mid"], 2)
+            if net <= 0:
+                meta["error"] = f"Bad pricing (net={net:.2f})"; return None, meta
+            meta["est_net_price"] = net
+            meta["legs"] = [
+                {"action": "BUY", "right": "CALL", "strike": cl["strike"], "entry_mid": cl["mid"], "entry_ask": cl["ask"], "entry_bid": cl["bid"]},
+                {"action": "BUY", "right": "PUT",  "strike": pl["strike"], "entry_mid": pl["mid"], "entry_ask": pl["ask"], "entry_bid": pl["bid"]},
+            ]
+
+        elif strat == "iron_condor":
+            sc = nearest_delta(calls,  delta_wing)
+            sp = nearest_delta(puts,  -delta_wing)
+            if sc is None or sp is None:
+                meta["error"] = "No short legs found for iron condor"; return None, meta
+            lc = next_strike_above(calls, sc["strike"], n=2)
+            lp = next_strike_below(puts,  sp["strike"], n=2)
+            if lc is None or lp is None:
+                meta["error"] = "No wing strikes found for iron condor"; return None, meta
+            cr = round((sc["mid"] + sp["mid"]) - (lc["mid"] + lp["mid"]), 2)
+            if cr <= 0:
+                meta["error"] = f"Bad pricing (credit={cr:.2f})"; return None, meta
+            meta["est_net_price"] = cr
+            meta["legs"] = [
+                {"action": "SELL", "right": "CALL", "strike": sc["strike"], "entry_mid": sc["mid"], "entry_ask": sc["ask"], "entry_bid": sc["bid"]},
+                {"action": "BUY",  "right": "CALL", "strike": lc["strike"], "entry_mid": lc["mid"], "entry_ask": lc["ask"], "entry_bid": lc["bid"]},
+                {"action": "SELL", "right": "PUT",  "strike": sp["strike"], "entry_mid": sp["mid"], "entry_ask": sp["ask"], "entry_bid": sp["bid"]},
+                {"action": "BUY",  "right": "PUT",  "strike": lp["strike"], "entry_mid": lp["mid"], "entry_ask": lp["ask"], "entry_bid": lp["bid"]},
+            ]
+
+    except Exception as exc:
+        meta["error"] = str(exc)
+        return None, meta
+
+    return None, meta  # order is None (dict-based metadata only)
+
+
+# ---------------------------------------------------------------------------
 # Plot helpers
 # ---------------------------------------------------------------------------
 _REGIME_PALETTE = [
@@ -453,7 +542,20 @@ if btn_fit and HMM_AVAILABLE:
         with st.spinner("Fitting HMMs…"):
             results = run_all_tickers(bars, n_states=n_states)
         st.session_state["results"] = results
-        # Build proposed orders (no live chain — paper simulation)
+        # Build proposed orders — use ThetaData chains if available
+        from src import thetadata as td
+        from src.recommend import get_price
+        td_up = td.is_available()
+        cfg = _load_config()
+        _opt = cfg.get("option_strategy", {})
+        target_dte   = _opt.get("target_dte",   21)
+        dte_min      = _opt.get("dte_min",      14)
+        dte_max      = _opt.get("dte_max",      45)
+        delta_vert   = _opt.get("delta_vert",   0.40)
+        delta_wing   = _opt.get("delta_wing",   0.16)
+        otm_pct      = _opt.get("otm_pct",      0.03)
+        strike_range = _opt.get("strike_range", 20)
+
         proposed = []
         for t, res in results.items():
             if res.error or not res.characteristics:
@@ -462,11 +564,35 @@ if btn_fit and HMM_AVAILABLE:
             if rc is None:
                 continue
             last_close = float(res.df_prices["close"].iloc[-1])
-            order, meta = select_and_build_order(t, rc.regime_type, {}, last_close)
+
+            if td_up:
+                S = get_price(t, last_close)
+                exp = td.find_expiry(t, target_dte, dte_min, dte_max)
+                if exp is None:
+                    order, meta = select_and_build_order(t, rc.regime_type, {}, S)
+                    meta["error"] = f"No expiry in {dte_min}-{dte_max} DTE range"
+                else:
+                    chain_df = td.get_chain(t, exp, S, strike_range=strike_range)
+                    if chain_df.empty:
+                        order, meta = select_and_build_order(t, rc.regime_type, {}, S)
+                        meta["error"] = "Empty chain from ThetaData"
+                    else:
+                        calls = td.get_calls(chain_df)
+                        puts  = td.get_puts(chain_df)
+                        order, meta = _build_order_from_thetadata(
+                            t, rc, S, exp, calls, puts,
+                            delta_vert, delta_wing, otm_pct,
+                        )
+            else:
+                order, meta = select_and_build_order(t, rc.regime_type, {}, last_close)
+
             proposed.append({"ticker": t, "order": order, "meta": meta, "rc": rc})
         st.session_state["proposed_orders"] = proposed
         n_ok = sum(1 for r in results.values() if r.error is None)
-        status_bar.success(f"HMM fitted for {n_ok}/{len(results)} tickers.")
+        if td_up:
+            status_bar.success(f"HMM fitted for {n_ok}/{len(results)} tickers. (ThetaData chains loaded)")
+        else:
+            status_bar.warning(f"HMM fitted for {n_ok}/{len(results)} tickers. ThetaData unavailable — no live chains.")
 
 if btn_execute:
     if not st.session_state["proposed_orders"]:

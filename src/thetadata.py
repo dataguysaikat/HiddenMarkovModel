@@ -21,7 +21,7 @@ from scipy.optimize import brentq
 from scipy.stats import norm
 
 BASE_URL = "http://127.0.0.1:25503/v3"
-TIMEOUT  = 10          # seconds per request
+TIMEOUT  = 30          # seconds per request
 RISK_FREE = 0.053      # ~current SOFR / fed funds rate
 
 
@@ -43,11 +43,12 @@ def _get(path: str, params: dict) -> dict | list | None:
 
 
 def is_available() -> bool:
-    """Return True if ThetaData terminal is reachable."""
+    """Return True if ThetaData terminal is reachable (TCP connect check)."""
+    import socket
     try:
-        r = requests.get(f"{BASE_URL}/option/list/expirations",
-                         params={"symbol": "AAPL", "format": "json"}, timeout=3)
-        return r.status_code == 200
+        s = socket.create_connection(("127.0.0.1", 25503), timeout=3)
+        s.close()
+        return True
     except Exception:
         return False
 
