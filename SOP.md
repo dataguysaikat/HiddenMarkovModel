@@ -1,7 +1,7 @@
 # Standard Operating Procedure — HMM Regime Trading Dashboard
 
-**Version:** 1.2
-**Last updated:** 2026-03-03
+**Version:** 1.3
+**Last updated:** 2026-03-13
 **Application:** Hidden Markov Model Regime Detection + Options Auto-Trading
 **Universe:** AAPL, MSFT, NVDA, AMZN, GOOGL, META, TSLA
 **GitHub:** https://github.com/dataguysaikat/HiddenMarkovModel
@@ -579,6 +579,36 @@ Then re-run `run.bat`.
 pip install -r requirements.txt
 ```
 For `hmmlearn` specifically, see Section 3.1.
+
+---
+
+### "No module named 'sklearn.utils'" (or other sklearn submodule)
+
+**Cause:** `scikit-learn` was installed outside of pip (e.g. via conda or a system installer) and is missing its `utils` subpackage. The RECORD file is absent, so `pip install --force-reinstall` cannot remove it automatically.
+
+**Fix:**
+
+1. Find the broken sklearn directory:
+```powershell
+python -c "import site; print(site.getsitepackages())"
+```
+
+2. Manually delete the `sklearn` folder from that path, e.g.:
+```powershell
+Remove-Item -Recurse -Force "C:\Users\saika\AppData\Local\Programs\Python\Python314\Lib\site-packages\sklearn"
+```
+
+3. Also delete any orphaned dist-info:
+```powershell
+Remove-Item -Recurse -Force "C:\Users\saika\AppData\Local\Programs\Python\Python314\Lib\site-packages\scikit_learn-*.dist-info"
+```
+
+4. Reinstall cleanly:
+```bat
+pip install scikit-learn
+```
+
+This installs the latest version (1.8.0 as of 2026-03-13) with a proper RECORD file.
 
 ---
 

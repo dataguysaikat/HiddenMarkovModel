@@ -65,12 +65,31 @@
         "underlying": 262.52,
         "net_mid": 1.13,
         "pnl_dollars": -5.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 255.76,
+        "net_mid": 1.6,
+        "pnl_dollars": -52.0
       }
     ],
     "status": "open",
     "confidence": 0.9885659112645409,
     "recommended_at": "2026-02-26 16:25:35 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 14:32 UTC",
+        "to_regime": "directional_bear",
+        "pnl_at_alert": -5.0
+      },
+      {
+        "timestamp": "2026-03-12 16:32 UTC",
+        "to_regime": "vol_expansion",
+        "pnl_at_alert": -5.0
+      }
+    ]
   },
   {
     "id": "MSFT-2026-03-20-bear_put_spread-2026-02-26-ad49",
@@ -122,12 +141,26 @@
         "underlying": 405.2,
         "net_mid": 0.8,
         "pnl_dollars": -15.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 401.9,
+        "net_mid": 0.83,
+        "pnl_dollars": -12.5
       }
     ],
     "status": "open",
     "confidence": 0.9999537972704234,
     "recommended_at": "2026-02-26 16:25:35 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bear \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bear_put_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": -15.0
+      }
+    ]
   },
   {
     "id": "NVDA-2026-03-20-bull_call_spread-2026-02-26-ac7a",
@@ -179,12 +212,20 @@
         "underlying": 183.04,
         "net_mid": 0.57,
         "pnl_dollars": -30.5
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 183.16,
+        "net_mid": 0.33,
+        "pnl_dollars": -54.5
       }
     ],
     "status": "open",
     "confidence": 0.9985650497151668,
     "recommended_at": "2026-02-26 16:25:36 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "AMZN-2026-03-20-long_strangle-2026-02-26-bbb3",
@@ -236,12 +277,26 @@
         "underlying": 216.82,
         "net_mid": 9.09,
         "pnl_dollars": 108.5
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 209.53,
+        "net_mid": 4.53,
+        "pnl_dollars": -347.0
       }
     ],
     "status": "open",
     "confidence": 0.9888955974128013,
     "recommended_at": "2026-02-26 16:25:36 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 108.5
+      }
+    ]
   },
   {
     "id": "GOOGL-2026-03-20-iron_condor-2026-02-26-9c0b",
@@ -309,12 +364,26 @@
         "underlying": 303.13,
         "net_mid": 1.41,
         "pnl_dollars": 11.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 303.55,
+        "net_mid": 0.58,
+        "pnl_dollars": 94.0
       }
     ],
     "status": "open",
     "confidence": 0.9999843004911801,
     "recommended_at": "2026-02-26 16:25:37 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 14:32 UTC",
+        "to_regime": "directional_bull",
+        "pnl_at_alert": 11.0
+      }
+    ]
   },
   {
     "id": "META-2026-03-20-iron_condor-2026-02-26-60e6",
@@ -382,12 +451,26 @@
         "underlying": 667.73,
         "net_mid": 2.4,
         "pnl_dollars": 11.5
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 638.18,
+        "net_mid": 1.39,
+        "pnl_dollars": 111.5
       }
     ],
     "status": "open",
     "confidence": 0.9826132139654598,
     "recommended_at": "2026-02-26 16:25:37 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "directional_bull",
+        "pnl_at_alert": 11.5
+      }
+    ]
   },
   {
     "id": "TSLA-2026-03-20-iron_condor-2026-02-26-d0ea",
@@ -455,12 +538,20 @@
         "underlying": 405.94,
         "net_mid": 1.73,
         "pnl_dollars": 49.5
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 395.01,
+        "net_mid": 1.32,
+        "pnl_dollars": 90.5
       }
     ],
     "status": "open",
     "confidence": 0.9953908349217305,
     "recommended_at": "2026-02-26 16:25:37 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "AAPL-2026-03-20-long_strangle-2026-02-27-bb4a",
@@ -506,12 +597,26 @@
         "underlying": 262.52,
         "net_mid": 7.83,
         "pnl_dollars": 73.5
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 255.76,
+        "net_mid": 10.13,
+        "pnl_dollars": 303.0
       }
     ],
     "status": "open",
     "confidence": 0.9739376911581887,
     "recommended_at": "2026-02-27 14:14:40 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 73.5
+      }
+    ]
   },
   {
     "id": "MSFT-2026-03-20-bear_put_spread-2026-02-27-2b94",
@@ -557,12 +662,26 @@
         "underlying": 405.2,
         "net_mid": 0.8,
         "pnl_dollars": -10.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 401.9,
+        "net_mid": 0.83,
+        "pnl_dollars": -7.5
       }
     ],
     "status": "open",
     "confidence": 0.9447395725022257,
     "recommended_at": "2026-02-27 14:14:41 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bear \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bear_put_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": -10.0
+      }
+    ]
   },
   {
     "id": "NVDA-2026-03-20-bull_call_spread-2026-02-27-d828",
@@ -608,12 +727,20 @@
         "underlying": 183.04,
         "net_mid": 0.71,
         "pnl_dollars": -17.5
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 183.16,
+        "net_mid": 0.48,
+        "pnl_dollars": -39.5
       }
     ],
     "status": "open",
     "confidence": 0.9992410537736889,
     "recommended_at": "2026-02-27 14:14:41 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "AMZN-2026-03-20-iron_condor-2026-02-27-ee21",
@@ -675,12 +802,20 @@
         "underlying": 216.82,
         "net_mid": 1.55,
         "pnl_dollars": -49.5
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 209.53,
+        "net_mid": 0.5,
+        "pnl_dollars": 55.5
       }
     ],
     "status": "open",
     "confidence": 0.9987033345777634,
     "recommended_at": "2026-02-27 14:14:42 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "GOOGL-2026-03-20-long_strangle-2026-02-27-3950",
@@ -726,12 +861,26 @@
         "underlying": 303.13,
         "net_mid": 8.88,
         "pnl_dollars": -190.5
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 303.55,
+        "net_mid": 4.98,
+        "pnl_dollars": -580.0
       }
     ],
     "status": "open",
     "confidence": 0.9910225736272756,
     "recommended_at": "2026-02-27 14:14:42 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": -190.5
+      }
+    ]
   },
   {
     "id": "META-2026-03-20-long_strangle-2026-02-27-693d",
@@ -777,12 +926,26 @@
         "underlying": 667.73,
         "net_mid": 21.15,
         "pnl_dollars": -127.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 638.18,
+        "net_mid": 14.68,
+        "pnl_dollars": -774.5
       }
     ],
     "status": "open",
     "confidence": 0.528137135980929,
     "recommended_at": "2026-02-27 14:14:42 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 18:33 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": -127.0
+      }
+    ]
   },
   {
     "id": "TSLA-2026-03-20-iron_condor-2026-02-27-f83d",
@@ -844,12 +1007,20 @@
         "underlying": 405.94,
         "net_mid": 1.92,
         "pnl_dollars": 44.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 395.01,
+        "net_mid": 1.35,
+        "pnl_dollars": 100.5
       }
     ],
     "status": "open",
     "confidence": 0.997360558842773,
     "recommended_at": "2026-02-27 14:14:43 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "AAPL-2026-03-20-iron_condor-2026-02-27-6ebe",
@@ -916,7 +1087,20 @@
     "status": "open",
     "confidence": 0.9915274027840165,
     "recommended_at": "2026-02-27 19:32:16 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 14:32 UTC",
+        "to_regime": "directional_bear",
+        "pnl_at_alert": 20.0
+      },
+      {
+        "timestamp": "2026-03-12 16:32 UTC",
+        "to_regime": "vol_expansion",
+        "pnl_at_alert": 20.0
+      }
+    ]
   },
   {
     "id": "MSFT-2026-03-20-long_strangle-2026-02-27-eadf",
@@ -967,7 +1151,15 @@
     "status": "open",
     "confidence": 0.9955702118349661,
     "recommended_at": "2026-02-27 19:32:17 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 218.5
+      }
+    ]
   },
   {
     "id": "NVDA-2026-03-20-bull_call_spread-2026-02-27-36d0",
@@ -1013,12 +1205,20 @@
         "underlying": 183.04,
         "net_mid": 1.2,
         "pnl_dollars": 30.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 183.16,
+        "net_mid": 1.13,
+        "pnl_dollars": 22.5
       }
     ],
     "status": "open",
     "confidence": 0.9971056022465864,
     "recommended_at": "2026-02-27 19:32:17 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "AMZN-2026-03-20-iron_condor-2026-02-27-5c26",
@@ -1085,7 +1285,9 @@
     "status": "open",
     "confidence": 0.9779288104344391,
     "recommended_at": "2026-02-27 19:32:18 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "GOOGL-2026-03-20-long_strangle-2026-02-27-d9da",
@@ -1131,12 +1333,26 @@
         "underlying": 303.13,
         "net_mid": 8.88,
         "pnl_dollars": -197.5
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 303.55,
+        "net_mid": 4.98,
+        "pnl_dollars": -587.0
       }
     ],
     "status": "open",
     "confidence": 0.9943978602437721,
     "recommended_at": "2026-02-27 19:32:18 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": -197.5
+      }
+    ]
   },
   {
     "id": "TSLA-2026-03-20-iron_condor-2026-02-27-4d34",
@@ -1203,7 +1419,9 @@
     "status": "open",
     "confidence": 0.9998745687098892,
     "recommended_at": "2026-02-27 19:32:19 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "AAPL-2026-03-27-iron_condor-2026-03-03-d145",
@@ -1270,7 +1488,20 @@
     "status": "open",
     "confidence": 0.9962736918067967,
     "recommended_at": "2026-03-03 14:59:21 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 14:32 UTC",
+        "to_regime": "directional_bear",
+        "pnl_at_alert": 56.0
+      },
+      {
+        "timestamp": "2026-03-12 16:32 UTC",
+        "to_regime": "vol_expansion",
+        "pnl_at_alert": 56.0
+      }
+    ]
   },
   {
     "id": "MSFT-2026-03-27-long_strangle-2026-03-03-5471",
@@ -1321,7 +1552,15 @@
     "status": "open",
     "confidence": 0.9600234884091726,
     "recommended_at": "2026-03-03 14:59:22 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 108.0
+      }
+    ]
   },
   {
     "id": "NVDA-2026-03-27-long_strangle-2026-03-03-44b4",
@@ -1372,7 +1611,9 @@
     "status": "open",
     "confidence": 0.9989562706078773,
     "recommended_at": "2026-03-03 14:59:23 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "AMZN-2026-03-27-iron_condor-2026-03-03-c41c",
@@ -1439,7 +1680,9 @@
     "status": "open",
     "confidence": 0.9838427929239159,
     "recommended_at": "2026-03-03 14:59:25 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "GOOGL-2026-03-27-iron_condor-2026-03-03-89e7",
@@ -1506,7 +1749,15 @@
     "status": "open",
     "confidence": 0.9636671265385778,
     "recommended_at": "2026-03-03 14:59:26 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 14:32 UTC",
+        "to_regime": "directional_bull",
+        "pnl_at_alert": 41.0
+      }
+    ]
   },
   {
     "id": "META-2026-03-27-iron_condor-2026-03-03-8518",
@@ -1573,7 +1824,15 @@
     "status": "open",
     "confidence": 0.9990938756419476,
     "recommended_at": "2026-03-03 14:59:27 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "directional_bull",
+        "pnl_at_alert": -24.0
+      }
+    ]
   },
   {
     "id": "TSLA-2026-03-27-iron_condor-2026-03-03-f830",
@@ -1640,7 +1899,9 @@
     "status": "open",
     "confidence": 0.999879654666758,
     "recommended_at": "2026-03-03 14:59:28 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "AAPL-2026-03-27-iron_condor-2026-03-03-18d9",
@@ -1707,7 +1968,20 @@
     "status": "open",
     "confidence": 0.9962736918067967,
     "recommended_at": "2026-03-03 16:10:27 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 14:32 UTC",
+        "to_regime": "directional_bear",
+        "pnl_at_alert": 42.0
+      },
+      {
+        "timestamp": "2026-03-12 16:32 UTC",
+        "to_regime": "vol_expansion",
+        "pnl_at_alert": 42.0
+      }
+    ]
   },
   {
     "id": "MSFT-2026-03-27-long_strangle-2026-03-03-64b5",
@@ -1758,7 +2032,15 @@
     "status": "open",
     "confidence": 0.9600234884091726,
     "recommended_at": "2026-03-03 16:10:27 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 10.5
+      }
+    ]
   },
   {
     "id": "NVDA-2026-03-27-long_strangle-2026-03-03-3654",
@@ -1809,7 +2091,9 @@
     "status": "open",
     "confidence": 0.9989562706078773,
     "recommended_at": "2026-03-03 16:10:28 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "AMZN-2026-03-27-iron_condor-2026-03-03-819c",
@@ -1876,7 +2160,9 @@
     "status": "open",
     "confidence": 0.9838427929239159,
     "recommended_at": "2026-03-03 16:10:28 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "GOOGL-2026-03-27-iron_condor-2026-03-03-56ff",
@@ -1943,7 +2229,15 @@
     "status": "open",
     "confidence": 0.9636671265385778,
     "recommended_at": "2026-03-03 16:10:29 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 14:32 UTC",
+        "to_regime": "directional_bull",
+        "pnl_at_alert": 27.0
+      }
+    ]
   },
   {
     "id": "META-2026-03-27-iron_condor-2026-03-03-abc4",
@@ -2010,7 +2304,15 @@
     "status": "open",
     "confidence": 0.9990938756419476,
     "recommended_at": "2026-03-03 16:10:29 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "directional_bull",
+        "pnl_at_alert": -28.0
+      }
+    ]
   },
   {
     "id": "TSLA-2026-03-27-iron_condor-2026-03-03-66b8",
@@ -2077,7 +2379,9 @@
     "status": "open",
     "confidence": 0.999879654666758,
     "recommended_at": "2026-03-03 16:10:30 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "AAPL-2026-03-27-iron_condor-2026-03-04-e6e6",
@@ -2138,7 +2442,20 @@
     "status": "open",
     "confidence": 0.9962736918067967,
     "recommended_at": "2026-03-04 14:23:01 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 14:32 UTC",
+        "to_regime": "directional_bear",
+        "pnl_at_alert": 29.0
+      },
+      {
+        "timestamp": "2026-03-12 16:32 UTC",
+        "to_regime": "vol_expansion",
+        "pnl_at_alert": 29.0
+      }
+    ]
   },
   {
     "id": "MSFT-2026-03-27-long_strangle-2026-03-04-d0f8",
@@ -2183,7 +2500,15 @@
     "status": "open",
     "confidence": 0.9600234884091726,
     "recommended_at": "2026-03-04 14:23:02 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": -45.5
+      }
+    ]
   },
   {
     "id": "NVDA-2026-03-27-long_strangle-2026-03-04-4a34",
@@ -2223,12 +2548,20 @@
         "underlying": 183.04,
         "net_mid": 12.45,
         "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 183.16,
+        "net_mid": 9.38,
+        "pnl_dollars": -307.5
       }
     ],
     "status": "open",
     "confidence": 0.9989562706078773,
     "recommended_at": "2026-03-04 14:23:02 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "AMZN-2026-03-27-iron_condor-2026-03-04-4b93",
@@ -2284,12 +2617,20 @@
         "underlying": 216.82,
         "net_mid": 2.03,
         "pnl_dollars": -30.5
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 209.53,
+        "net_mid": 1.04,
+        "pnl_dollars": 67.5
       }
     ],
     "status": "open",
     "confidence": 0.9838427929239159,
     "recommended_at": "2026-03-04 14:23:03 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "GOOGL-2026-03-27-iron_condor-2026-03-04-24c4",
@@ -2345,12 +2686,26 @@
         "underlying": 303.13,
         "net_mid": 2.01,
         "pnl_dollars": 12.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 303.55,
+        "net_mid": 1.26,
+        "pnl_dollars": 86.5
       }
     ],
     "status": "open",
     "confidence": 0.9636671265385778,
     "recommended_at": "2026-03-04 14:23:04 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 14:32 UTC",
+        "to_regime": "directional_bull",
+        "pnl_at_alert": 12.0
+      }
+    ]
   },
   {
     "id": "META-2026-03-27-iron_condor-2026-03-04-0bbf",
@@ -2406,12 +2761,26 @@
         "underlying": 667.73,
         "net_mid": 2.62,
         "pnl_dollars": -8.5
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 638.18,
+        "net_mid": 1.63,
+        "pnl_dollars": 90.5
       }
     ],
     "status": "open",
     "confidence": 0.9990938756419476,
     "recommended_at": "2026-03-04 14:23:04 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "directional_bull",
+        "pnl_at_alert": -8.5
+      }
+    ]
   },
   {
     "id": "TSLA-2026-03-27-iron_condor-2026-03-04-0e10",
@@ -2467,12 +2836,20 @@
         "underlying": 405.94,
         "net_mid": 2.42,
         "pnl_dollars": -27.5
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 395.01,
+        "net_mid": 1.47,
+        "pnl_dollars": 68.0
       }
     ],
     "status": "open",
     "confidence": 0.999879654666758,
     "recommended_at": "2026-03-04 14:23:05 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "AAPL-2026-03-27-iron_condor-2026-03-05-b1e5",
@@ -2528,12 +2905,31 @@
         "underlying": 262.5199890136719,
         "net_mid": 2.02,
         "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 255.76,
+        "net_mid": 1.59,
+        "pnl_dollars": 43.0
       }
     ],
     "status": "open",
     "confidence": 0.9116086511055506,
     "recommended_at": "2026-03-05 14:07:35 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 14:32 UTC",
+        "to_regime": "directional_bear",
+        "pnl_at_alert": 0.0
+      },
+      {
+        "timestamp": "2026-03-12 16:32 UTC",
+        "to_regime": "vol_expansion",
+        "pnl_at_alert": 0.0
+      }
+    ]
   },
   {
     "id": "MSFT-2026-03-27-bull_call_spread-2026-03-05-87e6",
@@ -2573,12 +2969,26 @@
         "underlying": 405.20001220703125,
         "net_mid": 1.88,
         "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 401.9,
+        "net_mid": 1.39,
+        "pnl_dollars": -48.5
       }
     ],
     "status": "open",
     "confidence": 0.9922060456347149,
     "recommended_at": "2026-03-05 14:07:36 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
   },
   {
     "id": "NVDA-2026-03-27-bull_call_spread-2026-03-05-63a3",
@@ -2618,12 +3028,20 @@
         "underlying": 183.0399932861328,
         "net_mid": 1.75,
         "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 183.16,
+        "net_mid": 1.55,
+        "pnl_dollars": -20.0
       }
     ],
     "status": "open",
     "confidence": 0.9969379136768043,
     "recommended_at": "2026-03-05 14:07:37 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   },
   {
     "id": "AMZN-2026-03-27-bull_call_spread-2026-03-05-112e",
@@ -2663,12 +3081,26 @@
         "underlying": 216.82000732421875,
         "net_mid": 1.56,
         "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 209.53,
+        "net_mid": 0.54,
+        "pnl_dollars": -102.5
       }
     ],
     "status": "open",
     "confidence": 0.9991332097200382,
     "recommended_at": "2026-03-05 14:07:38 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
   },
   {
     "id": "GOOGL-2026-03-27-long_strangle-2026-03-05-117d",
@@ -2708,12 +3140,26 @@
         "underlying": 303.1300048828125,
         "net_mid": 13.55,
         "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 303.55,
+        "net_mid": 10.07,
+        "pnl_dollars": -347.5
       }
     ],
     "status": "open",
     "confidence": 0.9924473107172834,
     "recommended_at": "2026-03-05 14:07:39 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
   },
   {
     "id": "META-2026-03-27-long_strangle-2026-03-05-d692",
@@ -2753,12 +3199,26 @@
         "underlying": 667.72998046875,
         "net_mid": 25.6,
         "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 638.18,
+        "net_mid": 25.86,
+        "pnl_dollars": 25.5
       }
     ],
     "status": "open",
     "confidence": 0.9924472486852456,
     "recommended_at": "2026-03-05 14:07:40 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 18:33 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
   },
   {
     "id": "TSLA-2026-03-27-bull_call_spread-2026-03-05-2433",
@@ -2798,11 +3258,2054 @@
         "underlying": 405.94000244140625,
         "net_mid": 1.8,
         "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 395.01,
+        "net_mid": 1.15,
+        "pnl_dollars": -65.0
       }
     ],
     "status": "open",
     "confidence": 0.9970085402832404,
     "recommended_at": "2026-03-05 14:07:41 UTC",
-    "underlying_at_close": 0.0
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "AAPL-2026-04-02-iron_condor-2026-03-10-0ace",
+    "date_recommended": "2026-03-10",
+    "ticker": "AAPL",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 23,
+    "underlying_at_entry": 258.55999755859375,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R2)",
+    "price_type": "credit",
+    "entry_net": 1.98,
+    "max_profit": 1.98,
+    "max_loss": 11.98,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 275.0,
+        "entry_mid": 1.435,
+        "entry_ask": 1.46,
+        "entry_bid": 1.41
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 285.0,
+        "entry_mid": 0.425,
+        "entry_ask": 0.44,
+        "entry_bid": 0.41
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 240.0,
+        "entry_mid": 2.1950000000000003,
+        "entry_ask": 2.23,
+        "entry_bid": 2.16
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 230.0,
+        "entry_mid": 1.225,
+        "entry_ask": 1.25,
+        "entry_bid": 1.2
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-10",
+        "underlying": 258.55999755859375,
+        "net_mid": 1.98,
+        "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 255.76,
+        "net_mid": 1.74,
+        "pnl_dollars": 24.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9820220868709535,
+    "recommended_at": "2026-03-10 13:52:50 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 14:32 UTC",
+        "to_regime": "directional_bear",
+        "pnl_at_alert": 0.0
+      },
+      {
+        "timestamp": "2026-03-12 16:32 UTC",
+        "to_regime": "vol_expansion",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "MSFT-2026-04-02-bull_call_spread-2026-03-10-25d1",
+    "date_recommended": "2026-03-10",
+    "ticker": "MSFT",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 23,
+    "underlying_at_entry": 405.79998779296875,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R2)",
+    "price_type": "debit",
+    "entry_net": 1.97,
+    "max_profit": 3.0300000000000002,
+    "max_loss": 1.97,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 415.0,
+        "entry_mid": 8.2,
+        "entry_ask": 8.3,
+        "entry_bid": 8.1
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 420.0,
+        "entry_mid": 6.225,
+        "entry_ask": 6.3,
+        "entry_bid": 6.15
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-10",
+        "underlying": 405.79998779296875,
+        "net_mid": 1.97,
+        "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 401.9,
+        "net_mid": 1.6,
+        "pnl_dollars": -37.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9630667810493158,
+    "recommended_at": "2026-03-10 13:52:50 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "NVDA-2026-04-02-bull_call_spread-2026-03-10-5723",
+    "date_recommended": "2026-03-10",
+    "ticker": "NVDA",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 23,
+    "underlying_at_entry": 183.47000122070312,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R3)",
+    "price_type": "debit",
+    "entry_net": 1.72,
+    "max_profit": 3.2800000000000002,
+    "max_loss": 1.72,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 190.0,
+        "entry_mid": 4.625,
+        "entry_ask": 4.65,
+        "entry_bid": 4.6
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 195.0,
+        "entry_mid": 2.9050000000000002,
+        "entry_ask": 2.92,
+        "entry_bid": 2.89
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-10",
+        "underlying": 183.47000122070312,
+        "net_mid": 1.72,
+        "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 183.16,
+        "net_mid": 1.7,
+        "pnl_dollars": -2.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9661893953885001,
+    "recommended_at": "2026-03-10 13:52:51 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "AMZN-2026-04-02-bull_call_spread-2026-03-10-23e7",
+    "date_recommended": "2026-03-10",
+    "ticker": "AMZN",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 23,
+    "underlying_at_entry": 213.92999267578125,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R3)",
+    "price_type": "debit",
+    "entry_net": 1.82,
+    "max_profit": 3.1799999999999997,
+    "max_loss": 1.82,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 220.0,
+        "entry_mid": 4.65,
+        "entry_ask": 4.7,
+        "entry_bid": 4.6
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 225.0,
+        "entry_mid": 2.835,
+        "entry_ask": 2.86,
+        "entry_bid": 2.81
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-10",
+        "underlying": 213.92999267578125,
+        "net_mid": 1.82,
+        "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 209.53,
+        "net_mid": 1.19,
+        "pnl_dollars": -62.5
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9976104140569688,
+    "recommended_at": "2026-03-10 13:52:51 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "GOOGL-2026-04-02-bull_call_spread-2026-03-10-aba5",
+    "date_recommended": "2026-03-10",
+    "ticker": "GOOGL",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 23,
+    "underlying_at_entry": 306.260009765625,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R3)",
+    "price_type": "debit",
+    "entry_net": 1.78,
+    "max_profit": 3.2199999999999998,
+    "max_loss": 1.78,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 315.0,
+        "entry_mid": 6.15,
+        "entry_ask": 6.25,
+        "entry_bid": 6.05
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 320.0,
+        "entry_mid": 4.375,
+        "entry_ask": 4.45,
+        "entry_bid": 4.3
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-10",
+        "underlying": 306.260009765625,
+        "net_mid": 1.78,
+        "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 303.55,
+        "net_mid": 1.5,
+        "pnl_dollars": -28.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.692913345052274,
+    "recommended_at": "2026-03-10 13:52:51 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "META-2026-04-02-long_strangle-2026-03-10-797d",
+    "date_recommended": "2026-03-10",
+    "ticker": "META",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 23,
+    "underlying_at_entry": 654.3400268554688,
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "regime_name": "Vol Exp (R1)",
+    "price_type": "debit",
+    "entry_net": 26.28,
+    "max_profit": Infinity,
+    "max_loss": 26.28,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 675.0,
+        "entry_mid": 12.325,
+        "entry_ask": 12.5,
+        "entry_bid": 12.15
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 635.0,
+        "entry_mid": 13.95,
+        "entry_ask": 14.15,
+        "entry_bid": 13.75
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-10",
+        "underlying": 654.3400268554688,
+        "net_mid": 26.28,
+        "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 638.18,
+        "net_mid": 26.7,
+        "pnl_dollars": 42.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9918808740883113,
+    "recommended_at": "2026-03-10 13:52:52 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 18:33 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "TSLA-2026-04-02-bull_call_spread-2026-03-10-b95c",
+    "date_recommended": "2026-03-10",
+    "ticker": "TSLA",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 23,
+    "underlying_at_entry": 405.2900085449219,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R2)",
+    "price_type": "debit",
+    "entry_net": 1.85,
+    "max_profit": 3.15,
+    "max_loss": 1.85,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 420.0,
+        "entry_mid": 11.5,
+        "entry_ask": 11.55,
+        "entry_bid": 11.45
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 425.0,
+        "entry_mid": 9.649999999999999,
+        "entry_ask": 9.7,
+        "entry_bid": 9.6
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-10",
+        "underlying": 405.2900085449219,
+        "net_mid": 1.85,
+        "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 395.01,
+        "net_mid": 1.35,
+        "pnl_dollars": -50.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9976104932116897,
+    "recommended_at": "2026-03-10 13:52:52 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "AAPL-2026-04-02-iron_condor-2026-03-11-e981",
+    "date_recommended": "2026-03-11",
+    "ticker": "AAPL",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 22,
+    "underlying_at_entry": 260.8299865722656,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R2)",
+    "price_type": "credit",
+    "entry_net": 1.59,
+    "max_profit": 1.59,
+    "max_loss": 11.59,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 280.0,
+        "entry_mid": 0.9199999999999999,
+        "entry_ask": 0.95,
+        "entry_bid": 0.89
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 290.0,
+        "entry_mid": 0.275,
+        "entry_ask": 0.31,
+        "entry_bid": 0.24
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 240.0,
+        "entry_mid": 2.0700000000000003,
+        "entry_ask": 2.2,
+        "entry_bid": 1.94
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 230.0,
+        "entry_mid": 1.125,
+        "entry_ask": 1.16,
+        "entry_bid": 1.09
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-11",
+        "underlying": 260.8299865722656,
+        "net_mid": 1.59,
+        "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 255.76,
+        "net_mid": 1.38,
+        "pnl_dollars": 21.5
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9820220868709535,
+    "recommended_at": "2026-03-11 13:25:22 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 14:32 UTC",
+        "to_regime": "directional_bear",
+        "pnl_at_alert": 0.0
+      },
+      {
+        "timestamp": "2026-03-12 16:32 UTC",
+        "to_regime": "vol_expansion",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "MSFT-2026-04-02-bull_call_spread-2026-03-11-85ec",
+    "date_recommended": "2026-03-11",
+    "ticker": "MSFT",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 22,
+    "underlying_at_entry": 405.760009765625,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R2)",
+    "price_type": "debit",
+    "entry_net": 1.92,
+    "max_profit": 3.08,
+    "max_loss": 1.92,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 415.0,
+        "entry_mid": 7.85,
+        "entry_ask": 7.95,
+        "entry_bid": 7.75
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 420.0,
+        "entry_mid": 5.925,
+        "entry_ask": 6.0,
+        "entry_bid": 5.85
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-11",
+        "underlying": 405.760009765625,
+        "net_mid": 1.92,
+        "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 401.9,
+        "net_mid": 1.6,
+        "pnl_dollars": -32.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9630667810493158,
+    "recommended_at": "2026-03-11 13:25:23 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "NVDA-2026-04-02-bull_call_spread-2026-03-11-c4ba",
+    "date_recommended": "2026-03-11",
+    "ticker": "NVDA",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 22,
+    "underlying_at_entry": 184.77000427246094,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R3)",
+    "price_type": "debit",
+    "entry_net": 1.9,
+    "max_profit": 3.1,
+    "max_loss": 1.9,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 190.0,
+        "entry_mid": 5.15,
+        "entry_ask": 5.2,
+        "entry_bid": 5.1
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 195.0,
+        "entry_mid": 3.25,
+        "entry_ask": 3.3,
+        "entry_bid": 3.2
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-11",
+        "underlying": 184.77000427246094,
+        "net_mid": 1.9,
+        "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 183.16,
+        "net_mid": 1.7,
+        "pnl_dollars": -20.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9661893953885001,
+    "recommended_at": "2026-03-11 13:25:23 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "AMZN-2026-04-02-bull_call_spread-2026-03-11-d864",
+    "date_recommended": "2026-03-11",
+    "ticker": "AMZN",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 22,
+    "underlying_at_entry": 214.3300018310547,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R3)",
+    "price_type": "debit",
+    "entry_net": 1.88,
+    "max_profit": 3.12,
+    "max_loss": 1.88,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 220.0,
+        "entry_mid": 4.725,
+        "entry_ask": 4.8,
+        "entry_bid": 4.65
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 225.0,
+        "entry_mid": 2.8449999999999998,
+        "entry_ask": 2.89,
+        "entry_bid": 2.8
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-11",
+        "underlying": 214.3300018310547,
+        "net_mid": 1.88,
+        "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 209.53,
+        "net_mid": 1.19,
+        "pnl_dollars": -68.5
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9976104140569688,
+    "recommended_at": "2026-03-11 13:25:24 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "GOOGL-2026-04-02-bull_call_spread-2026-03-11-dede",
+    "date_recommended": "2026-03-11",
+    "ticker": "GOOGL",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 22,
+    "underlying_at_entry": 307.0400085449219,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R3)",
+    "price_type": "debit",
+    "entry_net": 2.0,
+    "max_profit": 3.0,
+    "max_loss": 2.0,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 315.0,
+        "entry_mid": 6.5,
+        "entry_ask": 6.75,
+        "entry_bid": 6.25
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 320.0,
+        "entry_mid": 4.5,
+        "entry_ask": 4.6,
+        "entry_bid": 4.4
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-11",
+        "underlying": 307.0400085449219,
+        "net_mid": 2.0,
+        "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 303.55,
+        "net_mid": 1.5,
+        "pnl_dollars": -50.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.692913345052274,
+    "recommended_at": "2026-03-11 13:25:24 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "META-2026-04-02-long_strangle-2026-03-11-45ca",
+    "date_recommended": "2026-03-11",
+    "ticker": "META",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 22,
+    "underlying_at_entry": 654.0700073242188,
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "regime_name": "Vol Exp (R1)",
+    "price_type": "debit",
+    "entry_net": 25.42,
+    "max_profit": Infinity,
+    "max_loss": 25.42,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 675.0,
+        "entry_mid": 11.625,
+        "entry_ask": 11.75,
+        "entry_bid": 11.5
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 635.0,
+        "entry_mid": 13.8,
+        "entry_ask": 13.95,
+        "entry_bid": 13.65
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-11",
+        "underlying": 654.0700073242188,
+        "net_mid": 25.42,
+        "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 638.18,
+        "net_mid": 26.7,
+        "pnl_dollars": 128.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9918808740883113,
+    "recommended_at": "2026-03-11 13:25:25 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 18:33 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "TSLA-2026-04-02-bull_call_spread-2026-03-11-64d3",
+    "date_recommended": "2026-03-11",
+    "ticker": "TSLA",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 22,
+    "underlying_at_entry": 399.239990234375,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R2)",
+    "price_type": "debit",
+    "entry_net": 1.8,
+    "max_profit": 3.2,
+    "max_loss": 1.8,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 415.0,
+        "entry_mid": 10.925,
+        "entry_ask": 11.0,
+        "entry_bid": 10.85
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 420.0,
+        "entry_mid": 9.125,
+        "entry_ask": 9.15,
+        "entry_bid": 9.1
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-11",
+        "underlying": 399.239990234375,
+        "net_mid": 1.8,
+        "pnl_dollars": 0.0
+      },
+      {
+        "date": "2026-03-12",
+        "underlying": 395.01,
+        "net_mid": 1.58,
+        "pnl_dollars": -22.5
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9976104932116897,
+    "recommended_at": "2026-03-11 13:25:25 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "AAPL-2026-04-02-iron_condor-2026-03-12-c22e",
+    "date_recommended": "2026-03-12",
+    "ticker": "AAPL",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 21,
+    "underlying_at_entry": 260.80999755859375,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R2)",
+    "price_type": "credit",
+    "entry_net": 1.92,
+    "max_profit": 1.92,
+    "max_loss": 11.92,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 275.0,
+        "entry_mid": 1.6,
+        "entry_ask": 1.7,
+        "entry_bid": 1.5
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 285.0,
+        "entry_mid": 0.405,
+        "entry_ask": 0.44,
+        "entry_bid": 0.37
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 240.0,
+        "entry_mid": 1.685,
+        "entry_ask": 1.77,
+        "entry_bid": 1.6
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 230.0,
+        "entry_mid": 0.9550000000000001,
+        "entry_ask": 1.07,
+        "entry_bid": 0.84
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-12",
+        "underlying": 255.76,
+        "net_mid": 1.74,
+        "pnl_dollars": 18.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9820220868709535,
+    "recommended_at": "2026-03-12 13:25:56 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 14:32 UTC",
+        "to_regime": "directional_bear",
+        "pnl_at_alert": 0.0
+      },
+      {
+        "timestamp": "2026-03-12 16:32 UTC",
+        "to_regime": "vol_expansion",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "MSFT-2026-04-02-bull_call_spread-2026-03-12-2c5e",
+    "date_recommended": "2026-03-12",
+    "ticker": "MSFT",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 21,
+    "underlying_at_entry": 404.8800048828125,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R2)",
+    "price_type": "debit",
+    "entry_net": 1.8,
+    "max_profit": 3.2,
+    "max_loss": 1.8,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 415.0,
+        "entry_mid": 6.45,
+        "entry_ask": 6.5,
+        "entry_bid": 6.4
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 420.0,
+        "entry_mid": 4.65,
+        "entry_ask": 4.7,
+        "entry_bid": 4.6
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-12",
+        "underlying": 401.9,
+        "net_mid": 1.6,
+        "pnl_dollars": -20.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9630667810493158,
+    "recommended_at": "2026-03-12 13:25:57 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "NVDA-2026-04-02-bull_call_spread-2026-03-12-18de",
+    "date_recommended": "2026-03-12",
+    "ticker": "NVDA",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 21,
+    "underlying_at_entry": 186.02999877929688,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R3)",
+    "price_type": "debit",
+    "entry_net": 2.02,
+    "max_profit": 2.98,
+    "max_loss": 2.02,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 190.0,
+        "entry_mid": 5.475,
+        "entry_ask": 5.5,
+        "entry_bid": 5.45
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 195.0,
+        "entry_mid": 3.45,
+        "entry_ask": 3.5,
+        "entry_bid": 3.4
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-12",
+        "underlying": 183.16,
+        "net_mid": 1.7,
+        "pnl_dollars": -32.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9661893953885001,
+    "recommended_at": "2026-03-12 13:25:57 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "AMZN-2026-04-02-bull_call_spread-2026-03-12-f399",
+    "date_recommended": "2026-03-12",
+    "ticker": "AMZN",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 21,
+    "underlying_at_entry": 212.64999389648438,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R3)",
+    "price_type": "debit",
+    "entry_net": 1.62,
+    "max_profit": 3.38,
+    "max_loss": 1.62,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 220.0,
+        "entry_mid": 3.8,
+        "entry_ask": 3.9,
+        "entry_bid": 3.7
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 225.0,
+        "entry_mid": 2.175,
+        "entry_ask": 2.2,
+        "entry_bid": 2.15
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-12",
+        "underlying": 209.53,
+        "net_mid": 1.19,
+        "pnl_dollars": -42.5
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9976104140569688,
+    "recommended_at": "2026-03-12 13:25:57 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "GOOGL-2026-04-02-bull_call_spread-2026-03-12-7263",
+    "date_recommended": "2026-03-12",
+    "ticker": "GOOGL",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 21,
+    "underlying_at_entry": 308.70001220703125,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R3)",
+    "price_type": "debit",
+    "entry_net": 1.95,
+    "max_profit": 3.05,
+    "max_loss": 1.95,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 315.0,
+        "entry_mid": 6.6,
+        "entry_ask": 6.65,
+        "entry_bid": 6.55
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 320.0,
+        "entry_mid": 4.65,
+        "entry_ask": 4.7,
+        "entry_bid": 4.6
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-12",
+        "underlying": 303.55,
+        "net_mid": 1.5,
+        "pnl_dollars": -45.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.692913345052274,
+    "recommended_at": "2026-03-12 13:25:58 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "META-2026-04-02-long_strangle-2026-03-12-b818",
+    "date_recommended": "2026-03-12",
+    "ticker": "META",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 21,
+    "underlying_at_entry": 654.8599853515625,
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "regime_name": "Vol Exp (R1)",
+    "price_type": "debit",
+    "entry_net": 23.98,
+    "max_profit": Infinity,
+    "max_loss": 23.98,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 675.0,
+        "entry_mid": 11.274999999999999,
+        "entry_ask": 11.35,
+        "entry_bid": 11.2
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 635.0,
+        "entry_mid": 12.7,
+        "entry_ask": 12.8,
+        "entry_bid": 12.6
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-12",
+        "underlying": 638.18,
+        "net_mid": 26.7,
+        "pnl_dollars": 272.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9918808740883113,
+    "recommended_at": "2026-03-12 13:25:58 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 18:33 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "TSLA-2026-04-02-bull_call_spread-2026-03-12-d8f6",
+    "date_recommended": "2026-03-12",
+    "ticker": "TSLA",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 21,
+    "underlying_at_entry": 407.82000732421875,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R2)",
+    "price_type": "debit",
+    "entry_net": 1.95,
+    "max_profit": 3.05,
+    "max_loss": 1.95,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 420.0,
+        "entry_mid": 12.075,
+        "entry_ask": 12.15,
+        "entry_bid": 12.0
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 425.0,
+        "entry_mid": 10.125,
+        "entry_ask": 10.15,
+        "entry_bid": 10.1
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-12",
+        "underlying": 395.01,
+        "net_mid": 1.35,
+        "pnl_dollars": -60.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9976104932116897,
+    "recommended_at": "2026-03-12 13:25:59 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-12 13:32 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "AAPL-2026-04-02-iron_condor-2026-03-13-87dc",
+    "date_recommended": "2026-03-13",
+    "ticker": "AAPL",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 255.75999450683594,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R1)",
+    "price_type": "credit",
+    "entry_net": 1.53,
+    "max_profit": 1.53,
+    "max_loss": 11.53,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 275.0,
+        "entry_mid": 0.88,
+        "entry_ask": 0.91,
+        "entry_bid": 0.85
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 285.0,
+        "entry_mid": 0.235,
+        "entry_ask": 0.25,
+        "entry_bid": 0.22
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 235.0,
+        "entry_mid": 1.905,
+        "entry_ask": 1.94,
+        "entry_bid": 1.87
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 225.0,
+        "entry_mid": 1.025,
+        "entry_ask": 1.1,
+        "entry_bid": 0.95
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 255.75999450683594,
+        "net_mid": 1.53,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.6867790673988591,
+    "recommended_at": "2026-03-13 13:29:49 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "MSFT-2026-04-02-iron_condor-2026-03-13-16b5",
+    "date_recommended": "2026-03-13",
+    "ticker": "MSFT",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 401.8599853515625,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R3)",
+    "price_type": "credit",
+    "entry_net": 2.04,
+    "max_profit": 2.04,
+    "max_loss": 12.04,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 430.0,
+        "entry_mid": 1.93,
+        "entry_ask": 1.98,
+        "entry_bid": 1.88
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 440.0,
+        "entry_mid": 0.88,
+        "entry_ask": 0.91,
+        "entry_bid": 0.85
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 370.0,
+        "entry_mid": 2.68,
+        "entry_ask": 2.72,
+        "entry_bid": 2.64
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 360.0,
+        "entry_mid": 1.6949999999999998,
+        "entry_ask": 1.73,
+        "entry_bid": 1.66
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 401.8599853515625,
+        "net_mid": 2.04,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9406435185807314,
+    "recommended_at": "2026-03-13 13:29:51 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "NVDA-2026-04-02-bull_call_spread-2026-03-13-1a4f",
+    "date_recommended": "2026-03-13",
+    "ticker": "NVDA",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 183.13999938964844,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R2)",
+    "price_type": "debit",
+    "entry_net": 1.7,
+    "max_profit": 3.3,
+    "max_loss": 1.7,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 190.0,
+        "entry_mid": 4.45,
+        "entry_ask": 4.5,
+        "entry_bid": 4.4
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 195.0,
+        "entry_mid": 2.75,
+        "entry_ask": 2.77,
+        "entry_bid": 2.73
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 183.13999938964844,
+        "net_mid": 1.7,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9983126610384087,
+    "recommended_at": "2026-03-13 13:29:52 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "AMZN-2026-04-02-iron_condor-2026-03-13-516a",
+    "date_recommended": "2026-03-13",
+    "ticker": "AMZN",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 209.52999877929688,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R2)",
+    "price_type": "credit",
+    "entry_net": 2.21,
+    "max_profit": 2.21,
+    "max_loss": 12.21,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 225.0,
+        "entry_mid": 1.655,
+        "entry_ask": 1.8,
+        "entry_bid": 1.51
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 235.0,
+        "entry_mid": 0.43000000000000005,
+        "entry_ask": 0.46,
+        "entry_bid": 0.4
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 190.0,
+        "entry_mid": 1.98,
+        "entry_ask": 2.18,
+        "entry_bid": 1.78
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 180.0,
+        "entry_mid": 0.995,
+        "entry_ask": 1.04,
+        "entry_bid": 0.95
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 209.52999877929688,
+        "net_mid": 2.21,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9989739718573015,
+    "recommended_at": "2026-03-13 13:29:53 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "GOOGL-2026-04-02-iron_condor-2026-03-13-6b89",
+    "date_recommended": "2026-03-13",
+    "ticker": "GOOGL",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 303.54998779296875,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R2)",
+    "price_type": "credit",
+    "entry_net": 2.48,
+    "max_profit": 2.48,
+    "max_loss": 12.48,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 325.0,
+        "entry_mid": 2.105,
+        "entry_ask": 2.15,
+        "entry_bid": 2.06
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 335.0,
+        "entry_mid": 0.8400000000000001,
+        "entry_ask": 0.88,
+        "entry_bid": 0.8
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 280.0,
+        "entry_mid": 2.87,
+        "entry_ask": 3.0,
+        "entry_bid": 2.74
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 270.0,
+        "entry_mid": 1.65,
+        "entry_ask": 1.7,
+        "entry_bid": 1.6
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 303.54998779296875,
+        "net_mid": 2.48,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9950919481206777,
+    "recommended_at": "2026-03-13 13:29:55 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "META-2026-04-02-iron_condor-2026-03-13-43f0",
+    "date_recommended": "2026-03-13",
+    "ticker": "META",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 638.1799926757812,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R2)",
+    "price_type": "credit",
+    "entry_net": 2.45,
+    "max_profit": 2.45,
+    "max_loss": 12.45,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 690.0,
+        "entry_mid": 3.525,
+        "entry_ask": 3.65,
+        "entry_bid": 3.4
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 700.0,
+        "entry_mid": 2.275,
+        "entry_ask": 2.34,
+        "entry_bid": 2.21
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 580.0,
+        "entry_mid": 5.75,
+        "entry_ask": 5.85,
+        "entry_bid": 5.65
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 570.0,
+        "entry_mid": 4.550000000000001,
+        "entry_ask": 4.65,
+        "entry_bid": 4.45
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 638.1799926757812,
+        "net_mid": 2.45,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9778104510043317,
+    "recommended_at": "2026-03-13 13:29:57 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "TSLA-2026-04-02-iron_condor-2026-03-13-65b9",
+    "date_recommended": "2026-03-13",
+    "ticker": "TSLA",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 395.010009765625,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R3)",
+    "price_type": "credit",
+    "entry_net": 2.35,
+    "max_profit": 2.35,
+    "max_loss": 12.35,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 440.0,
+        "entry_mid": 3.4000000000000004,
+        "entry_ask": 3.45,
+        "entry_bid": 3.35
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 450.0,
+        "entry_mid": 2.2,
+        "entry_ask": 2.23,
+        "entry_bid": 2.17
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 350.0,
+        "entry_mid": 4.6,
+        "entry_ask": 4.65,
+        "entry_bid": 4.55
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 340.0,
+        "entry_mid": 3.45,
+        "entry_ask": 3.5,
+        "entry_bid": 3.4
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 395.010009765625,
+        "net_mid": 2.35,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9470092316867295,
+    "recommended_at": "2026-03-13 13:29:58 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "AAPL-2026-04-02-iron_condor-2026-03-13-5b0e",
+    "date_recommended": "2026-03-13",
+    "ticker": "AAPL",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 252.88999938964844,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R1)",
+    "price_type": "credit",
+    "entry_net": 1.82,
+    "max_profit": 1.82,
+    "max_loss": 11.82,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 270.0,
+        "entry_mid": 1.1099999999999999,
+        "entry_ask": 1.13,
+        "entry_bid": 1.09
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 280.0,
+        "entry_mid": 0.28,
+        "entry_ask": 0.29,
+        "entry_bid": 0.27
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 235.0,
+        "entry_mid": 2.1900000000000004,
+        "entry_ask": 2.22,
+        "entry_bid": 2.16
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 225.0,
+        "entry_mid": 1.2,
+        "entry_ask": 1.22,
+        "entry_bid": 1.18
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 252.88999938964844,
+        "net_mid": 1.82,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9986731623294786,
+    "recommended_at": "2026-03-13 16:04:37 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "MSFT-2026-04-02-iron_condor-2026-03-13-3891",
+    "date_recommended": "2026-03-13",
+    "ticker": "MSFT",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 396.20001220703125,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R2)",
+    "price_type": "credit",
+    "entry_net": 1.92,
+    "max_profit": 1.92,
+    "max_loss": 11.92,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 425.0,
+        "entry_mid": 1.725,
+        "entry_ask": 1.76,
+        "entry_bid": 1.69
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 435.0,
+        "entry_mid": 0.78,
+        "entry_ask": 0.8,
+        "entry_bid": 0.76
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 365.0,
+        "entry_mid": 2.6,
+        "entry_ask": 2.64,
+        "entry_bid": 2.56
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 355.0,
+        "entry_mid": 1.63,
+        "entry_ask": 1.66,
+        "entry_bid": 1.6
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 396.20001220703125,
+        "net_mid": 1.92,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.993645816453914,
+    "recommended_at": "2026-03-13 16:04:37 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "NVDA-2026-04-02-bull_call_spread-2026-03-13-fb95",
+    "date_recommended": "2026-03-13",
+    "ticker": "NVDA",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 181.35000610351562,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R2)",
+    "price_type": "debit",
+    "entry_net": 2.07,
+    "max_profit": 2.93,
+    "max_loss": 2.07,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 185.0,
+        "entry_mid": 5.725,
+        "entry_ask": 5.75,
+        "entry_bid": 5.7
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 190.0,
+        "entry_mid": 3.6500000000000004,
+        "entry_ask": 3.7,
+        "entry_bid": 3.6
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 181.35000610351562,
+        "net_mid": 2.07,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.991170939099963,
+    "recommended_at": "2026-03-13 16:04:38 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "AMZN-2026-04-02-iron_condor-2026-03-13-6abe",
+    "date_recommended": "2026-03-13",
+    "ticker": "AMZN",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 207.91000366210938,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R3)",
+    "price_type": "credit",
+    "entry_net": 1.93,
+    "max_profit": 1.93,
+    "max_loss": 11.93,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 225.0,
+        "entry_mid": 1.2,
+        "entry_ask": 1.22,
+        "entry_bid": 1.18
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 235.0,
+        "entry_mid": 0.32,
+        "entry_ask": 0.33,
+        "entry_bid": 0.31
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 190.0,
+        "entry_mid": 2.015,
+        "entry_ask": 2.04,
+        "entry_bid": 1.99
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 180.0,
+        "entry_mid": 0.965,
+        "entry_ask": 0.98,
+        "entry_bid": 0.95
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 207.91000366210938,
+        "net_mid": 1.93,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9939904954146735,
+    "recommended_at": "2026-03-13 16:04:39 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "GOOGL-2026-04-02-iron_condor-2026-03-13-a686",
+    "date_recommended": "2026-03-13",
+    "ticker": "GOOGL",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 303.3999938964844,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R2)",
+    "price_type": "credit",
+    "entry_net": 2.27,
+    "max_profit": 2.27,
+    "max_loss": 12.27,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 325.0,
+        "entry_mid": 1.9049999999999998,
+        "entry_ask": 1.93,
+        "entry_bid": 1.88
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 335.0,
+        "entry_mid": 0.74,
+        "entry_ask": 0.76,
+        "entry_bid": 0.72
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 280.0,
+        "entry_mid": 2.6100000000000003,
+        "entry_ask": 2.64,
+        "entry_bid": 2.58
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 270.0,
+        "entry_mid": 1.51,
+        "entry_ask": 1.54,
+        "entry_bid": 1.48
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 303.3999938964844,
+        "net_mid": 2.27,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9990943223445078,
+    "recommended_at": "2026-03-13 16:04:39 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "META-2026-04-02-iron_condor-2026-03-13-c7bd",
+    "date_recommended": "2026-03-13",
+    "ticker": "META",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 618.1370849609375,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R1)",
+    "price_type": "credit",
+    "entry_net": 2.5,
+    "max_profit": 2.5,
+    "max_loss": 12.5,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 670.0,
+        "entry_mid": 3.5250000000000004,
+        "entry_ask": 3.6,
+        "entry_bid": 3.45
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 680.0,
+        "entry_mid": 2.3,
+        "entry_ask": 2.35,
+        "entry_bid": 2.25
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 565.0,
+        "entry_mid": 5.85,
+        "entry_ask": 5.95,
+        "entry_bid": 5.75
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 555.0,
+        "entry_mid": 4.575,
+        "entry_ask": 4.65,
+        "entry_bid": 4.5
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 618.1370849609375,
+        "net_mid": 2.5,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.6638314409677795,
+    "recommended_at": "2026-03-13 16:04:40 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   }
 ]
