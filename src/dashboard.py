@@ -359,9 +359,9 @@ with st.sidebar:
 
     col_a, col_b = st.columns(2)
     with col_a:
-        btn_import = st.button("Import CSVs", use_container_width=True)
+        btn_import = st.button("Import CSVs", width='stretch')
     with col_b:
-        btn_yf = st.button("Fetch yfinance", use_container_width=True)
+        btn_yf = st.button("Fetch yfinance", width='stretch')
 
     st.divider()
     st.header("Model")
@@ -370,10 +370,10 @@ with st.sidebar:
     rth_only = st.checkbox("RTH bars only (already applied)", value=True, disabled=True)
 
     if HMM_AVAILABLE:
-        btn_fit = st.button("Fit HMM — all tickers", use_container_width=True, type="primary")
+        btn_fit = st.button("Fit HMM — all tickers", width='stretch', type="primary")
     else:
         st.error("hmmlearn not installed.\nInstall C++ Build Tools then:\n`pip install hmmlearn`")
-        btn_fit = st.button("Fit HMM — all tickers", disabled=True, use_container_width=True)
+        btn_fit = st.button("Fit HMM — all tickers", disabled=True, width='stretch')
 
     st.divider()
     st.header("Strategy Config")
@@ -389,7 +389,7 @@ with st.sidebar:
         cfg_otm_pct      = st.slider("OTM % — strangle legs",      0.01, 0.15, float(_opt.get("otm_pct",    0.03)), step=0.01)
         cfg_strike_range = st.number_input("Strike range (each side)", min_value=5, max_value=100, value=int(_opt.get("strike_range", 20)), step=5)
 
-        if st.button("Save to config.json", use_container_width=True, type="primary"):
+        if st.button("Save to config.json", width='stretch', type="primary"):
             _cfg["option_strategy"] = {
                 "target_dte":   cfg_target_dte,
                 "dte_min":      cfg_dte_min,
@@ -406,7 +406,7 @@ with st.sidebar:
     st.header("Trading")
     trade_mode = st.radio("Mode", ["paper", "live"], horizontal=True)
     btn_schwab_info = st.button("Authenticate Schwab (instructions)")
-    btn_execute = st.button("Execute trades", use_container_width=True)
+    btn_execute = st.button("Execute trades", width='stretch')
 
 # ---------------------------------------------------------------------------
 # Sidebar actions
@@ -532,7 +532,7 @@ def _render_tab1():
         return [f"background-color: {c}22"] * len(row)
 
     styled = df_summary[display_cols + ["_type"]].style.apply(_row_style, axis=1)
-    st.dataframe(styled.data[display_cols], use_container_width=True)
+    st.dataframe(styled.data[display_cols], width='stretch')
     st.divider()
 
     for t, res in results.items():
@@ -596,7 +596,7 @@ def _render_tab2():
         return [f"background-color: {hex_color}30"] * len(row)  # ~19 % opacity
 
     styled_stat = df_stat.style.apply(_stat_row_style, axis=1)
-    st.dataframe(styled_stat.data[display_cols], use_container_width=True, hide_index=True)
+    st.dataframe(styled_stat.data[display_cols], width='stretch', hide_index=True)
 
     st.divider()
     st.markdown("""
@@ -635,7 +635,7 @@ def _render_tab3():
                 "Strategy": meta["strategy"], "Est. net price": meta.get("est_net_price", 0.0),
                 "Legs": len(meta.get("legs", [])), "Error": meta.get("error") or "",
             })
-        st.dataframe(pd.DataFrame(order_rows), use_container_width=True)
+        st.dataframe(pd.DataFrame(order_rows), width='stretch')
         st.caption("Click **Execute trades** in the sidebar to paper/live execute all proposals.")
     st.divider()
     st.subheader("Trade log")
@@ -652,7 +652,7 @@ def _render_tab3():
                 "Mode": tr.mode, "Status": tr.status,
                 "Schwab ID": tr.schwab_order_id or "", "Error": tr.error or "",
             })
-        st.dataframe(pd.DataFrame(log_rows), use_container_width=True)
+        st.dataframe(pd.DataFrame(log_rows), width='stretch')
 
 
 @st.fragment
@@ -674,7 +674,7 @@ def _render_tab4():
     fig_tm.update_layout(title="Transition probabilities", height=350,
                          margin=dict(l=20, r=20, t=40, b=20),
                          xaxis_title="To regime", yaxis_title="From regime")
-    st.plotly_chart(fig_tm, width='stretch', key=f"tab2_tm_{pick_t}")
+    st.plotly_chart(fig_tm, width='stretch', key=f"tab4_tm_{pick_d}")
     st.subheader("State means (original scale)")
     means_df_rows = []
     for i, rc in res.characteristics.items():
@@ -682,7 +682,7 @@ def _render_tab4():
             "State": f"R{i} ({rc.name})", "Mean log-ret": f"{rc.mean_log_ret:.5f}",
             "Mean vol-20": f"{rc.mean_vol_20:.4f}", "Type": rc.regime_type,
         })
-    st.dataframe(pd.DataFrame(means_df_rows), use_container_width=True)
+    st.dataframe(pd.DataFrame(means_df_rows), width='stretch')
     st.subheader("Feature distributions per regime")
     feat_df = make_features(res.df_prices).join(res.df_reg[["regime"]], how="inner")
     fig_dist = go.Figure()
@@ -693,7 +693,7 @@ def _render_tab4():
     fig_dist.update_layout(barmode="overlay", title="log-ret distribution by regime",
                            height=400, margin=dict(l=20, r=20, t=40, b=20),
                            xaxis_title="log-ret", yaxis_title="count")
-    st.plotly_chart(fig_dist, width='stretch', key=f"tab2_dist_{pick_t}")
+    st.plotly_chart(fig_dist, width='stretch', key=f"tab4_dist_{pick_d}")
 
 
 @st.fragment
@@ -701,7 +701,7 @@ def _render_tab5():
     st.subheader("Tracked Option Trades")
     col_r1, col_r2 = st.columns([1, 5])
     with col_r1:
-        if st.button("Refresh Prices", use_container_width=True, type="primary"):
+        if st.button("Refresh Prices", width='stretch', type="primary"):
             with st.spinner("Fetching current option prices…"):
                 update_all_open_trades()
             _cached_load_trades.clear()
@@ -736,7 +736,7 @@ def _render_tab5():
             "Expiry":          tr.expiry,
             "Status":          tr.status,
         })
-    st.dataframe(pd.DataFrame(rec_rows), use_container_width=True, hide_index=True)
+    st.dataframe(pd.DataFrame(rec_rows), width='stretch', hide_index=True)
     st.divider()
 
     st.markdown("#### Live P&L")
@@ -749,7 +749,7 @@ def _render_tab5():
             "Expiry": tr.expiry, "DTE left": dte_remaining(tr), "Days held": days_held(tr),
             "Entry $": tr.entry_net, "Current $": round(net_mid, 2),
             "P&L $": round(pnl_d, 2), "P&L %": f"{pct:.1%}",
-            "Max profit $": tr.max_profit if tr.max_profit != float("inf") else "unlimited",
+            "Max profit $": f"{tr.max_profit:.2f}" if tr.max_profit != float("inf") else "unlimited",
             "Max loss $": tr.max_loss, "Status": tr.status,
         })
     df_tt = pd.DataFrame(summary_rows)
@@ -760,8 +760,8 @@ def _render_tab5():
             return f"color: {color}; font-weight: bold"
         return ""
 
-    styled_tt = df_tt.style.applymap(_pnl_style, subset=["P&L $"])
-    st.dataframe(styled_tt, use_container_width=True)
+    styled_tt = df_tt.style.map(_pnl_style, subset=["P&L $"])
+    st.dataframe(styled_tt, width='stretch')
     st.divider()
 
     st.subheader("Trade detail")
@@ -813,7 +813,7 @@ def _render_tab5():
                     "Entry ask": leg.get("entry_ask", "-"),
                     "Entry bid": leg.get("entry_bid", "-"),
                 })
-            st.dataframe(pd.DataFrame(leg_rows), use_container_width=True, hide_index=True)
+            st.dataframe(pd.DataFrame(leg_rows), width='stretch', hide_index=True)
             if tr.daily_prices and len(tr.daily_prices) > 1:
                 dp_df = pd.DataFrame(tr.daily_prices)
                 dp_df["date"] = pd.to_datetime(dp_df["date"])
