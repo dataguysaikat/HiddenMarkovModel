@@ -5307,5 +5307,430 @@
     "underlying_at_close": 0.0,
     "regime_alert": "",
     "alert_log": []
+  },
+  {
+    "id": "AAPL-2026-04-02-iron_condor-2026-03-13-b1fc",
+    "date_recommended": "2026-03-13",
+    "ticker": "AAPL",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 252.6999969482422,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R1)",
+    "price_type": "credit",
+    "entry_net": 1.83,
+    "max_profit": 1.83,
+    "max_loss": 11.83,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 270.0,
+        "entry_mid": 1.09,
+        "entry_ask": 1.11,
+        "entry_bid": 1.07
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 280.0,
+        "entry_mid": 0.28,
+        "entry_ask": 0.29,
+        "entry_bid": 0.27
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 235.0,
+        "entry_mid": 2.255,
+        "entry_ask": 2.28,
+        "entry_bid": 2.23
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 225.0,
+        "entry_mid": 1.2349999999999999,
+        "entry_ask": 1.26,
+        "entry_bid": 1.21
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 252.6999969482422,
+        "net_mid": 1.83,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9986731623294786,
+    "recommended_at": "2026-03-13 16:07:06 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "MSFT-2026-04-02-iron_condor-2026-03-13-2662",
+    "date_recommended": "2026-03-13",
+    "ticker": "MSFT",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 396.0050048828125,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R2)",
+    "price_type": "credit",
+    "entry_net": 1.92,
+    "max_profit": 1.92,
+    "max_loss": 11.92,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 425.0,
+        "entry_mid": 1.6949999999999998,
+        "entry_ask": 1.73,
+        "entry_bid": 1.66
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 435.0,
+        "entry_mid": 0.765,
+        "entry_ask": 0.79,
+        "entry_bid": 0.74
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 365.0,
+        "entry_mid": 2.62,
+        "entry_ask": 2.66,
+        "entry_bid": 2.58
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 355.0,
+        "entry_mid": 1.63,
+        "entry_ask": 1.66,
+        "entry_bid": 1.6
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 396.0050048828125,
+        "net_mid": 1.92,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.993645816453914,
+    "recommended_at": "2026-03-13 16:07:07 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "NVDA-2026-04-02-bull_call_spread-2026-03-13-cd21",
+    "date_recommended": "2026-03-13",
+    "ticker": "NVDA",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 181.24000549316406,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R2)",
+    "price_type": "debit",
+    "entry_net": 2.05,
+    "max_profit": 2.95,
+    "max_loss": 2.05,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 185.0,
+        "entry_mid": 5.675000000000001,
+        "entry_ask": 5.7,
+        "entry_bid": 5.65
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 190.0,
+        "entry_mid": 3.625,
+        "entry_ask": 3.65,
+        "entry_bid": 3.6
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 181.24000549316406,
+        "net_mid": 2.05,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.991170939099963,
+    "recommended_at": "2026-03-13 16:07:07 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "AMZN-2026-04-02-iron_condor-2026-03-13-2304",
+    "date_recommended": "2026-03-13",
+    "ticker": "AMZN",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 207.75,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R3)",
+    "price_type": "credit",
+    "entry_net": 1.92,
+    "max_profit": 1.92,
+    "max_loss": 11.92,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 225.0,
+        "entry_mid": 1.185,
+        "entry_ask": 1.2,
+        "entry_bid": 1.17
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 235.0,
+        "entry_mid": 0.325,
+        "entry_ask": 0.33,
+        "entry_bid": 0.32
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 190.0,
+        "entry_mid": 2.045,
+        "entry_ask": 2.07,
+        "entry_bid": 2.02
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 180.0,
+        "entry_mid": 0.985,
+        "entry_ask": 1.0,
+        "entry_bid": 0.97
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 207.75,
+        "net_mid": 1.92,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9939904954146735,
+    "recommended_at": "2026-03-13 16:07:08 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "GOOGL-2026-04-02-iron_condor-2026-03-13-65fb",
+    "date_recommended": "2026-03-13",
+    "ticker": "GOOGL",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 303.1600036621094,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R2)",
+    "price_type": "credit",
+    "entry_net": 2.26,
+    "max_profit": 2.26,
+    "max_loss": 12.26,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 325.0,
+        "entry_mid": 1.875,
+        "entry_ask": 1.9,
+        "entry_bid": 1.85
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 335.0,
+        "entry_mid": 0.73,
+        "entry_ask": 0.75,
+        "entry_bid": 0.71
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 280.0,
+        "entry_mid": 2.6500000000000004,
+        "entry_ask": 2.68,
+        "entry_bid": 2.62
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 270.0,
+        "entry_mid": 1.5350000000000001,
+        "entry_ask": 1.56,
+        "entry_bid": 1.51
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 303.1600036621094,
+        "net_mid": 2.26,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9990943223445078,
+    "recommended_at": "2026-03-13 16:07:09 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "META-2026-04-02-iron_condor-2026-03-13-6130",
+    "date_recommended": "2026-03-13",
+    "ticker": "META",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 618.77001953125,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R1)",
+    "price_type": "credit",
+    "entry_net": 2.48,
+    "max_profit": 2.48,
+    "max_loss": 12.48,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 670.0,
+        "entry_mid": 3.5250000000000004,
+        "entry_ask": 3.6,
+        "entry_bid": 3.45
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 680.0,
+        "entry_mid": 2.3,
+        "entry_ask": 2.35,
+        "entry_bid": 2.25
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 565.0,
+        "entry_mid": 5.75,
+        "entry_ask": 5.85,
+        "entry_bid": 5.65
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 555.0,
+        "entry_mid": 4.5,
+        "entry_ask": 4.6,
+        "entry_bid": 4.4
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 618.77001953125,
+        "net_mid": 2.48,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.6638314409677795,
+    "recommended_at": "2026-03-13 16:07:09 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "TSLA-2026-04-02-iron_condor-2026-03-13-8375",
+    "date_recommended": "2026-03-13",
+    "ticker": "TSLA",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 393.6451110839844,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R3)",
+    "price_type": "credit",
+    "entry_net": 2.4,
+    "max_profit": 2.4,
+    "max_loss": 12.4,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 435.0,
+        "entry_mid": 3.45,
+        "entry_ask": 3.5,
+        "entry_bid": 3.4
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 445.0,
+        "entry_mid": 2.205,
+        "entry_ask": 2.23,
+        "entry_bid": 2.18
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 350.0,
+        "entry_mid": 4.4,
+        "entry_ask": 4.45,
+        "entry_bid": 4.35
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 340.0,
+        "entry_mid": 3.25,
+        "entry_ask": 3.3,
+        "entry_bid": 3.2
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 393.6451110839844,
+        "net_mid": 2.4,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.8654680708094469,
+    "recommended_at": "2026-03-13 16:07:10 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   }
 ]

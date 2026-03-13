@@ -550,8 +550,8 @@ def _render_tab1():
             m4.metric("P(change 24h)", f"{fc.get('prob_change_by_horizon', 0):.1%}")
             df_p = res.df_prices.tail(500)
             df_r = res.df_reg.tail(500)
-            st.plotly_chart(_plot_price_regimes(df_p, df_r, t, res.n_states), use_container_width=True)
-            st.plotly_chart(_plot_posteriors(df_r, res.n_states, t), use_container_width=True)
+            st.plotly_chart(_plot_price_regimes(df_p, df_r, t, res.n_states), width='stretch', key=f"tab1_regimes_{t}")
+            st.plotly_chart(_plot_posteriors(df_r, res.n_states, t), width='stretch', key=f"tab1_post_{t}")
 
 
 @st.fragment
@@ -570,7 +570,7 @@ def _render_tab2():
             res.df_prices, res.df_reg, pick_t, res.n_states,
             characteristics=res.characteristics,
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch', key=f"tab2_combined_{pick_t}")
     except Exception as _e:
         import traceback as _tb
         st.error(f"Chart error: {_e}")
@@ -674,7 +674,7 @@ def _render_tab4():
     fig_tm.update_layout(title="Transition probabilities", height=350,
                          margin=dict(l=20, r=20, t=40, b=20),
                          xaxis_title="To regime", yaxis_title="From regime")
-    st.plotly_chart(fig_tm, use_container_width=True)
+    st.plotly_chart(fig_tm, width='stretch', key=f"tab2_tm_{pick_t}")
     st.subheader("State means (original scale)")
     means_df_rows = []
     for i, rc in res.characteristics.items():
@@ -693,7 +693,7 @@ def _render_tab4():
     fig_dist.update_layout(barmode="overlay", title="log-ret distribution by regime",
                            height=400, margin=dict(l=20, r=20, t=40, b=20),
                            xaxis_title="log-ret", yaxis_title="count")
-    st.plotly_chart(fig_dist, use_container_width=True)
+    st.plotly_chart(fig_dist, width='stretch', key=f"tab2_dist_{pick_t}")
 
 
 @st.fragment
@@ -831,7 +831,7 @@ def _render_tab5():
                     title=f"{tr.ticker} — daily P&L (per contract × 100)",
                     height=280, margin=dict(l=20, r=20, t=40, b=20),
                     xaxis_title="Date", yaxis_title="P&L ($)", yaxis=dict(tickprefix="$"))
-                st.plotly_chart(fig_pnl, use_container_width=True)
+                st.plotly_chart(fig_pnl, width='stretch', key=f"pnl_{tr.id}")
                 fig_ul = go.Figure()
                 fig_ul.add_trace(go.Scatter(
                     x=dp_df["date"], y=dp_df["underlying"],
@@ -842,7 +842,7 @@ def _render_tab5():
                     title=f"{tr.ticker} — underlying price",
                     height=220, margin=dict(l=20, r=20, t=40, b=20),
                     xaxis_title="Date", yaxis_title="Price ($)")
-                st.plotly_chart(fig_ul, use_container_width=True)
+                st.plotly_chart(fig_ul, width='stretch', key=f"ul_{tr.id}")
             else:
                 st.caption("Not enough daily snapshots yet for a chart (run again tomorrow.")
 
