@@ -71,6 +71,12 @@
         "underlying": 255.76,
         "net_mid": 1.6,
         "pnl_dollars": -52.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 250.12,
+        "net_mid": 2.75,
+        "pnl_dollars": -167.0
       }
     ],
     "status": "open",
@@ -147,13 +153,19 @@
         "underlying": 401.9,
         "net_mid": 0.83,
         "pnl_dollars": -12.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 395.55,
+        "net_mid": 1.2,
+        "pnl_dollars": 25.0
       }
     ],
     "status": "open",
     "confidence": 0.9999537972704234,
     "recommended_at": "2026-02-26 16:25:35 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bear \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bear_put_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bear \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bear_put_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -218,6 +230,12 @@
         "underlying": 183.16,
         "net_mid": 0.33,
         "pnl_dollars": -54.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 180.25,
+        "net_mid": 0.17,
+        "pnl_dollars": -71.0
       }
     ],
     "status": "open",
@@ -283,13 +301,19 @@
         "underlying": 209.53,
         "net_mid": 4.53,
         "pnl_dollars": -347.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 207.67,
+        "net_mid": 3.6,
+        "pnl_dollars": -439.5
       }
     ],
     "status": "open",
     "confidence": 0.9888955974128013,
     "recommended_at": "2026-02-26 16:25:36 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -370,6 +394,12 @@
         "underlying": 303.55,
         "net_mid": 0.58,
         "pnl_dollars": 94.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 302.28,
+        "net_mid": 0.58,
+        "pnl_dollars": 93.5
       }
     ],
     "status": "open",
@@ -457,6 +487,12 @@
         "underlying": 638.18,
         "net_mid": 1.39,
         "pnl_dollars": 111.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 613.71,
+        "net_mid": 3.02,
+        "pnl_dollars": -51.0
       }
     ],
     "status": "open",
@@ -544,6 +580,12 @@
         "underlying": 395.01,
         "net_mid": 1.32,
         "pnl_dollars": 90.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 391.2,
+        "net_mid": 1.4,
+        "pnl_dollars": 83.0
       }
     ],
     "status": "open",
@@ -603,13 +645,19 @@
         "underlying": 255.76,
         "net_mid": 10.13,
         "pnl_dollars": 303.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 250.12,
+        "net_mid": 15.3,
+        "pnl_dollars": 820.0
       }
     ],
     "status": "open",
     "confidence": 0.9739376911581887,
     "recommended_at": "2026-02-27 14:14:40 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -668,13 +716,19 @@
         "underlying": 401.9,
         "net_mid": 0.83,
         "pnl_dollars": -7.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 395.55,
+        "net_mid": 1.2,
+        "pnl_dollars": 30.0
       }
     ],
     "status": "open",
     "confidence": 0.9447395725022257,
     "recommended_at": "2026-02-27 14:14:41 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bear \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bear_put_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bear \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bear_put_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -733,6 +787,12 @@
         "underlying": 183.16,
         "net_mid": 0.48,
         "pnl_dollars": -39.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 180.25,
+        "net_mid": 0.27,
+        "pnl_dollars": -61.5
       }
     ],
     "status": "open",
@@ -808,6 +868,12 @@
         "underlying": 209.53,
         "net_mid": 0.5,
         "pnl_dollars": 55.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 207.67,
+        "net_mid": 0.33,
+        "pnl_dollars": 72.5
       }
     ],
     "status": "open",
@@ -867,13 +933,19 @@
         "underlying": 303.55,
         "net_mid": 4.98,
         "pnl_dollars": -580.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 302.28,
+        "net_mid": 4.35,
+        "pnl_dollars": -643.0
       }
     ],
     "status": "open",
     "confidence": 0.9910225736272756,
     "recommended_at": "2026-02-27 14:14:42 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -932,13 +1004,19 @@
         "underlying": 638.18,
         "net_mid": 14.68,
         "pnl_dollars": -774.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 613.71,
+        "net_mid": 27.67,
+        "pnl_dollars": 525.0
       }
     ],
     "status": "open",
     "confidence": 0.528137135980929,
     "recommended_at": "2026-02-27 14:14:42 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 18:33 UTC",
@@ -1013,6 +1091,12 @@
         "underlying": 395.01,
         "net_mid": 1.35,
         "pnl_dollars": 100.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 391.2,
+        "net_mid": 1.42,
+        "pnl_dollars": 94.0
       }
     ],
     "status": "open",
@@ -1082,6 +1166,12 @@
         "underlying": 262.52,
         "net_mid": 0.88,
         "pnl_dollars": 20.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 250.12,
+        "net_mid": 1.32,
+        "pnl_dollars": -24.0
       }
     ],
     "status": "open",
@@ -1146,13 +1236,19 @@
         "underlying": 405.2,
         "net_mid": 13.68,
         "pnl_dollars": 218.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 395.55,
+        "net_mid": 4.2,
+        "pnl_dollars": -730.0
       }
     ],
     "status": "open",
     "confidence": 0.9955702118349661,
     "recommended_at": "2026-02-27 19:32:17 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -1211,6 +1307,12 @@
         "underlying": 183.16,
         "net_mid": 1.13,
         "pnl_dollars": 22.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 180.25,
+        "net_mid": 0.79,
+        "pnl_dollars": -11.0
       }
     ],
     "status": "open",
@@ -1280,6 +1382,12 @@
         "underlying": 216.82,
         "net_mid": 1.59,
         "pnl_dollars": -37.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 207.67,
+        "net_mid": 0.4,
+        "pnl_dollars": 82.0
       }
     ],
     "status": "open",
@@ -1339,13 +1447,19 @@
         "underlying": 303.55,
         "net_mid": 4.98,
         "pnl_dollars": -587.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 302.28,
+        "net_mid": 4.35,
+        "pnl_dollars": -650.0
       }
     ],
     "status": "open",
     "confidence": 0.9943978602437721,
     "recommended_at": "2026-02-27 19:32:18 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -1414,6 +1528,12 @@
         "underlying": 405.94,
         "net_mid": 2.09,
         "pnl_dollars": 10.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 391.2,
+        "net_mid": 0.95,
+        "pnl_dollars": 125.0
       }
     ],
     "status": "open",
@@ -1483,6 +1603,12 @@
         "underlying": 262.52,
         "net_mid": 1.71,
         "pnl_dollars": 56.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 250.12,
+        "net_mid": 1.47,
+        "pnl_dollars": 79.5
       }
     ],
     "status": "open",
@@ -1547,13 +1673,19 @@
         "underlying": 405.2,
         "net_mid": 17.0,
         "pnl_dollars": 108.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 395.55,
+        "net_mid": 8.55,
+        "pnl_dollars": -737.0
       }
     ],
     "status": "open",
     "confidence": 0.9600234884091726,
     "recommended_at": "2026-03-03 14:59:22 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -1606,6 +1738,12 @@
         "underlying": 183.04,
         "net_mid": 12.45,
         "pnl_dollars": -82.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 180.25,
+        "net_mid": 8.1,
+        "pnl_dollars": -517.0
       }
     ],
     "status": "open",
@@ -1675,6 +1813,12 @@
         "underlying": 216.82,
         "net_mid": 2.77,
         "pnl_dollars": -70.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 207.67,
+        "net_mid": 1.02,
+        "pnl_dollars": 105.5
       }
     ],
     "status": "open",
@@ -1744,6 +1888,12 @@
         "underlying": 303.13,
         "net_mid": 1.69,
         "pnl_dollars": 41.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 302.28,
+        "net_mid": 0.68,
+        "pnl_dollars": 142.5
       }
     ],
     "status": "open",
@@ -1819,6 +1969,12 @@
         "underlying": 667.73,
         "net_mid": 2.79,
         "pnl_dollars": -24.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 613.71,
+        "net_mid": 2.05,
+        "pnl_dollars": 50.0
       }
     ],
     "status": "open",
@@ -1894,6 +2050,12 @@
         "underlying": 405.94,
         "net_mid": 2.42,
         "pnl_dollars": 3.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 391.2,
+        "net_mid": 1.26,
+        "pnl_dollars": 120.5
       }
     ],
     "status": "open",
@@ -1963,6 +2125,12 @@
         "underlying": 262.52,
         "net_mid": 1.71,
         "pnl_dollars": 42.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 250.12,
+        "net_mid": 1.47,
+        "pnl_dollars": 65.5
       }
     ],
     "status": "open",
@@ -2027,13 +2195,19 @@
         "underlying": 405.2,
         "net_mid": 15.43,
         "pnl_dollars": 10.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 395.55,
+        "net_mid": 8.12,
+        "pnl_dollars": -719.5
       }
     ],
     "status": "open",
     "confidence": 0.9600234884091726,
     "recommended_at": "2026-03-03 16:10:27 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -2086,6 +2260,12 @@
         "underlying": 183.04,
         "net_mid": 12.45,
         "pnl_dollars": -37.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 180.25,
+        "net_mid": 8.1,
+        "pnl_dollars": -472.0
       }
     ],
     "status": "open",
@@ -2155,6 +2335,12 @@
         "underlying": 216.82,
         "net_mid": 2.77,
         "pnl_dollars": -89.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 207.67,
+        "net_mid": 1.02,
+        "pnl_dollars": 86.5
       }
     ],
     "status": "open",
@@ -2224,6 +2410,12 @@
         "underlying": 303.13,
         "net_mid": 1.69,
         "pnl_dollars": 27.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 302.28,
+        "net_mid": 0.68,
+        "pnl_dollars": 128.5
       }
     ],
     "status": "open",
@@ -2299,6 +2491,12 @@
         "underlying": 667.73,
         "net_mid": 2.79,
         "pnl_dollars": -28.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 613.71,
+        "net_mid": 2.05,
+        "pnl_dollars": 46.0
       }
     ],
     "status": "open",
@@ -2374,6 +2572,12 @@
         "underlying": 405.94,
         "net_mid": 2.42,
         "pnl_dollars": -9.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 391.2,
+        "net_mid": 1.26,
+        "pnl_dollars": 107.5
       }
     ],
     "status": "open",
@@ -2437,6 +2641,12 @@
         "underlying": 262.52,
         "net_mid": 2.02,
         "pnl_dollars": 29.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 250.12,
+        "net_mid": 2.1,
+        "pnl_dollars": 20.5
       }
     ],
     "status": "open",
@@ -2495,13 +2705,19 @@
         "underlying": 405.2,
         "net_mid": 14.43,
         "pnl_dollars": -45.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 395.55,
+        "net_mid": 8.45,
+        "pnl_dollars": -643.5
       }
     ],
     "status": "open",
     "confidence": 0.9600234884091726,
     "recommended_at": "2026-03-04 14:23:02 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -2554,6 +2770,12 @@
         "underlying": 183.16,
         "net_mid": 9.38,
         "pnl_dollars": -307.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 180.25,
+        "net_mid": 8.1,
+        "pnl_dollars": -435.0
       }
     ],
     "status": "open",
@@ -2623,6 +2845,12 @@
         "underlying": 209.53,
         "net_mid": 1.04,
         "pnl_dollars": 67.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 207.67,
+        "net_mid": 1.01,
+        "pnl_dollars": 71.5
       }
     ],
     "status": "open",
@@ -2692,6 +2920,12 @@
         "underlying": 303.55,
         "net_mid": 1.26,
         "pnl_dollars": 86.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 302.28,
+        "net_mid": 0.95,
+        "pnl_dollars": 118.5
       }
     ],
     "status": "open",
@@ -2767,6 +3001,12 @@
         "underlying": 638.18,
         "net_mid": 1.63,
         "pnl_dollars": 90.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 613.71,
+        "net_mid": 2.62,
+        "pnl_dollars": -7.5
       }
     ],
     "status": "open",
@@ -2842,6 +3082,12 @@
         "underlying": 395.01,
         "net_mid": 1.47,
         "pnl_dollars": 68.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 391.2,
+        "net_mid": 1.26,
+        "pnl_dollars": 89.5
       }
     ],
     "status": "open",
@@ -2911,6 +3157,12 @@
         "underlying": 255.76,
         "net_mid": 1.59,
         "pnl_dollars": 43.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 250.12,
+        "net_mid": 2.1,
+        "pnl_dollars": -8.5
       }
     ],
     "status": "open",
@@ -2975,13 +3227,19 @@
         "underlying": 401.9,
         "net_mid": 1.39,
         "pnl_dollars": -48.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 395.55,
+        "net_mid": 0.79,
+        "pnl_dollars": -109.5
       }
     ],
     "status": "open",
     "confidence": 0.9922060456347149,
     "recommended_at": "2026-03-05 14:07:36 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -3034,6 +3292,12 @@
         "underlying": 183.16,
         "net_mid": 1.55,
         "pnl_dollars": -20.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 180.25,
+        "net_mid": 1.09,
+        "pnl_dollars": -66.5
       }
     ],
     "status": "open",
@@ -3087,13 +3351,19 @@
         "underlying": 209.53,
         "net_mid": 0.54,
         "pnl_dollars": -102.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 207.67,
+        "net_mid": 0.34,
+        "pnl_dollars": -122.5
       }
     ],
     "status": "open",
     "confidence": 0.9991332097200382,
     "recommended_at": "2026-03-05 14:07:38 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -3146,13 +3416,19 @@
         "underlying": 303.55,
         "net_mid": 10.07,
         "pnl_dollars": -347.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 302.28,
+        "net_mid": 9.1,
+        "pnl_dollars": -445.0
       }
     ],
     "status": "open",
     "confidence": 0.9924473107172834,
     "recommended_at": "2026-03-05 14:07:39 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -3205,13 +3481,19 @@
         "underlying": 638.18,
         "net_mid": 25.86,
         "pnl_dollars": 25.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 613.71,
+        "net_mid": 41.0,
+        "pnl_dollars": 1540.0
       }
     ],
     "status": "open",
     "confidence": 0.9924472486852456,
     "recommended_at": "2026-03-05 14:07:40 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 18:33 UTC",
@@ -3264,13 +3546,19 @@
         "underlying": 395.01,
         "net_mid": 1.15,
         "pnl_dollars": -65.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 391.2,
+        "net_mid": 0.88,
+        "pnl_dollars": -92.0
       }
     ],
     "status": "open",
     "confidence": 0.9970085402832404,
     "recommended_at": "2026-03-05 14:07:41 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -3339,6 +3627,12 @@
         "underlying": 255.76,
         "net_mid": 1.74,
         "pnl_dollars": 24.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 250.12,
+        "net_mid": 1.96,
+        "pnl_dollars": 2.0
       }
     ],
     "status": "open",
@@ -3403,13 +3697,19 @@
         "underlying": 401.9,
         "net_mid": 1.6,
         "pnl_dollars": -37.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 395.55,
+        "net_mid": 1.05,
+        "pnl_dollars": -92.0
       }
     ],
     "status": "open",
     "confidence": 0.9630667810493158,
     "recommended_at": "2026-03-10 13:52:50 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -3462,6 +3762,12 @@
         "underlying": 183.16,
         "net_mid": 1.7,
         "pnl_dollars": -2.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 180.25,
+        "net_mid": 1.31,
+        "pnl_dollars": -41.5
       }
     ],
     "status": "open",
@@ -3515,13 +3821,19 @@
         "underlying": 209.53,
         "net_mid": 1.19,
         "pnl_dollars": -62.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 207.67,
+        "net_mid": 1.03,
+        "pnl_dollars": -78.5
       }
     ],
     "status": "open",
     "confidence": 0.9976104140569688,
     "recommended_at": "2026-03-10 13:52:51 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -3574,13 +3886,19 @@
         "underlying": 303.55,
         "net_mid": 1.5,
         "pnl_dollars": -28.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 302.28,
+        "net_mid": 1.35,
+        "pnl_dollars": -42.5
       }
     ],
     "status": "open",
     "confidence": 0.692913345052274,
     "recommended_at": "2026-03-10 13:52:51 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -3633,13 +3951,19 @@
         "underlying": 638.18,
         "net_mid": 26.7,
         "pnl_dollars": 42.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 613.71,
+        "net_mid": 34.05,
+        "pnl_dollars": 777.5
       }
     ],
     "status": "open",
     "confidence": 0.9918808740883113,
     "recommended_at": "2026-03-10 13:52:52 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 18:33 UTC",
@@ -3692,13 +4016,19 @@
         "underlying": 395.01,
         "net_mid": 1.35,
         "pnl_dollars": -50.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 391.2,
+        "net_mid": 1.15,
+        "pnl_dollars": -70.0
       }
     ],
     "status": "open",
     "confidence": 0.9976104932116897,
     "recommended_at": "2026-03-10 13:52:52 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -3767,6 +4097,12 @@
         "underlying": 255.76,
         "net_mid": 1.38,
         "pnl_dollars": 21.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 250.12,
+        "net_mid": 1.83,
+        "pnl_dollars": -24.5
       }
     ],
     "status": "open",
@@ -3831,13 +4167,19 @@
         "underlying": 401.9,
         "net_mid": 1.6,
         "pnl_dollars": -32.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 395.55,
+        "net_mid": 1.05,
+        "pnl_dollars": -87.0
       }
     ],
     "status": "open",
     "confidence": 0.9630667810493158,
     "recommended_at": "2026-03-11 13:25:23 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -3890,6 +4232,12 @@
         "underlying": 183.16,
         "net_mid": 1.7,
         "pnl_dollars": -20.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 180.25,
+        "net_mid": 1.31,
+        "pnl_dollars": -59.5
       }
     ],
     "status": "open",
@@ -3943,13 +4291,19 @@
         "underlying": 209.53,
         "net_mid": 1.19,
         "pnl_dollars": -68.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 207.67,
+        "net_mid": 1.03,
+        "pnl_dollars": -84.5
       }
     ],
     "status": "open",
     "confidence": 0.9976104140569688,
     "recommended_at": "2026-03-11 13:25:24 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -4002,13 +4356,19 @@
         "underlying": 303.55,
         "net_mid": 1.5,
         "pnl_dollars": -50.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 302.28,
+        "net_mid": 1.35,
+        "pnl_dollars": -64.5
       }
     ],
     "status": "open",
     "confidence": 0.692913345052274,
     "recommended_at": "2026-03-11 13:25:24 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -4061,13 +4421,19 @@
         "underlying": 638.18,
         "net_mid": 26.7,
         "pnl_dollars": 128.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 613.71,
+        "net_mid": 34.05,
+        "pnl_dollars": 863.5
       }
     ],
     "status": "open",
     "confidence": 0.9918808740883113,
     "recommended_at": "2026-03-11 13:25:25 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 18:33 UTC",
@@ -4120,13 +4486,19 @@
         "underlying": 395.01,
         "net_mid": 1.58,
         "pnl_dollars": -22.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 391.2,
+        "net_mid": 1.38,
+        "pnl_dollars": -42.5
       }
     ],
     "status": "open",
     "confidence": 0.9976104932116897,
     "recommended_at": "2026-03-11 13:25:25 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -4189,6 +4561,12 @@
         "underlying": 255.76,
         "net_mid": 1.74,
         "pnl_dollars": 18.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 250.12,
+        "net_mid": 1.96,
+        "pnl_dollars": -4.0
       }
     ],
     "status": "open",
@@ -4247,13 +4625,19 @@
         "underlying": 401.9,
         "net_mid": 1.6,
         "pnl_dollars": -20.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 395.55,
+        "net_mid": 1.05,
+        "pnl_dollars": -75.0
       }
     ],
     "status": "open",
     "confidence": 0.9630667810493158,
     "recommended_at": "2026-03-12 13:25:57 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -4300,6 +4684,12 @@
         "underlying": 183.16,
         "net_mid": 1.7,
         "pnl_dollars": -32.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 180.25,
+        "net_mid": 1.31,
+        "pnl_dollars": -71.5
       }
     ],
     "status": "open",
@@ -4347,13 +4737,19 @@
         "underlying": 209.53,
         "net_mid": 1.19,
         "pnl_dollars": -42.5
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 207.67,
+        "net_mid": 1.03,
+        "pnl_dollars": -58.5
       }
     ],
     "status": "open",
     "confidence": 0.9976104140569688,
     "recommended_at": "2026-03-12 13:25:57 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -4400,13 +4796,19 @@
         "underlying": 303.55,
         "net_mid": 1.5,
         "pnl_dollars": -45.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 302.28,
+        "net_mid": 1.35,
+        "pnl_dollars": -59.5
       }
     ],
     "status": "open",
     "confidence": 0.692913345052274,
     "recommended_at": "2026-03-12 13:25:58 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -4453,13 +4855,19 @@
         "underlying": 638.18,
         "net_mid": 26.7,
         "pnl_dollars": 272.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 613.71,
+        "net_mid": 34.05,
+        "pnl_dollars": 1007.5
       }
     ],
     "status": "open",
     "confidence": 0.9918808740883113,
     "recommended_at": "2026-03-12 13:25:58 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 18:33 UTC",
@@ -4506,13 +4914,19 @@
         "underlying": 395.01,
         "net_mid": 1.35,
         "pnl_dollars": -60.0
+      },
+      {
+        "date": "2026-03-13",
+        "underlying": 391.2,
+        "net_mid": 1.15,
+        "pnl_dollars": -80.0
       }
     ],
     "status": "open",
     "confidence": 0.9976104932116897,
     "recommended_at": "2026-03-12 13:25:59 UTC",
     "underlying_at_close": 0.0,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 15:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-13 18:32 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
     "alert_log": [
       {
         "timestamp": "2026-03-12 13:32 UTC",
@@ -4572,9 +4986,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 255.75999450683594,
-        "net_mid": 1.53,
-        "pnl_dollars": 0.0
+        "underlying": 250.12,
+        "net_mid": 1.58,
+        "pnl_dollars": -4.5
       }
     ],
     "status": "open",
@@ -4635,9 +5049,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 401.8599853515625,
-        "net_mid": 2.04,
-        "pnl_dollars": 0.0
+        "underlying": 395.55,
+        "net_mid": 1.75,
+        "pnl_dollars": 29.5
       }
     ],
     "status": "open",
@@ -4682,9 +5096,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 183.13999938964844,
-        "net_mid": 1.7,
-        "pnl_dollars": 0.0
+        "underlying": 180.25,
+        "net_mid": 1.31,
+        "pnl_dollars": -39.5
       }
     ],
     "status": "open",
@@ -4745,9 +5159,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 209.52999877929688,
-        "net_mid": 2.21,
-        "pnl_dollars": 0.0
+        "underlying": 207.67,
+        "net_mid": 1.75,
+        "pnl_dollars": 46.0
       }
     ],
     "status": "open",
@@ -4808,9 +5222,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 303.54998779296875,
-        "net_mid": 2.48,
-        "pnl_dollars": 0.0
+        "underlying": 302.28,
+        "net_mid": 2.25,
+        "pnl_dollars": 23.0
       }
     ],
     "status": "open",
@@ -4871,9 +5285,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 638.1799926757812,
-        "net_mid": 2.45,
-        "pnl_dollars": 0.0
+        "underlying": 613.71,
+        "net_mid": 2.43,
+        "pnl_dollars": 2.0
       }
     ],
     "status": "open",
@@ -4934,9 +5348,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 395.010009765625,
-        "net_mid": 2.35,
-        "pnl_dollars": 0.0
+        "underlying": 391.2,
+        "net_mid": 2.15,
+        "pnl_dollars": 20.0
       }
     ],
     "status": "open",
@@ -4997,9 +5411,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 252.88999938964844,
-        "net_mid": 1.82,
-        "pnl_dollars": 0.0
+        "underlying": 250.12,
+        "net_mid": 1.87,
+        "pnl_dollars": -5.0
       }
     ],
     "status": "open",
@@ -5060,9 +5474,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 396.20001220703125,
-        "net_mid": 1.92,
-        "pnl_dollars": 0.0
+        "underlying": 395.55,
+        "net_mid": 1.79,
+        "pnl_dollars": 12.5
       }
     ],
     "status": "open",
@@ -5107,9 +5521,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 181.35000610351562,
-        "net_mid": 2.07,
-        "pnl_dollars": 0.0
+        "underlying": 180.25,
+        "net_mid": 1.87,
+        "pnl_dollars": -19.5
       }
     ],
     "status": "open",
@@ -5170,9 +5584,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 207.91000366210938,
-        "net_mid": 1.93,
-        "pnl_dollars": 0.0
+        "underlying": 207.67,
+        "net_mid": 1.75,
+        "pnl_dollars": 18.0
       }
     ],
     "status": "open",
@@ -5233,9 +5647,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 303.3999938964844,
-        "net_mid": 2.27,
-        "pnl_dollars": 0.0
+        "underlying": 302.28,
+        "net_mid": 2.25,
+        "pnl_dollars": 2.0
       }
     ],
     "status": "open",
@@ -5296,9 +5710,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 618.1370849609375,
-        "net_mid": 2.5,
-        "pnl_dollars": 0.0
+        "underlying": 613.71,
+        "net_mid": 2.42,
+        "pnl_dollars": 8.0
       }
     ],
     "status": "open",
@@ -5359,9 +5773,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 252.6999969482422,
-        "net_mid": 1.83,
-        "pnl_dollars": 0.0
+        "underlying": 250.12,
+        "net_mid": 1.87,
+        "pnl_dollars": -4.0
       }
     ],
     "status": "open",
@@ -5422,9 +5836,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 396.0050048828125,
-        "net_mid": 1.92,
-        "pnl_dollars": 0.0
+        "underlying": 395.55,
+        "net_mid": 1.79,
+        "pnl_dollars": 12.5
       }
     ],
     "status": "open",
@@ -5469,9 +5883,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 181.24000549316406,
-        "net_mid": 2.05,
-        "pnl_dollars": 0.0
+        "underlying": 180.25,
+        "net_mid": 1.87,
+        "pnl_dollars": -17.5
       }
     ],
     "status": "open",
@@ -5532,9 +5946,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 207.75,
-        "net_mid": 1.92,
-        "pnl_dollars": 0.0
+        "underlying": 207.67,
+        "net_mid": 1.75,
+        "pnl_dollars": 17.0
       }
     ],
     "status": "open",
@@ -5595,9 +6009,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 303.1600036621094,
-        "net_mid": 2.26,
-        "pnl_dollars": 0.0
+        "underlying": 302.28,
+        "net_mid": 2.25,
+        "pnl_dollars": 1.0
       }
     ],
     "status": "open",
@@ -5658,9 +6072,9 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 618.77001953125,
-        "net_mid": 2.48,
-        "pnl_dollars": 0.0
+        "underlying": 613.71,
+        "net_mid": 2.42,
+        "pnl_dollars": 6.0
       }
     ],
     "status": "open",
@@ -5721,14 +6135,439 @@
     "daily_prices": [
       {
         "date": "2026-03-13",
-        "underlying": 393.6451110839844,
-        "net_mid": 2.4,
-        "pnl_dollars": 0.0
+        "underlying": 391.2,
+        "net_mid": 2.38,
+        "pnl_dollars": 1.5
       }
     ],
     "status": "open",
     "confidence": 0.8654680708094469,
     "recommended_at": "2026-03-13 16:07:10 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "AAPL-2026-04-02-iron_condor-2026-03-13-68ce",
+    "date_recommended": "2026-03-13",
+    "ticker": "AAPL",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 252.61000061035156,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R1)",
+    "price_type": "credit",
+    "entry_net": 1.83,
+    "max_profit": 1.83,
+    "max_loss": 11.83,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 270.0,
+        "entry_mid": 1.09,
+        "entry_ask": 1.11,
+        "entry_bid": 1.07
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 280.0,
+        "entry_mid": 0.28,
+        "entry_ask": 0.29,
+        "entry_bid": 0.27
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 235.0,
+        "entry_mid": 2.255,
+        "entry_ask": 2.28,
+        "entry_bid": 2.23
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 225.0,
+        "entry_mid": 1.23,
+        "entry_ask": 1.25,
+        "entry_bid": 1.21
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 250.12,
+        "net_mid": 1.87,
+        "pnl_dollars": -4.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9986731623294786,
+    "recommended_at": "2026-03-13 16:10:15 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "MSFT-2026-04-02-iron_condor-2026-03-13-b1d2",
+    "date_recommended": "2026-03-13",
+    "ticker": "MSFT",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 395.839599609375,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R2)",
+    "price_type": "credit",
+    "entry_net": 1.88,
+    "max_profit": 1.88,
+    "max_loss": 11.88,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 425.0,
+        "entry_mid": 1.655,
+        "entry_ask": 1.69,
+        "entry_bid": 1.62
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 435.0,
+        "entry_mid": 0.755,
+        "entry_ask": 0.78,
+        "entry_bid": 0.73
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 365.0,
+        "entry_mid": 2.605,
+        "entry_ask": 2.64,
+        "entry_bid": 2.57
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 355.0,
+        "entry_mid": 1.63,
+        "entry_ask": 1.66,
+        "entry_bid": 1.6
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 395.55,
+        "net_mid": 1.79,
+        "pnl_dollars": 8.5
+      }
+    ],
+    "status": "open",
+    "confidence": 0.993645816453914,
+    "recommended_at": "2026-03-13 16:10:16 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "NVDA-2026-04-02-bull_call_spread-2026-03-13-9160",
+    "date_recommended": "2026-03-13",
+    "ticker": "NVDA",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 181.39500427246094,
+    "strategy": "bull_call_spread",
+    "regime_type": "directional_bull",
+    "regime_name": "Bull (R2)",
+    "price_type": "debit",
+    "entry_net": 2.07,
+    "max_profit": 2.93,
+    "max_loss": 2.07,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 185.0,
+        "entry_mid": 5.725,
+        "entry_ask": 5.75,
+        "entry_bid": 5.7
+      },
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 190.0,
+        "entry_mid": 3.6500000000000004,
+        "entry_ask": 3.7,
+        "entry_bid": 3.6
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 180.25,
+        "net_mid": 1.87,
+        "pnl_dollars": -19.5
+      }
+    ],
+    "status": "open",
+    "confidence": 0.991170939099963,
+    "recommended_at": "2026-03-13 16:10:17 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "AMZN-2026-04-02-iron_condor-2026-03-13-cc7e",
+    "date_recommended": "2026-03-13",
+    "ticker": "AMZN",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 207.72500610351562,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R3)",
+    "price_type": "credit",
+    "entry_net": 1.91,
+    "max_profit": 1.91,
+    "max_loss": 11.91,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 225.0,
+        "entry_mid": 1.17,
+        "entry_ask": 1.19,
+        "entry_bid": 1.15
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 235.0,
+        "entry_mid": 0.32,
+        "entry_ask": 0.33,
+        "entry_bid": 0.31
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 190.0,
+        "entry_mid": 2.035,
+        "entry_ask": 2.06,
+        "entry_bid": 2.01
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 180.0,
+        "entry_mid": 0.975,
+        "entry_ask": 0.99,
+        "entry_bid": 0.96
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 207.67,
+        "net_mid": 1.75,
+        "pnl_dollars": 16.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9939904954146735,
+    "recommended_at": "2026-03-13 16:10:17 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "GOOGL-2026-04-02-iron_condor-2026-03-13-4fd8",
+    "date_recommended": "2026-03-13",
+    "ticker": "GOOGL",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 303.114990234375,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R2)",
+    "price_type": "credit",
+    "entry_net": 2.25,
+    "max_profit": 2.25,
+    "max_loss": 12.25,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 325.0,
+        "entry_mid": 1.855,
+        "entry_ask": 1.88,
+        "entry_bid": 1.83
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 335.0,
+        "entry_mid": 0.715,
+        "entry_ask": 0.73,
+        "entry_bid": 0.7
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 280.0,
+        "entry_mid": 2.6399999999999997,
+        "entry_ask": 2.67,
+        "entry_bid": 2.61
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 270.0,
+        "entry_mid": 1.53,
+        "entry_ask": 1.56,
+        "entry_bid": 1.5
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 302.28,
+        "net_mid": 2.25,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9990943223445078,
+    "recommended_at": "2026-03-13 16:10:19 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "META-2026-04-02-iron_condor-2026-03-13-9abb",
+    "date_recommended": "2026-03-13",
+    "ticker": "META",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 618.8599853515625,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R1)",
+    "price_type": "credit",
+    "entry_net": 2.43,
+    "max_profit": 2.43,
+    "max_loss": 12.43,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 670.0,
+        "entry_mid": 3.5250000000000004,
+        "entry_ask": 3.6,
+        "entry_bid": 3.45
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 680.0,
+        "entry_mid": 2.3,
+        "entry_ask": 2.35,
+        "entry_bid": 2.25
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 565.0,
+        "entry_mid": 5.65,
+        "entry_ask": 5.75,
+        "entry_bid": 5.55
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 555.0,
+        "entry_mid": 4.449999999999999,
+        "entry_ask": 4.55,
+        "entry_bid": 4.35
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 613.71,
+        "net_mid": 2.42,
+        "pnl_dollars": 1.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.6638314409677795,
+    "recommended_at": "2026-03-13 16:10:20 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "TSLA-2026-04-02-iron_condor-2026-03-13-84f2",
+    "date_recommended": "2026-03-13",
+    "ticker": "TSLA",
+    "expiry": "2026-04-02",
+    "dte_at_entry": 20,
+    "underlying_at_entry": 394.24749755859375,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R3)",
+    "price_type": "credit",
+    "entry_net": 2.18,
+    "max_profit": 2.18,
+    "max_loss": 12.18,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 440.0,
+        "entry_mid": 2.865,
+        "entry_ask": 2.89,
+        "entry_bid": 2.84
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 450.0,
+        "entry_mid": 1.81,
+        "entry_ask": 1.83,
+        "entry_bid": 1.79
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 350.0,
+        "entry_mid": 4.3,
+        "entry_ask": 4.35,
+        "entry_bid": 4.25
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 340.0,
+        "entry_mid": 3.175,
+        "entry_ask": 3.2,
+        "entry_bid": 3.15
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-13",
+        "underlying": 391.2,
+        "net_mid": 2.15,
+        "pnl_dollars": 3.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.8654680708094469,
+    "recommended_at": "2026-03-13 16:10:21 UTC",
     "underlying_at_close": 0.0,
     "regime_alert": "",
     "alert_log": []

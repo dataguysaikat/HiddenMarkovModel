@@ -86,6 +86,48 @@ def compute_stats(trades) -> dict[str, dict]:
     return result
 
 
+def compute_stats_by_ticker(trades) -> dict[tuple, dict]:
+    """
+    Group closed/expired trades by (ticker, strategy) and compute performance.
+
+    Returns dict[(ticker, strategy)] = {
+        count, wins, win_rate, avg_pnl, total_pnl, avg_pnl_pct
+    }
+    """
+    buckets: dict[tuple, list] = defaultdict(list)
+    for t in trades:
+        if t.status not in ("closed", "expired"):
+            continue
+        pnl = _final_pnl(t)
+        if pnl is None:
+            continue
+        max_risk = abs(t.max_loss) * 100 if t.max_loss else None
+        pnl_pct  = pnl / max_risk if max_risk else 0.0
+        buckets[(t.ticker, t.strategy)].append({
+            "pnl":     pnl,
+            "pnl_pct": pnl_pct,
+            "win":     pnl > 0,
+        })
+
+    result: dict[tuple, dict] = {}
+    for key, rows in buckets.items():
+        n        = len(rows)
+        wins     = sum(1 for r in rows if r["win"])
+        win_rate = wins / n
+        avg_pnl     = sum(r["pnl"]     for r in rows) / n
+        total_pnl   = sum(r["pnl"]     for r in rows)
+        avg_pnl_pct = sum(r["pnl_pct"] for r in rows) / n
+        result[key] = {
+            "count":        n,
+            "wins":         wins,
+            "win_rate":     round(win_rate, 4),
+            "avg_pnl":      round(avg_pnl, 2),
+            "total_pnl":    round(total_pnl, 2),
+            "avg_pnl_pct":  round(avg_pnl_pct, 4),
+        }
+    return result
+
+
 def confidence_calibration(trades) -> float:
     """
     Find the lowest confidence threshold where closed-trade win rate >= 50%.

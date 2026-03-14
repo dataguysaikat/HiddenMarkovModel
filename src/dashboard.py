@@ -179,7 +179,9 @@ def _build_order_from_thetadata(ticker, rc, S, exp, calls, puts,
         meta["error"] = str(exc)
         return None, meta
 
-    return None, meta  # order is None (dict-based metadata only)
+    # Return a lightweight order dict so broker registers as filled_simulated
+    order = {"legs": meta["legs"], "net_price": meta["est_net_price"], "quantity": 1}
+    return order, meta
 
 
 # ---------------------------------------------------------------------------
@@ -618,8 +620,9 @@ if not _thetadata_available():
         icon="⚠️",
     )
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(
-    ["Regime Overview", "Price Charts", "Options & Trading", "Model Diagnostics", "Trade Tracker"]
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
+    ["Regime Overview", "Price Charts", "Options & Trading", "Model Diagnostics",
+     "Trade Tracker", "Strategy Performance"]
 )
 
 
@@ -769,16 +772,34 @@ def _render_tab3():
     if not trades:
         st.info("No trades recorded yet.")
     else:
+        from datetime import datetime, timezone
+        import zoneinfo
+        _est = zoneinfo.ZoneInfo("America/New_York")
+
         log_rows = []
         for tr in reversed(trades):
+            if tr.status == "simulated_no_chain":
+                continue
+            # Convert UTC ISO timestamp to EST display
+            try:
+                dt_utc = datetime.fromisoformat(tr.timestamp_utc)
+                if dt_utc.tzinfo is None:
+                    dt_utc = dt_utc.replace(tzinfo=timezone.utc)
+                dt_est = dt_utc.astimezone(_est)
+                time_str = dt_est.strftime("%Y-%m-%d %H:%M EST")
+            except Exception:
+                time_str = tr.timestamp_utc
             log_rows.append({
-                "ID": tr.id, "Time (UTC)": tr.timestamp_utc, "Ticker": tr.ticker,
+                "ID": tr.id, "Time (EST)": time_str, "Ticker": tr.ticker,
                 "Strategy": tr.strategy, "Regime type": tr.regime_type,
                 "Net price": tr.est_net_price, "Qty": tr.quantity,
                 "Mode": tr.mode, "Status": tr.status,
                 "Schwab ID": tr.schwab_order_id or "", "Error": tr.error or "",
             })
-        st.dataframe(pd.DataFrame(log_rows), width='stretch')
+        if log_rows:
+            st.dataframe(pd.DataFrame(log_rows), width='stretch')
+        else:
+            st.info("No executed trades yet (simulated_no_chain entries hidden).")
 
 
 @st.fragment
@@ -840,21 +861,40 @@ def _render_tab5():
                 "recommendations — they will be saved automatically.")
         return
 
-    # Global alert banner
-    alerted = [t for t in tracked if t.status == "open" and getattr(t, "regime_alert", "")]
-    if alerted:
-        tickers_alerted = ", ".join(t.ticker for t in alerted)
-        st.warning(f"**Regime alert** — original trade thesis may no longer hold for: "
-                   f"**{tickers_alerted}**. Review the trade cards below.")
+    # Current regime lookup from HMM results
+    results = st.session_state.get("results", {})
+
+    def _current_regime_name(ticker: str) -> str:
+        res = results.get(ticker)
+        if res is None or res.error:
+            return "—"
+        rc = res.characteristics.get(res.current_regime)
+        return rc.name if rc else "—"
+
+    def _current_regime_type(ticker: str) -> str:
+        res = results.get(ticker)
+        if res is None or res.error:
+            return ""
+        rc = res.characteristics.get(res.current_regime)
+        return rc.regime_type if rc else ""
+
+    def _regime_changed(tr) -> bool:
+        """Compare by regime type (bull/bear/vol/mean_rev), not state number."""
+        cur_type = _current_regime_type(tr.ticker)
+        return cur_type != "" and cur_type != tr.regime_type
 
     st.markdown("#### Recommendations")
     rec_rows = []
     for tr in tracked:
         entry_label = f"{'credit' if tr.price_type == 'credit' else 'debit'} ${tr.entry_net:.2f}"
+        cur_regime = _current_regime_name(tr.ticker)
+        changed = _regime_changed(tr)
         rec_rows.append({
             "Rec. Date/Time":  tr.recommended_at if tr.recommended_at else tr.date_recommended,
             "Ticker":          tr.ticker,
-            "Regime":          tr.regime_name,
+            "Regime at Open":  tr.regime_name,
+            "Current Regime":  cur_regime,
+            "Changed":         "YES" if changed else "",
             "Price at Entry":  f"${tr.underlying_at_entry:.2f}",
             "Strategy":        tr.strategy.replace("_", " ").title(),
             "Entry":           entry_label,
@@ -862,7 +902,15 @@ def _render_tab5():
             "Expiry":          tr.expiry,
             "Status":          tr.status,
         })
-    st.dataframe(pd.DataFrame(rec_rows), width='stretch', hide_index=True)
+    rec_df = pd.DataFrame(rec_rows)
+
+    def _changed_style(val):
+        if val == "YES":
+            return "color: #e74c3c; font-weight: bold"
+        return ""
+
+    styled_rec = rec_df.style.map(_changed_style, subset=["Changed"])
+    st.dataframe(styled_rec, width='stretch', hide_index=True)
     st.divider()
 
     st.markdown("#### Live P&L")
@@ -870,8 +918,12 @@ def _render_tab5():
     for tr in tracked:
         net_mid, pnl_d = latest_pnl(tr)
         pct = pnl_pct(tr)
+        cur_regime = _current_regime_name(tr.ticker)
+        changed = _regime_changed(tr)
         summary_rows.append({
-            "Ticker": tr.ticker, "Strategy": tr.strategy, "Regime": tr.regime_name,
+            "Ticker": tr.ticker, "Strategy": tr.strategy,
+            "Regime at Open": tr.regime_name, "Current Regime": cur_regime,
+            "Action": "CLOSE" if changed and tr.status == "open" else "",
             "Expiry": tr.expiry, "DTE left": dte_remaining(tr), "Days held": days_held(tr),
             "Entry $": tr.entry_net, "Current $": round(net_mid, 2),
             "P&L $": round(pnl_d, 2), "P&L %": f"{pct:.1%}",
@@ -886,7 +938,12 @@ def _render_tab5():
             return f"color: {color}; font-weight: bold"
         return ""
 
-    styled_tt = df_tt.style.map(_pnl_style, subset=["P&L $"])
+    def _action_style(val):
+        if val == "CLOSE":
+            return "color: #e74c3c; font-weight: bold"
+        return ""
+
+    styled_tt = df_tt.style.map(_pnl_style, subset=["P&L $"]).map(_action_style, subset=["Action"])
     st.dataframe(styled_tt, width='stretch')
     st.divider()
 
@@ -900,15 +957,20 @@ def _render_tab5():
         _opened_date = _opened[:10] if _opened else ""
         _opened_full = _opened[:16] if _opened else ""
         _alert = getattr(tr, "regime_alert", "")
-        _alert_prefix = "⚠ " if _alert else ""
+        cur_regime = _current_regime_name(tr.ticker)
+        changed = _regime_changed(tr)
+        _alert_prefix = "REGIME CHANGED " if (changed and tr.status == "open") else ("⚠ " if _alert else "")
         label  = (f"{_alert_prefix}{tr.ticker}  |  {tr.strategy}  |  exp {tr.expiry}  "
                   f"|  P&L ${pnl_d:+.2f}  ({pct:+.1%})  |  {tr.status}"
                   f"  |  Open {_opened_date}")
-        with st.expander(label, expanded=bool(_alert)):
-            if _alert:
+        with st.expander(label, expanded=changed or bool(_alert)):
+            if changed and tr.status == "open":
+                st.error(f"**Regime changed: {tr.regime_name} -> {cur_regime}** — "
+                         f"consider closing this trade. The original thesis no longer holds.")
+            elif _alert:
                 st.warning(_alert)
-            # Row 1: P&L metrics
-            mc1, mc2, mc3, mc4, mc5, mc6 = st.columns(6)
+            # Row 1: P&L metrics + regime
+            mc1, mc2, mc3, mc4, mc5, mc6, mc7 = st.columns(7)
             mc1.metric("Entry net", f"${tr.entry_net:.2f}")
             mc2.metric("Current mid", f"${net_mid:.2f}")
             mc3.metric("P&L $", f"${pnl_d:+.2f}", delta=f"{pct:+.1%}")
@@ -916,6 +978,12 @@ def _render_tab5():
             mc5.metric("Days held", days_held(tr))
             _conf = f"{tr.confidence:.0%}" if getattr(tr, "confidence", None) else "—"
             mc6.metric("Confidence", _conf)
+            mc7.metric("Regime at Open", tr.regime_name)
+            # Row 1b: current regime
+            mr1, mr2 = st.columns([1, 5])
+            mr1.metric("Current Regime", cur_regime)
+            if changed and tr.status == "open":
+                mr2.warning("Regime has changed — CLOSE recommended")
             # Row 2: underlying prices + trade structure
             mn1, mn2, mn3, mn4, mn5 = st.columns(5)
             mn1.metric("Entry price", f"${tr.underlying_at_entry:.2f}")
@@ -973,6 +1041,133 @@ def _render_tab5():
                 st.caption("Not enough daily snapshots yet for a chart (run again tomorrow.")
 
 
+@st.fragment
+def _render_tab6():
+    st.subheader("Strategy Performance by Ticker")
+    tracked = _cached_load_trades()
+    closed = [t for t in tracked if t.status in ("closed", "expired")]
+
+    if not closed:
+        st.info("No closed or expired trades yet. Performance analysis will appear "
+                "once trades expire or are closed.")
+        # Still show open trade summary for context
+        open_trades = [t for t in tracked if t.status == "open"]
+        if open_trades:
+            st.markdown(f"**{len(open_trades)} open trades** being tracked — "
+                        "performance data will accumulate as they close.")
+            open_rows = []
+            for tr in open_trades:
+                net_mid, pnl_d = latest_pnl(tr)
+                pct = pnl_pct(tr)
+                open_rows.append({
+                    "Ticker": tr.ticker, "Strategy": tr.strategy,
+                    "Regime": tr.regime_name, "DTE left": dte_remaining(tr),
+                    "Unrealized P&L $": round(pnl_d, 2),
+                    "Unrealized P&L %": f"{pct:.1%}",
+                })
+            st.dataframe(pd.DataFrame(open_rows), width='stretch', hide_index=True)
+        return
+
+    from src.retrain_policy import compute_stats, compute_stats_by_ticker
+
+    # --- Overall by regime type ---
+    st.markdown("#### Performance by Regime Type")
+    regime_stats = compute_stats(tracked)
+    if regime_stats:
+        regime_rows = []
+        for regime, s in regime_stats.items():
+            regime_rows.append({
+                "Regime Type": regime.replace("_", " ").title(),
+                "Trades": s["count"], "Wins": s["wins"],
+                "Win Rate": f"{s['win_rate']:.0%}",
+                "Avg P&L $": f"${s['avg_pnl']:+.2f}",
+                "Status": s["status"].upper(),
+            })
+        st.dataframe(pd.DataFrame(regime_rows), width='stretch', hide_index=True)
+    st.divider()
+
+    # --- By ticker + strategy ---
+    st.markdown("#### Performance by Ticker + Strategy")
+    ticker_stats = compute_stats_by_ticker(tracked)
+    if ticker_stats:
+        ticker_rows = []
+        for (ticker, strategy), s in sorted(ticker_stats.items()):
+            ticker_rows.append({
+                "Ticker": ticker,
+                "Strategy": strategy.replace("_", " ").title(),
+                "Trades": s["count"], "Wins": s["wins"],
+                "Win Rate": f"{s['win_rate']:.0%}",
+                "Avg P&L $": f"${s['avg_pnl']:+.2f}",
+                "Total P&L $": f"${s['total_pnl']:+.2f}",
+            })
+        df_perf = pd.DataFrame(ticker_rows)
+
+        def _wr_style(val):
+            try:
+                pct = float(val.strip('%')) / 100
+                if pct >= 0.5:
+                    return "color: #2ecc71; font-weight: bold"
+                elif pct >= 0.35:
+                    return "color: #f39c12; font-weight: bold"
+                else:
+                    return "color: #e74c3c; font-weight: bold"
+            except Exception:
+                return ""
+
+        styled_perf = df_perf.style.map(_wr_style, subset=["Win Rate"])
+        st.dataframe(styled_perf, width='stretch', hide_index=True)
+
+        # --- Heatmap: win rate by ticker x strategy ---
+        st.divider()
+        st.markdown("#### Win Rate Heatmap")
+        heat_data = {}
+        for (ticker, strategy), s in ticker_stats.items():
+            strat_label = strategy.replace("_", " ").title()
+            heat_data.setdefault(ticker, {})[strat_label] = s["win_rate"]
+        heat_df = pd.DataFrame(heat_data).T.fillna(float("nan"))
+        if not heat_df.empty:
+            fig_heat = go.Figure(go.Heatmap(
+                z=heat_df.values,
+                x=heat_df.columns.tolist(),
+                y=heat_df.index.tolist(),
+                colorscale=[[0, "#e74c3c"], [0.5, "#f39c12"], [1, "#2ecc71"]],
+                zmin=0, zmax=1,
+                text=[[f"{v:.0%}" if not np.isnan(v) else "" for v in row]
+                      for row in heat_df.values],
+                texttemplate="%{text}",
+            ))
+            fig_heat.update_layout(
+                height=max(250, len(heat_df) * 40 + 100),
+                margin=dict(l=20, r=20, t=40, b=20),
+                xaxis_title="Strategy", yaxis_title="Ticker",
+            )
+            st.plotly_chart(fig_heat, width='stretch', key="perf_heatmap")
+    else:
+        st.info("No closed trades to analyze yet.")
+
+    # --- Best/worst combos ---
+    if ticker_stats:
+        st.divider()
+        st.markdown("#### Recommendations")
+        sorted_combos = sorted(ticker_stats.items(),
+                               key=lambda x: x[1]["total_pnl"], reverse=True)
+        best = [(k, v) for k, v in sorted_combos if v["total_pnl"] > 0]
+        worst = [(k, v) for k, v in sorted_combos if v["total_pnl"] < 0]
+
+        if best:
+            st.success("**Best performing (keep trading):**")
+            for (ticker, strategy), s in best[:5]:
+                st.markdown(f"- **{ticker}** / {strategy.replace('_', ' ').title()} — "
+                            f"{s['wins']}/{s['count']} wins ({s['win_rate']:.0%}), "
+                            f"total P&L **${s['total_pnl']:+.2f}**")
+        if worst:
+            st.error("**Worst performing (consider stopping):**")
+            for (ticker, strategy), s in worst[:5]:
+                st.markdown(f"- **{ticker}** / {strategy.replace('_', ' ').title()} — "
+                            f"{s['wins']}/{s['count']} wins ({s['win_rate']:.0%}), "
+                            f"total P&L **${s['total_pnl']:+.2f}**")
+
+
 # ============================================================
 # Render tabs via fragments — only the active tab rerenders
 # on interaction, not the whole page
@@ -991,3 +1186,6 @@ with tab4:
 
 with tab5:
     _render_tab5()
+
+with tab6:
+    _render_tab6()
