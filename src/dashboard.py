@@ -605,6 +605,21 @@ if btn_fit and HMM_AVAILABLE:
 
             proposed.append({"ticker": t, "order": order, "meta": meta, "rc": rc})
         st.session_state["proposed_orders"] = proposed
+
+        # Write cache so next page-load sees fresh results (same format as scheduler)
+        import os, pickle, tempfile
+        from src.scheduler import CACHE_PATH
+        _cache_data = {"results": results, "proposed": proposed, "updated_at": datetime.now(pytz.UTC)}
+        _fd, _tmp = tempfile.mkstemp(dir=CACHE_PATH.parent, suffix=".tmp")
+        try:
+            with os.fdopen(_fd, "wb") as _f:
+                pickle.dump(_cache_data, _f)
+            os.replace(_tmp, CACHE_PATH)
+            st.session_state["cache_mtime_seen"] = CACHE_PATH.stat().st_mtime
+        except Exception:
+            try: os.unlink(_tmp)
+            except OSError: pass
+
         n_ok = sum(1 for r in results.values() if r.error is None)
         if td_up:
             status_bar.success(f"HMM fitted for {n_ok}/{len(results)} tickers. (ThetaData chains loaded)")
