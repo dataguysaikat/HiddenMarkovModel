@@ -608,8 +608,10 @@ if btn_fit and HMM_AVAILABLE:
 
         # Write cache so next page-load sees fresh results (same format as scheduler)
         import os, pickle, tempfile
+        from datetime import datetime as _dt
+        import pytz as _pytz
         from src.scheduler import CACHE_PATH
-        _cache_data = {"results": results, "proposed": proposed, "updated_at": datetime.now(pytz.UTC)}
+        _cache_data = {"results": results, "proposed": proposed, "updated_at": _dt.now(_pytz.UTC)}
         _fd, _tmp = tempfile.mkstemp(dir=CACHE_PATH.parent, suffix=".tmp")
         try:
             with os.fdopen(_fd, "wb") as _f:
