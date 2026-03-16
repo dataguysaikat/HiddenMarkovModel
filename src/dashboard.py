@@ -457,7 +457,8 @@ with st.sidebar:
     st.divider()
     st.header("Model")
     n_states = st.slider("Regime states", 2, 6, 4)
-    horizon_hours = st.slider("Forecast horizon (hours)", 1, 240, 24)
+    horizon_days = st.slider("Forecast horizon (trading days)", 1, 30, 4)
+    st.caption(f"≈ {horizon_days * 6} RTH bars  (6 bars/day × {horizon_days}d)")
     st.caption("RTH bars only (09:30–16:00 ET) — always applied.")
 
     if HMM_AVAILABLE:
@@ -542,7 +543,8 @@ if btn_fit and HMM_AVAILABLE:
         status_bar.error("No parquet data found. Import CSVs or Fetch yfinance first.")
     else:
         with st.spinner("Fitting HMMs…"):
-            results = run_all_tickers(bars, n_states=n_states)
+            results = run_all_tickers(bars, n_states=n_states, horizon_bars=horizon_days * 6)
+        st.session_state["horizon_days"] = horizon_days
         st.session_state["results"] = results
         # Build proposed orders — use ThetaData chains if available
         from src import thetadata as td
@@ -639,6 +641,9 @@ def _render_tab1():
         st.info("Fit the HMM (sidebar) to see regime overview.")
         return
 
+    _h_days = st.session_state.get("horizon_days", 4)
+    _h_label = f"P(change {_h_days}d)"
+
     # --- Entry filter banner (reads live from config.json) ---
     _pol = _load_config().get("learned_policy", {})
     _min_conf  = float(_pol.get("min_confidence", 0.75))
@@ -646,7 +651,7 @@ def _render_tab1():
     st.info(
         f"**Entry filters (from config.json):** "
         f"Confidence ≥ **{_min_conf:.0%}**  ·  "
-        f"P(change 24h) < **{_max_pchg:.0%}**  —  "
+        f"{_h_label} < **{_max_pchg:.0%}**  —  "
         f"both conditions must be met for a trade to be recommended."
     )
 
@@ -655,7 +660,7 @@ def _render_tab1():
         if res.error:
             rows.append({"Ticker": t, "Regime": "ERROR", "Name": res.error,
                          "Mean Ret (ann)": "-", "Vol": "-",
-                         "Type": "-", "Confidence": "-", "P(change 24h)": "-",
+                         "Type": "-", "Confidence": "-", _h_label: "-",
                          "Trade?": "-", "_type": ""})
             continue
         rc = res.characteristics.get(res.current_regime)
@@ -670,7 +675,7 @@ def _render_tab1():
             "Mean Ret (ann)": f"{_annualised_ret(rc.mean_log_ret):.1%}",
             "Vol": f"{rc.mean_vol_20:.4f}", "Type": rc.regime_type,
             "Confidence": f"{conf:.1%}",
-            "P(change 24h)": f"{p_chg:.1%}",
+            _h_label: f"{p_chg:.1%}",
             "Trade?": "YES" if tradeable else "NO",
             "_type": rc.regime_type,
         })
@@ -710,7 +715,7 @@ def _render_tab1():
             m1.metric("Regime", rc.name)
             m2.metric("Type", rc.regime_type)
             m3.metric("Confidence", f"{fc.get('current_confidence', 0):.1%}")
-            m4.metric("P(change 24h)", f"{fc.get('prob_change_by_horizon', 0):.1%}")
+            m4.metric(_h_label, f"{fc.get('prob_change_by_horizon', 0):.1%}")
             df_p = res.df_prices.tail(500)
             df_r = res.df_reg.tail(500)
             st.plotly_chart(_plot_price_regimes(df_p, df_r, t, res.n_states), width='stretch', key=f"tab1_regimes_{t}")
@@ -789,13 +794,14 @@ The `min_confidence` field in `config.json → learned_policy` sets the hard cut
 (currently **75%**) below which `recommend.py` will not generate a trade.
 """)
         with col_d:
-            st.markdown("""
-**P(change 24h)**
+            st.markdown(f"""
+**{_h_label}**
 
-The probability that the current regime will *change* within the next 24 trading hours,
-derived from the HMM transition matrix raised to the power of the forecast horizon.
+The probability that the current regime will *change* within the next **{_h_days} trading days**,
+derived from the HMM transition matrix raised to the power of the forecast horizon
+({_h_days} × 6 RTH bars = {_h_days * 6} bars).  Adjust the horizon with the sidebar slider.
 
-| P(change 24h) | Interpretation |
+| {_h_label} | Interpretation |
 |---|---|
 | < 15% | Regime is stable — good time to enter |
 | 15–30% | Moderate instability — consider shorter DTE or smaller size |
@@ -805,7 +811,7 @@ derived from the HMM transition matrix raised to the power of the forecast horiz
 
 Both conditions must be met for `recommend.py` to generate a trade:
 - **Confidence ≥ 75%** (`min_confidence`)
-- **P(change 24h) < 30%** (`max_p_change`)
+- **{_h_label} < 30%** (`max_p_change`)
 
 Tune these thresholds in `config.json` — tighter = fewer but higher-quality signals.
 """)

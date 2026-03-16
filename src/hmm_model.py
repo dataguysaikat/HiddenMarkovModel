@@ -247,6 +247,7 @@ def run_all_tickers(
     bars: dict[str, pd.DataFrame],
     n_states: int = 4,
     min_bars: int = 500,
+    horizon_bars: int = 24,
 ) -> dict[str, TickerResult]:
     """
     Fit HMM for every ticker in `bars`.
@@ -286,7 +287,7 @@ def run_all_tickers(
             _post_cols = [f"p_regime_{i}" for i in range(n_states)]
             last_post = df_reg[_post_cols].iloc[-3:].mean().values.astype(float)
             last_post /= last_post.sum()          # re-normalise (guard against fp drift)
-            fc = regime_forecast(model, last_post, horizon_bars=24)
+            fc = regime_forecast(model, last_post, horizon_bars=horizon_bars)
 
             current_regime = int(df_reg["regime"].iloc[-1])
 
