@@ -380,13 +380,24 @@ if "cache_mtime_seen" not in st.session_state:
 # ---------------------------------------------------------------------------
 get_scheduler(n_states=4, trade_mode="paper")
 
-# Load from cache if session has no results yet (e.g. page refresh)
+# Load from cache if session has no results yet (e.g. page refresh).
+# Discard cache if it is missing tickers that are now in config.json —
+# this prevents a stale pkl from hiding newly-added tickers.
 if not st.session_state["results"]:
     cache = load_cache()
     if cache:
-        st.session_state["results"] = cache["results"]
-        st.session_state["proposed_orders"] = cache.get("proposed", [])
-        st.session_state["cache_mtime_seen"] = cache_mtime()
+        _cached_tickers = set(cache["results"].keys())
+        _config_tickers  = set(_load_config().get("tickers", []))
+        _missing = _config_tickers - _cached_tickers
+        if _missing:
+            st.info(
+                f"Cache is stale (missing: {', '.join(sorted(_missing))}).  "
+                "Click **Fetch yfinance** then **Fit HMM** to refresh."
+            )
+        else:
+            st.session_state["results"] = cache["results"]
+            st.session_state["proposed_orders"] = cache.get("proposed", [])
+            st.session_state["cache_mtime_seen"] = cache_mtime()
 
 # ---------------------------------------------------------------------------
 # Auto-refresh fragment — checks for new cache every 30 minutes (matches scheduler)
@@ -430,8 +441,9 @@ def _annualised_ret(mean_log_ret: float) -> float:
 # ---------------------------------------------------------------------------
 with st.sidebar:
     st.header("Universe")
+    _all_tickers = _load_config().get("tickers", TICKERS)
     selected_tickers = st.multiselect(
-        "Tickers", TICKERS, default=TICKERS, key="ticker_select"
+        "Tickers", _all_tickers, default=_all_tickers, key="ticker_select"
     )
 
     st.divider()
