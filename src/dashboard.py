@@ -1075,8 +1075,36 @@ def _render_tab5():
         return ""
 
     styled_rec = rec_df.style.map(_changed_style, subset=["Changed"])
-    st.dataframe(styled_rec, width='stretch', hide_index=True)
+    rec_event = st.dataframe(
+        styled_rec, width='stretch', hide_index=True,
+        on_select="rerun", selection_mode="single-row",
+        key="rec_table_sel",
+    )
+
+    # Resolve selected ticker from rec table click
+    _sel_rows = rec_event.selection.rows if rec_event.selection else []
+    if _sel_rows:
+        st.session_state["tab5_sel_ticker"] = rec_df.iloc[_sel_rows[0]]["Ticker"]
+    _sel_ticker = st.session_state.get("tab5_sel_ticker")
+
+    # Clear button (only when something is selected)
+    if _sel_ticker:
+        if st.button("Clear selection", key="tab5_clear_sel"):
+            st.session_state.pop("tab5_sel_ticker", None)
+            st.rerun()
+        st.caption(f"Selected: **{_sel_ticker}** — Live P&L row highlighted below, trade detail auto-expanded.")
+
     st.divider()
+
+    # Scroll anchor — JS scrolls parent page to this element when a trade is selected
+    import streamlit.components.v1 as _components
+    st.markdown('<div id="tab5-pnl-anchor"></div>', unsafe_allow_html=True)
+    if _sel_ticker:
+        _components.html(
+            '<script>window.parent.document.getElementById("tab5-pnl-anchor")'
+            '.scrollIntoView({behavior:"smooth",block:"start"});</script>',
+            height=0,
+        )
 
     st.markdown("#### Live P&L")
     summary_rows = []
@@ -1108,7 +1136,17 @@ def _render_tab5():
             return "color: #e74c3c; font-weight: bold"
         return ""
 
-    styled_tt = df_tt.style.map(_pnl_style, subset=["P&L $"]).map(_action_style, subset=["Action"])
+    def _highlight_selected_row(row):
+        if _sel_ticker and row["Ticker"] == _sel_ticker:
+            return ["background-color: #f0c040; color: #111"] * len(row)
+        return [""] * len(row)
+
+    styled_tt = (
+        df_tt.style
+        .map(_pnl_style, subset=["P&L $"])
+        .map(_action_style, subset=["Action"])
+        .apply(_highlight_selected_row, axis=1)
+    )
     st.dataframe(styled_tt, width='stretch')
     st.divider()
 
@@ -1129,7 +1167,9 @@ def _render_tab5():
         label  = (f"{_alert_prefix}{tr.ticker}  |  {tr.strategy}  |  exp {tr.expiry}  "
                   f"|  P&L ${pnl_d:+.2f}  ({pct:+.1%})  |  {tr.status}"
                   f"  |  Open {_opened_date}")
-        with st.expander(label, expanded=changed or bool(_alert)):
+        _is_selected = _sel_ticker == tr.ticker
+        _should_expand = _is_selected or (not _sel_ticker and (changed or bool(_alert)))
+        with st.expander(label, expanded=_should_expand):
             if changed and tr.status == "open":
                 st.error(f"**Regime changed: {tr.regime_name} -> {cur_regime}** — "
                          f"consider closing this trade. The original thesis no longer holds.")
