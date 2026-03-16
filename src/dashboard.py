@@ -757,8 +757,8 @@ current regime at this bar. A value of 55% means the model is uncertain between 
 | 60–79% | Moderate signal — reduced size or wait for confirmation |
 | < 60% | Weak signal — skip or paper-trade only |
 
-The `min_confidence` field in `config.json → learned_policy` sets the hard cutoff below
-which `recommend.py` will not generate a trade.
+The `min_confidence` field in `config.json → learned_policy` sets the hard cutoff
+(currently **75%**) below which `recommend.py` will not generate a trade.
 """)
         with col_d:
             st.markdown("""
@@ -770,13 +770,16 @@ derived from the HMM transition matrix raised to the power of the forecast horiz
 | P(change 24h) | Interpretation |
 |---|---|
 | < 15% | Regime is stable — good time to enter |
-| 15–35% | Moderate instability — consider shorter DTE or smaller size |
-| > 35% | Regime likely to flip — wait or skip |
+| 15–30% | Moderate instability — consider shorter DTE or smaller size |
+| > 30% | Regime likely to flip — trade skipped |
 
-**Practical rule of thumb**
+**Active entry filters** (`config.json → learned_policy`)
 
-Enter when **Confidence ≥ 75%** and **P(change 24h) < 25%**.
-Both metrics together give a cleaner signal than either alone.
+Both conditions must be met for `recommend.py` to generate a trade:
+- **Confidence ≥ 75%** (`min_confidence`)
+- **P(change 24h) < 30%** (`max_p_change`)
+
+Tune these thresholds in `config.json` — tighter = fewer but higher-quality signals.
 """)
 
     with st.expander("Reading the charts", expanded=False):
@@ -1021,10 +1024,12 @@ def _render_tab5():
         entry_label = f"{'credit' if tr.price_type == 'credit' else 'debit'} ${tr.entry_net:.2f}"
         cur_regime = _current_regime_name(tr.ticker)
         changed = _regime_changed(tr)
+        raw_ts = tr.recommended_at if tr.recommended_at else tr.date_recommended
         rec_rows.append({
-            "Rec. Date/Time":  _to_est(tr.recommended_at if tr.recommended_at else tr.date_recommended),
+            "Rec. Date/Time":  _to_est(raw_ts),
+            "_sort_ts":        raw_ts or "",
             "Ticker":          tr.ticker,
-            "Regime at Open":  tr.regime_name,
+            "Start Regime":    tr.regime_name,
             "Current Regime":  cur_regime,
             "Changed":         "YES" if changed else "",
             "Price at Entry":  f"${tr.underlying_at_entry:.2f}",
@@ -1034,7 +1039,7 @@ def _render_tab5():
             "Expiry":          tr.expiry,
             "Status":          tr.status,
         })
-    rec_df = pd.DataFrame(rec_rows)
+    rec_df = pd.DataFrame(rec_rows).sort_values("_sort_ts", ascending=False).drop(columns=["_sort_ts"]).reset_index(drop=True)
 
     def _changed_style(val):
         if val == "YES":
@@ -1054,7 +1059,7 @@ def _render_tab5():
         changed = _regime_changed(tr)
         summary_rows.append({
             "Ticker": tr.ticker, "Strategy": tr.strategy,
-            "Regime at Open": tr.regime_name, "Current Regime": cur_regime,
+            "Start Regime": tr.regime_name, "Current Regime": cur_regime,
             "Action": "CLOSE" if changed and tr.status == "open" else "",
             "Expiry": tr.expiry, "DTE left": dte_remaining(tr), "Days held": days_held(tr),
             "Entry $": tr.entry_net, "Current $": round(net_mid, 2),
@@ -1111,7 +1116,7 @@ def _render_tab5():
             mc5.metric("Days held", days_held(tr))
             _conf = f"{tr.confidence:.0%}" if getattr(tr, "confidence", None) else "—"
             mc6.metric("Confidence", _conf)
-            mc7.metric("Regime at Open", tr.regime_name)
+            mc7.metric("Start Regime", tr.regime_name)
             # Row 1b: current regime
             mr1, mr2 = st.columns([1, 5])
             mr1.metric("Current Regime", cur_regime)

@@ -17,5 +17,12 @@
     "delta_wing": 0.16,
     "otm_pct": 0.03,
     "strike_range": 20
+  },
+
+  "learned_policy": {
+    "min_confidence": 0.75,
+    "max_p_change": 0.30,
+    "skip_regimes": [],
+    "caution_regimes": []
   }
 }

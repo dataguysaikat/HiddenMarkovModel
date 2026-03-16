@@ -103,7 +103,8 @@ STRIKE_RANGE = _opt.get("strike_range", 20)     # strikes above/below ATM to fet
 _pol             = _cfg.get("learned_policy", {})
 _SKIP_REGIMES    = set(_pol.get("skip_regimes",    []))
 _CAUTION_REGIMES = set(_pol.get("caution_regimes", []))
-_MIN_CONFIDENCE  = float(_pol.get("min_confidence", 0.0))
+_MIN_CONFIDENCE  = float(_pol.get("min_confidence", 0.75))
+_MAX_P_CHANGE    = float(_pol.get("max_p_change",   0.30))
 
 
 # ---------------------------------------------------------------------------
@@ -256,8 +257,12 @@ def main():
         if strat in _SKIP_REGIMES:
             print(f"  [POLICY] Skipping {strat} — win rate too low from closed-trade history.")
             continue
-        if _MIN_CONFIDENCE > 0 and conf < _MIN_CONFIDENCE:
-            print(f"  [POLICY] Skipping — confidence {conf:.0%} below required {_MIN_CONFIDENCE:.0%}.")
+        if conf < _MIN_CONFIDENCE:
+            print(f"  [FILTER] Skipping — confidence {conf:.0%} below required {_MIN_CONFIDENCE:.0%}.")
+            continue
+        p_change = res.forecast.get("prob_change_by_horizon", 1.0)
+        if p_change > _MAX_P_CHANGE:
+            print(f"  [FILTER] Skipping — P(regime change 24h) {p_change:.0%} above max {_MAX_P_CHANGE:.0%}.")
             continue
         if strat in _CAUTION_REGIMES:
             print(f"  [CAUTION] {strat} has below-average win rate — proceeding cautiously.")
@@ -363,12 +368,8 @@ def main():
     print("Quotes from ThetaData terminal (real-time). "
           "Deltas/IV computed via Black-Scholes on mid price.")
     print("Use limit orders at mid or better.")
-    if _SKIP_REGIMES or _CAUTION_REGIMES or _MIN_CONFIDENCE > 0:
-        print(f"Active learned policy: skip={sorted(_SKIP_REGIMES) or 'none'}  "
-              f"caution={sorted(_CAUTION_REGIMES) or 'none'}  "
-              f"min_conf={_MIN_CONFIDENCE:.0%}")
-    else:
-        print("No learned policy yet. Run `python -m src.retrain_policy` after trades close.")
+    print(f"Active filters: min_conf={_MIN_CONFIDENCE:.0%}  max_p_change={_MAX_P_CHANGE:.0%}  "
+          f"skip={sorted(_SKIP_REGIMES) or 'none'}  caution={sorted(_CAUTION_REGIMES) or 'none'}")
     print("=" * 92)
 
 
