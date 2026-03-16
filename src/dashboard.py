@@ -639,23 +639,39 @@ def _render_tab1():
         st.info("Fit the HMM (sidebar) to see regime overview.")
         return
 
+    # --- Entry filter banner (reads live from config.json) ---
+    _pol = _load_config().get("learned_policy", {})
+    _min_conf  = float(_pol.get("min_confidence", 0.75))
+    _max_pchg  = float(_pol.get("max_p_change",   0.30))
+    st.info(
+        f"**Entry filters (from config.json):** "
+        f"Confidence ≥ **{_min_conf:.0%}**  ·  "
+        f"P(change 24h) < **{_max_pchg:.0%}**  —  "
+        f"both conditions must be met for a trade to be recommended."
+    )
+
     rows = []
     for t, res in results.items():
         if res.error:
             rows.append({"Ticker": t, "Regime": "ERROR", "Name": res.error,
                          "Mean Ret (ann)": "-", "Vol": "-",
-                         "Type": "-", "Confidence": "-", "P(change 24h)": "-", "_type": ""})
+                         "Type": "-", "Confidence": "-", "P(change 24h)": "-",
+                         "Trade?": "-", "_type": ""})
             continue
         rc = res.characteristics.get(res.current_regime)
         if rc is None:
             continue
         fc = res.forecast
+        conf    = fc.get("current_confidence", 0)
+        p_chg   = fc.get("prob_change_by_horizon", 1.0)
+        tradeable = conf >= _min_conf and p_chg < _max_pchg
         rows.append({
             "Ticker": t, "Regime": f"R{res.current_regime}", "Name": rc.name,
             "Mean Ret (ann)": f"{_annualised_ret(rc.mean_log_ret):.1%}",
             "Vol": f"{rc.mean_vol_20:.4f}", "Type": rc.regime_type,
-            "Confidence": f"{fc.get('current_confidence', 0):.1%}",
-            "P(change 24h)": f"{fc.get('prob_change_by_horizon', 0):.1%}",
+            "Confidence": f"{conf:.1%}",
+            "P(change 24h)": f"{p_chg:.1%}",
+            "Trade?": "YES" if tradeable else "NO",
             "_type": rc.regime_type,
         })
 
@@ -666,7 +682,19 @@ def _render_tab1():
         c = _colour_for_type(row.get("_type", ""))
         return [f"background-color: {c}22"] * len(row)
 
-    styled = df_summary[display_cols + ["_type"]].style.apply(_row_style, axis=1)
+    def _trade_style(val):
+        if val == "YES":
+            return "color: #2ecc71; font-weight: bold"
+        if val == "NO":
+            return "color: #e74c3c; font-weight: bold"
+        return ""
+
+    styled = (
+        df_summary[display_cols + ["_type"]]
+        .style
+        .apply(_row_style, axis=1)
+        .map(_trade_style, subset=["Trade?"])
+    )
     st.dataframe(styled.data[display_cols], width='stretch')
     st.divider()
 
