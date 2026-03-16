@@ -1007,6 +1007,13 @@ def _render_tab5():
                 "recommendations — they will be saved automatically.")
         return
 
+    # Sort all tracked trades latest-first — applied uniformly to all three sections
+    tracked = sorted(
+        tracked,
+        key=lambda t: (t.recommended_at or t.date_recommended or ""),
+        reverse=True,
+    )
+
     # Current regime lookup from HMM results
     results = st.session_state.get("results", {})
 
@@ -1067,7 +1074,7 @@ def _render_tab5():
             "Expiry":          tr.expiry,
             "Status":          tr.status,
         })
-    rec_df = pd.DataFrame(rec_rows).sort_values("_sort_ts", ascending=False).drop(columns=["_sort_ts"]).reset_index(drop=True)
+    rec_df = pd.DataFrame(rec_rows).drop(columns=["_sort_ts"]).reset_index(drop=True)
 
     def _changed_style(val):
         if val == "YES":
