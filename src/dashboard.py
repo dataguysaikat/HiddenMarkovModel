@@ -444,7 +444,7 @@ with st.sidebar:
     st.header("Universe")
     _all_tickers = _load_config().get("tickers", TICKERS)
     selected_tickers = st.multiselect(
-        "Tickers", _all_tickers, default=_all_tickers, key="ticker_select"
+        "Tickers", _all_tickers, default=_all_tickers, key="ticker_select_v2"
     )
 
     st.divider()
@@ -534,7 +534,7 @@ if btn_schwab_info:
 
 if btn_import:
     msgs = []
-    for t in (selected_tickers or TICKERS):
+    for t in (selected_tickers or _all_tickers):
         _, msg = import_csv_to_parquet(t)
         msgs.append(msg)
     status_bar.success("\n\n".join(msgs))
@@ -542,7 +542,7 @@ if btn_import:
 if btn_yf:
     msgs = []
     prog = st.progress(0)
-    tickers_to_update = selected_tickers or TICKERS
+    tickers_to_update = selected_tickers or _all_tickers
     for idx, t in enumerate(tickers_to_update):
         prog.progress((idx + 1) / len(tickers_to_update))
         _, msg = update_with_yfinance(t)
@@ -551,7 +551,7 @@ if btn_yf:
     status_bar.success("\n\n".join(msgs))
 
 if btn_fit and HMM_AVAILABLE:
-    bars = load_all_tickers(selected_tickers or TICKERS)
+    bars = load_all_tickers(selected_tickers or _all_tickers)
     if not bars:
         status_bar.error("No parquet data found. Import CSVs or Fetch yfinance first.")
     else:
