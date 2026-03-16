@@ -1063,6 +1063,7 @@ def _render_tab5():
         rec_rows.append({
             "Rec. Date/Time":  _to_est(raw_ts),
             "_sort_ts":        raw_ts or "",
+            "_id":             tr.id,
             "Ticker":          tr.ticker,
             "Start Regime":    tr.regime_name,
             "Current Regime":  cur_regime,
@@ -1075,6 +1076,9 @@ def _render_tab5():
             "Status":          tr.status,
         })
     rec_df = pd.DataFrame(rec_rows).drop(columns=["_sort_ts"]).reset_index(drop=True)
+    # Keep a parallel id list so we can resolve selection index → trade id
+    _rec_ids = rec_df["_id"].tolist()
+    rec_df = rec_df.drop(columns=["_id"])
 
     def _changed_style(val):
         if val == "YES":
@@ -1088,25 +1092,29 @@ def _render_tab5():
         key="rec_table_sel",
     )
 
-    # Resolve selected ticker from rec table click
+    # Resolve selected trade id from rec table click
     _sel_rows = rec_event.selection.rows if rec_event.selection else []
     if _sel_rows:
-        st.session_state["tab5_sel_ticker"] = rec_df.iloc[_sel_rows[0]]["Ticker"]
-    _sel_ticker = st.session_state.get("tab5_sel_ticker")
+        st.session_state["tab5_sel_id"] = _rec_ids[_sel_rows[0]]
+    _sel_id = st.session_state.get("tab5_sel_id")
+
+    # Look up the selected trade object for the caption label
+    _sel_trade = next((t for t in tracked if t.id == _sel_id), None) if _sel_id else None
 
     # Clear button (only when something is selected)
-    if _sel_ticker:
+    if _sel_id:
         if st.button("Clear selection", key="tab5_clear_sel"):
-            st.session_state.pop("tab5_sel_ticker", None)
+            st.session_state.pop("tab5_sel_id", None)
             st.rerun()
-        st.caption(f"Selected: **{_sel_ticker}** — Live P&L row highlighted below, trade detail auto-expanded.")
+        _sel_label = f"{_sel_trade.ticker} | {_sel_trade.strategy} | exp {_sel_trade.expiry}" if _sel_trade else _sel_id
+        st.caption(f"Selected: **{_sel_label}** — Live P&L row highlighted below, trade detail auto-expanded.")
 
     st.divider()
 
     # Scroll anchor — JS scrolls parent page to this element when a trade is selected
     import streamlit.components.v1 as _components
     st.markdown('<div id="tab5-pnl-anchor"></div>', unsafe_allow_html=True)
-    if _sel_ticker:
+    if _sel_id:
         _components.html(
             '<script>window.parent.document.getElementById("tab5-pnl-anchor")'
             '.scrollIntoView({behavior:"smooth",block:"start"});</script>',
@@ -1121,6 +1129,7 @@ def _render_tab5():
         cur_regime = _current_regime_name(tr.ticker)
         changed = _regime_changed(tr)
         summary_rows.append({
+            "_id": tr.id,
             "Ticker": tr.ticker, "Strategy": tr.strategy,
             "Start Regime": tr.regime_name, "Current Regime": cur_regime,
             "Action": "CLOSE" if changed and tr.status == "open" else "",
@@ -1131,6 +1140,7 @@ def _render_tab5():
             "Max loss $": tr.max_loss, "Status": tr.status,
         })
     df_tt = pd.DataFrame(summary_rows)
+    _pnl_display_cols = [c for c in df_tt.columns if c != "_id"]
 
     def _pnl_style(val):
         if isinstance(val, (int, float)):
@@ -1144,7 +1154,7 @@ def _render_tab5():
         return ""
 
     def _highlight_selected_row(row):
-        if _sel_ticker and row["Ticker"] == _sel_ticker:
+        if _sel_id and row["_id"] == _sel_id:
             return ["background-color: #f0c040; color: #111"] * len(row)
         return [""] * len(row)
 
@@ -1154,7 +1164,7 @@ def _render_tab5():
         .map(_action_style, subset=["Action"])
         .apply(_highlight_selected_row, axis=1)
     )
-    st.dataframe(styled_tt, width='stretch')
+    st.dataframe(styled_tt.data[_pnl_display_cols], width='stretch')
     st.divider()
 
     st.subheader("Trade detail")
@@ -1174,8 +1184,8 @@ def _render_tab5():
         label  = (f"{_alert_prefix}{tr.ticker}  |  {tr.strategy}  |  exp {tr.expiry}  "
                   f"|  P&L ${pnl_d:+.2f}  ({pct:+.1%})  |  {tr.status}"
                   f"  |  Open {_opened_date}")
-        _is_selected = _sel_ticker == tr.ticker
-        _should_expand = _is_selected or (not _sel_ticker and (changed or bool(_alert)))
+        _is_selected = _sel_id == tr.id
+        _should_expand = _is_selected or (not _sel_id and (changed or bool(_alert)))
         with st.expander(label, expanded=_should_expand):
             if changed and tr.status == "open":
                 st.error(f"**Regime changed: {tr.regime_name} -> {cur_regime}** — "
