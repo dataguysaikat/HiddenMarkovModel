@@ -63,7 +63,9 @@ def _refresh_regime(cached: TickerResult, fresh_df) -> TickerResult:
     adaptive_vol = float(feats["vol_20"].quantile(0.60))
     chars = characterize_regimes(cached.model, cached.scaler, df_reg, n,
                                  vol_threshold=adaptive_vol)
-    last_post = np.array([float(post[-1, i]) for i in range(n)])
+    # Average last 3 bars to smooth the forward-backward end-of-sequence spike
+    last_post = post[-3:].mean(axis=0).astype(float)
+    last_post /= last_post.sum()
     fc = regime_forecast(cached.model, last_post, horizon_bars=24)
     return TickerResult(
         ticker=cached.ticker,

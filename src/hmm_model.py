@@ -280,7 +280,12 @@ def run_all_tickers(
                 vol_threshold=adaptive_vol_thresh,
             )
 
-            last_post = np.array([df_reg[f"p_regime_{i}"].iloc[-1] for i in range(n_states)], dtype=float)
+            # Average last 3 bars to smooth the forward-backward end-of-sequence
+            # spike; the final bar has no future observations to sharpen it,
+            # so its posterior is often artificially peaked toward 1.0.
+            _post_cols = [f"p_regime_{i}" for i in range(n_states)]
+            last_post = df_reg[_post_cols].iloc[-3:].mean().values.astype(float)
+            last_post /= last_post.sum()          # re-normalise (guard against fp drift)
             fc = regime_forecast(model, last_post, horizon_bars=24)
 
             current_regime = int(df_reg["regime"].iloc[-1])
