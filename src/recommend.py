@@ -161,7 +161,31 @@ def _row_line(action: str, exp: str, strike: float, right: str,
 # Main
 # ---------------------------------------------------------------------------
 
+def _is_market_hours() -> bool:
+    """True if current NY time is Mon-Fri 09:30-16:00."""
+    import pytz
+    from datetime import time
+    ny = pytz.timezone("America/New_York")
+    now = dt.datetime.now(ny)
+    if now.weekday() >= 5:
+        return False
+    t = now.time()
+    return time(9, 30) <= t < time(16, 0)
+
+
 def main():
+    now_et = dt.datetime.now(dt.timezone.utc).astimezone(
+        __import__("pytz").timezone("America/New_York")
+    )
+    if not _is_market_hours():
+        print(f"[recommend] Market closed ({now_et.strftime('%H:%M ET')}). "
+              f"Waiting for market open (Mon–Fri 09:30 ET)...")
+        # Wait until market opens, checking every minute
+        import time as _time
+        while not _is_market_hours():
+            _time.sleep(60)
+        print(f"[recommend] Market open — starting recommendations.")
+
     print("Loading market data...")
     bars  = load_all_tickers()
     today = date.today()

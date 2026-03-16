@@ -599,6 +599,12 @@ if btn_fit and HMM_AVAILABLE:
 if btn_execute:
     if not st.session_state["proposed_orders"]:
         status_bar.warning("No proposed orders.  Fit HMM first.")
+    elif not _is_market_hours():
+        from datetime import datetime
+        import pytz
+        _ny = pytz.timezone("America/New_York")
+        _now_et = datetime.now(_ny).strftime("%H:%M ET")
+        status_bar.error(f"Market is closed ({_now_et}).  Trades can only be executed Mon–Fri 09:30–16:00 ET.")
     else:
         msgs = []
         for item in st.session_state["proposed_orders"]:
@@ -681,6 +687,115 @@ def _render_tab1():
             df_r = res.df_reg.tail(500)
             st.plotly_chart(_plot_price_regimes(df_p, df_r, t, res.n_states), width='stretch', key=f"tab1_regimes_{t}")
             st.plotly_chart(_plot_posteriors(df_r, res.n_states, t), width='stretch', key=f"tab1_post_{t}")
+
+    # -----------------------------------------------------------------------
+    # Documentation
+    # -----------------------------------------------------------------------
+    st.divider()
+    st.subheader("Reference Guide")
+
+    with st.expander("Regime Types — what each regime means", expanded=True):
+        col_a, col_b = st.columns(2)
+        with col_a:
+            st.markdown("""
+**Directional Bull** `directional_bull`
+- Price is trending upward with consistent positive hourly returns
+- Volatility is moderate; the HMM has assigned the highest mean log-return state
+- *Thesis*: momentum continuation — ride the trend with defined risk
+
+**Directional Bear** `directional_bear`
+- Price is trending downward with consistent negative hourly returns
+- Mirror image of bull regime; lowest mean log-return state
+- *Thesis*: downside momentum continuation with defined risk
+""")
+        with col_b:
+            st.markdown("""
+**Volatility Expansion** `vol_expansion`
+- Large, erratic hourly moves in either direction; realized vol is elevated
+- Often coincides with earnings, macro events, or a breakdown of trend
+- *Thesis*: a big move is coming but direction is uncertain — profit from the move itself
+
+**Mean Reverting** `mean_reverting`
+- Choppy, oscillating price action with small directional returns
+- Realized vol is low; the market is rangebound and lacks conviction
+- *Thesis*: price will stay within a range — sell premium and collect time decay
+""")
+
+    with st.expander("Option Strategies — what gets traded in each regime", expanded=True):
+        st.markdown("""
+| Regime | Strategy | Structure | Max Profit | Max Loss | Ideal Exit |
+|---|---|---|---|---|---|
+| **Directional Bull** | Bull Call Vertical | Buy lower-strike call, sell higher-strike call (same expiry) | Spread width − debit paid | Debit paid | At or near short strike at expiry |
+| **Directional Bear** | Bear Put Vertical | Buy higher-strike put, sell lower-strike put (same expiry) | Spread width − debit paid | Debit paid | At or below short strike at expiry |
+| **Vol Expansion** | Long Strangle | Buy OTM call + buy OTM put (same expiry) | Unlimited | Total premium paid | After large move, before IV collapses |
+| **Mean Reverting** | Iron Condor | Sell OTM put spread + sell OTM call spread | Net credit received | Spread width − credit | All four legs expire worthless |
+
+**Key parameters (set in `config.json → option_strategy`)**
+- `target_dte`: target days-to-expiry at entry (default 21)
+- `delta_vert`: approx delta of the long leg for vertical spreads (default 0.40 ≈ slightly OTM)
+- `delta_wing`: approx delta of the short leg for condor wings (default 0.16 ≈ 1 SD OTM)
+- `otm_pct`: OTM % offset for strangle legs (default 3%)
+""")
+
+    with st.expander("Confidence — how to interpret it", expanded=True):
+        col_c, col_d = st.columns(2)
+        with col_c:
+            st.markdown("""
+**What it measures**
+
+Confidence is the HMM posterior probability for the current regime at the latest bar —
+i.e. how certain the model is that the ticker is *actually* in the displayed state versus
+one of the other states.
+
+A value of 95% means the Viterbi decoder assigns 95% of probability mass to the
+current regime at this bar. A value of 55% means the model is uncertain between two regimes.
+
+**Thresholds used internally**
+| Confidence | Interpretation |
+|---|---|
+| ≥ 80% | Strong signal — full-size trade |
+| 60–79% | Moderate signal — reduced size or wait for confirmation |
+| < 60% | Weak signal — skip or paper-trade only |
+
+The `min_confidence` field in `config.json → learned_policy` sets the hard cutoff below
+which `recommend.py` will not generate a trade.
+""")
+        with col_d:
+            st.markdown("""
+**P(change 24h)**
+
+The probability that the current regime will *change* within the next 24 trading hours,
+derived from the HMM transition matrix raised to the power of the forecast horizon.
+
+| P(change 24h) | Interpretation |
+|---|---|
+| < 15% | Regime is stable — good time to enter |
+| 15–35% | Moderate instability — consider shorter DTE or smaller size |
+| > 35% | Regime likely to flip — wait or skip |
+
+**Practical rule of thumb**
+
+Enter when **Confidence ≥ 75%** and **P(change 24h) < 25%**.
+Both metrics together give a cleaner signal than either alone.
+""")
+
+    with st.expander("Reading the charts", expanded=False):
+        st.markdown("""
+**Price + Regime Shading chart**
+- Coloured vertical bands show which regime the HMM assigned to each hourly bar
+- Each regime gets a distinct colour; the legend label (R0, R1 …) maps to the summary table
+- Band width reflects how long the ticker stayed in that regime continuously
+
+**Posterior Probability chart**
+- Stacked area of the HMM's belief distribution across all regimes at each bar
+- When one colour dominates the full height, confidence is high
+- When multiple colours share height equally, the model is uncertain (low confidence)
+- Regime transitions appear as rapid colour shifts; gradual shifts indicate a slow rotation
+
+**Regime label convention**
+- States are sorted by mean log-return: R0 = most bearish, R(n-1) = most bullish
+- This ordering is deterministic across re-fits, so R0 always means "worst return state"
+""")
 
 
 @st.fragment
@@ -883,6 +998,23 @@ def _render_tab5():
         cur_type = _current_regime_type(tr.ticker)
         return cur_type != "" and cur_type != tr.regime_type
 
+    from datetime import datetime, timezone
+    import zoneinfo
+    _est_tz = zoneinfo.ZoneInfo("America/New_York")
+
+    def _to_est(ts: str) -> str:
+        """Convert a UTC ISO timestamp string to EST display string."""
+        if not ts:
+            return ts
+        try:
+            s = ts.replace(" UTC", "").strip()
+            dt = datetime.fromisoformat(s)
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return dt.astimezone(_est_tz).strftime("%Y-%m-%d %H:%M EST")
+        except Exception:
+            return ts
+
     st.markdown("#### Recommendations")
     rec_rows = []
     for tr in tracked:
@@ -890,7 +1022,7 @@ def _render_tab5():
         cur_regime = _current_regime_name(tr.ticker)
         changed = _regime_changed(tr)
         rec_rows.append({
-            "Rec. Date/Time":  tr.recommended_at if tr.recommended_at else tr.date_recommended,
+            "Rec. Date/Time":  _to_est(tr.recommended_at if tr.recommended_at else tr.date_recommended),
             "Ticker":          tr.ticker,
             "Regime at Open":  tr.regime_name,
             "Current Regime":  cur_regime,
@@ -952,10 +1084,11 @@ def _render_tab5():
         net_mid, pnl_d = latest_pnl(tr)
         pct    = pnl_pct(tr)
         dte    = dte_remaining(tr)
-        _opened = tr.recommended_at if tr.recommended_at else tr.date_recommended
+        _opened_raw = tr.recommended_at if tr.recommended_at else tr.date_recommended
+        _opened = _to_est(_opened_raw)
         # Date-only for header to avoid truncation; full datetime inside card
         _opened_date = _opened[:10] if _opened else ""
-        _opened_full = _opened[:16] if _opened else ""
+        _opened_full = _opened if _opened else ""
         _alert = getattr(tr, "regime_alert", "")
         cur_regime = _current_regime_name(tr.ticker)
         changed = _regime_changed(tr)
