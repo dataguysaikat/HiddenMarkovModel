@@ -390,9 +390,10 @@ if not st.session_state["results"]:
         _config_tickers  = set(_load_config().get("tickers", []))
         _missing = _config_tickers - _cached_tickers
         if _missing:
-            st.info(
-                f"Cache is stale (missing: {', '.join(sorted(_missing))}).  "
-                "Click **Fetch yfinance** then **Fit HMM** to refresh."
+            st.toast(
+                f"Cache is stale — {len(_missing)} new tickers not yet fitted. "
+                "Click Fetch yfinance then Fit HMM.",
+                icon="ℹ️",
             )
         else:
             st.session_state["results"] = cache["results"]
