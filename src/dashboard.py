@@ -458,7 +458,7 @@ with st.sidebar:
     st.header("Model")
     n_states = st.slider("Regime states", 2, 6, 4)
     horizon_hours = st.slider("Forecast horizon (hours)", 1, 240, 24)
-    rth_only = st.checkbox("RTH bars only (already applied)", value=True, disabled=True)
+    st.caption("RTH bars only (09:30–16:00 ET) — always applied.")
 
     if HMM_AVAILABLE:
         btn_fit = st.button("Fit HMM — all tickers", width='stretch', type="primary")
