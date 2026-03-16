@@ -6,7 +6,20 @@
     "AMZN",
     "GOOGL",
     "META",
-    "TSLA"
+    "TSLA",
+    "AVGO",
+    "LLY",
+    "COST",
+    "QQQ",
+    "SPY",
+    "IWM",
+    "AMD",
+    "NFLX",
+    "JPM",
+    "GLD",
+    "TLT",
+    "XLF",
+    "XLE"
   ],
 
   "option_strategy": {

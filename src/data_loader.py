@@ -55,7 +55,15 @@ def load_local_bars(ticker: str) -> pd.DataFrame | None:
     p = _parquet_path(ticker)
     if not p.exists():
         return None
-    df = pd.read_parquet(p)
+    try:
+        df = pd.read_parquet(p)
+    except Exception as exc:
+        print(f"WARNING: {p} is corrupted ({exc}) — treating as missing, will re-fetch.")
+        try:
+            p.unlink()
+        except OSError:
+            pass
+        return None
     if "timestamp" in df.columns:
         df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True)
         df = df.set_index("timestamp")
@@ -64,13 +72,25 @@ def load_local_bars(ticker: str) -> pd.DataFrame | None:
 
 
 def save_local_bars(ticker: str, df: pd.DataFrame) -> None:
+    import os, tempfile
+    dest = _parquet_path(ticker)
     df = df.copy()
     df.index = pd.to_datetime(df.index, utc=True)
     df = df[["open", "high", "low", "close", "volume"]]
     df = df.sort_index()
     df = df[~df.index.duplicated(keep="last")]
     out = df.reset_index(names="timestamp")
-    out.to_parquet(_parquet_path(ticker), index=False)
+    fd, tmp = tempfile.mkstemp(dir=dest.parent, suffix=".tmp")
+    try:
+        with os.fdopen(fd, "wb") as f:
+            out.to_parquet(f, index=False)
+        os.replace(tmp, dest)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
 
 
 # ---------------------------------------------------------------------------
