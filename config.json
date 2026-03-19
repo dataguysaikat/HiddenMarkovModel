@@ -19,7 +19,9 @@
     "GLD",
     "TLT",
     "XLF",
-    "XLE"
+    "XLE",
+    "QCOM",
+    "PLTR"
   ],
 
   "option_strategy": {

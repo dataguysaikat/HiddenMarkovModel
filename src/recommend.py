@@ -365,8 +365,8 @@ def main():
 
     print()
     print("=" * 92)
-    print("Quotes from ThetaData terminal (real-time). "
-          "Deltas/IV computed via Black-Scholes on mid price.")
+    print("Quotes & greeks from ThetaData terminal (real-time). "
+          "BS fallback if greeks endpoint unavailable.")
     print("Use limit orders at mid or better.")
     print(f"Active filters: min_conf={_MIN_CONFIDENCE:.0%}  max_p_change={_MAX_P_CHANGE:.0%}  "
           f"skip={sorted(_SKIP_REGIMES) or 'none'}  caution={sorted(_CAUTION_REGIMES) or 'none'}")

@@ -401,9 +401,9 @@ if not st.session_state["results"]:
             st.session_state["cache_mtime_seen"] = cache_mtime()
 
 # ---------------------------------------------------------------------------
-# Auto-refresh fragment — checks for new cache every 30 minutes (matches scheduler)
+# Auto-refresh fragment — checks for new cache every 5 minutes
 # ---------------------------------------------------------------------------
-@st.fragment(run_every="30m")
+@st.fragment(run_every="5m")
 def _auto_refresh_check():
     mtime = cache_mtime()
     if mtime > st.session_state.get("cache_mtime_seen", 0.0):

@@ -1,13 +1,15 @@
 """
-thetadata.py — ThetaData Terminal v3 REST client (Value subscription).
+thetadata.py — ThetaData Terminal REST client.
 
-Available on Value plan:
-  - /v3/option/list/expirations   — all expirations for a symbol
-  - /v3/option/list/strikes       — all strikes for symbol+expiry
-  - /v3/option/snapshot/quote     — real-time bid/ask (strike_range filter)
+Endpoints used:
+  v3 (port 25503):
+    - /v3/option/list/expirations   — all expirations for a symbol
+    - /v3/option/snapshot/quote     — real-time bid/ask (strike_range filter)
+  v2 (port 25510):
+    - /v2/bulk_snapshot/option/greeks — bid/ask + delta, IV, theta, vega, rho
 
-Greeks (delta, IV) are computed locally via Black-Scholes since the
-greeks endpoints require Standard/Professional plan.
+Greeks are fetched directly from ThetaData (dividend-adjusted model).
+Black-Scholes fallback is used only when the greeks endpoint is unavailable.
 """
 from __future__ import annotations
 
@@ -20,7 +22,8 @@ import requests
 from scipy.optimize import brentq
 from scipy.stats import norm
 
-BASE_URL = "http://127.0.0.1:25503/v3"
+V3_BASE = "http://127.0.0.1:25503/v3"
+V2_BASE = "http://127.0.0.1:25510/v2"
 TIMEOUT  = 30          # seconds per request
 RISK_FREE = 0.053      # ~current SOFR / fed funds rate
 
@@ -29,10 +32,10 @@ RISK_FREE = 0.053      # ~current SOFR / fed funds rate
 # HTTP helpers
 # ---------------------------------------------------------------------------
 
-def _get(path: str, params: dict) -> dict | list | None:
+def _get(path: str, params: dict, base: str = V3_BASE) -> dict | list | None:
     params.setdefault("format", "json")
     try:
-        r = requests.get(f"{BASE_URL}{path}", params=params, timeout=TIMEOUT)
+        r = requests.get(f"{base}{path}", params=params, timeout=TIMEOUT)
         if r.status_code != 200:
             return None
         data = r.json()
@@ -82,7 +85,7 @@ def find_expiry(symbol: str, target_dte: int = 21,
 
 
 # ---------------------------------------------------------------------------
-# Live quotes
+# Live quotes (v3)
 # ---------------------------------------------------------------------------
 
 def get_quotes(symbol: str, expiration: str,
@@ -127,7 +130,57 @@ def get_quotes(symbol: str, expiration: str,
 
 
 # ---------------------------------------------------------------------------
-# Black-Scholes helpers
+# Bulk greeks (v2) — returns quotes + greeks in one call
+# ---------------------------------------------------------------------------
+
+def _fetch_bulk_greeks(symbol: str, expiration: str) -> pd.DataFrame | None:
+    """
+    Fetch greeks from /v2/bulk_snapshot/option/greeks.
+
+    Returns DataFrame with columns:
+        strike, right, bid, ask, mid, delta, iv, theta, vega, rho
+    or None if the endpoint is unavailable.
+    """
+    # v2 expects expiration as YYYYMMDD integer
+    exp_v2 = expiration.replace("-", "")
+    data = _get("/bulk_snapshot/option/greeks",
+                {"root": symbol, "exp": int(exp_v2)},
+                base=V2_BASE)
+    if not data:
+        return None
+
+    rows = []
+    for item in data:
+        contract = item.get("contract", {})
+        ticks = item.get("data", item.get("ticks", [{}]))
+        t = ticks[0] if ticks else {}
+
+        bid = float(t.get("bid", 0))
+        ask = float(t.get("ask", 0))
+        iv  = float(t.get("implied_vol", 0))
+
+        rows.append({
+            "strike": float(contract.get("strike", 0)),
+            "right":  contract.get("right", "").upper(),
+            "bid":    bid,
+            "ask":    ask,
+            "mid":    (bid + ask) / 2,
+            "delta":  float(t.get("delta", np.nan)),
+            "iv":     iv if iv > 0 else np.nan,
+            "theta":  float(t.get("theta", np.nan)),
+            "vega":   float(t.get("vega", np.nan)),
+            "rho":    float(t.get("rho", np.nan)),
+        })
+
+    if not rows:
+        return None
+
+    df = pd.DataFrame(rows)
+    return df[df["bid"] > 0].sort_values("strike").reset_index(drop=True)
+
+
+# ---------------------------------------------------------------------------
+# Black-Scholes helpers (fallback when greeks endpoint unavailable)
 # ---------------------------------------------------------------------------
 
 def _bs_price(S: float, K: float, T: float, r: float,
@@ -169,6 +222,22 @@ def _implied_vol(S: float, K: float, T: float, r: float,
         return np.nan
 
 
+def _enrich_with_bs(df: pd.DataFrame, underlying_price: float,
+                    expiration: str, risk_free: float) -> pd.DataFrame:
+    """Add iv and delta columns using Black-Scholes (fallback path)."""
+    T = (date.fromisoformat(expiration) - date.today()).days / 365.0
+    S = underlying_price
+    ivs, deltas = [], []
+    for _, row in df.iterrows():
+        iv = _implied_vol(S, row["strike"], T, risk_free, row["mid"], row["right"])
+        delta = _bs_delta(S, row["strike"], T, risk_free, iv, row["right"]) if not np.isnan(iv) else np.nan
+        ivs.append(iv)
+        deltas.append(delta)
+    df["iv"]    = ivs
+    df["delta"] = deltas
+    return df
+
+
 # ---------------------------------------------------------------------------
 # Enriched chain
 # ---------------------------------------------------------------------------
@@ -178,30 +247,48 @@ def get_chain(symbol: str, expiration: str,
               strike_range: int = 20,
               risk_free: float = RISK_FREE) -> pd.DataFrame:
     """
-    Fetch quotes from ThetaData and enrich with BS implied vol and delta.
+    Fetch option chain with greeks from ThetaData.
+
+    Primary: bulk_snapshot greeks endpoint (v2) — returns quotes + greeks.
+    Fallback: snapshot quotes (v3) + local Black-Scholes IV/delta.
 
     Returns DataFrame with columns:
-        strike, right, bid, ask, mid, bid_size, ask_size,
-        iv, delta, timestamp
+        strike, right, bid, ask, mid, iv, delta[, theta, vega, rho]
     """
-    today = date.today()
-    T = (date.fromisoformat(expiration) - today).days / 365.0
+    # --- Try bulk greeks first (single call for quotes + greeks) ---
+    greeks_df = _fetch_bulk_greeks(symbol, expiration)
+    if greeks_df is not None and not greeks_df.empty:
+        # Filter to strikes near ATM (bulk returns ALL strikes)
+        atm = underlying_price
+        strikes = greeks_df["strike"].unique()
+        strikes_sorted = np.sort(strikes)
+        atm_idx = np.searchsorted(strikes_sorted, atm)
+        lo = max(0, atm_idx - strike_range)
+        hi = min(len(strikes_sorted), atm_idx + strike_range + 1)
+        keep = set(strikes_sorted[lo:hi])
+        df = greeks_df[greeks_df["strike"].isin(keep)].reset_index(drop=True)
 
+        # Fill any missing greeks with BS fallback (illiquid strikes)
+        missing = df["delta"].isna() | df["iv"].isna()
+        if missing.any():
+            T = (date.fromisoformat(expiration) - date.today()).days / 365.0
+            S = underlying_price
+            for idx in df.index[missing]:
+                row = df.loc[idx]
+                if np.isnan(row["iv"]):
+                    df.at[idx, "iv"] = _implied_vol(S, row["strike"], T, risk_free,
+                                                     row["mid"], row["right"])
+                iv_val = df.at[idx, "iv"]
+                if np.isnan(row["delta"]) and not np.isnan(iv_val):
+                    df.at[idx, "delta"] = _bs_delta(S, row["strike"], T, risk_free,
+                                                     iv_val, row["right"])
+        return df
+
+    # --- Fallback: v3 quotes + Black-Scholes ---
     df = get_quotes(symbol, expiration, strike_range=strike_range)
     if df.empty:
         return df
-
-    S = underlying_price
-    ivs, deltas = [], []
-    for _, row in df.iterrows():
-        iv = _implied_vol(S, row["strike"], T, risk_free, row["mid"], row["right"])
-        delta = _bs_delta(S, row["strike"], T, risk_free, iv, row["right"]) if not np.isnan(iv) else np.nan
-        ivs.append(iv)
-        deltas.append(delta)
-
-    df["iv"]    = ivs
-    df["delta"] = deltas
-    return df
+    return _enrich_with_bs(df, underlying_price, expiration, risk_free)
 
 
 def get_calls(df: pd.DataFrame) -> pd.DataFrame:
