@@ -49,13 +49,14 @@ from src.broker import (
     load_paper_trades,
     SCHWAB_AVAILABLE,
 )
-from src.scheduler import get_scheduler, load_cache, cache_mtime
+from src.scheduler import get_scheduler, load_cache, cache_mtime, _is_market_hours
 
 # ---------------------------------------------------------------------------
 # Config helpers
 # ---------------------------------------------------------------------------
 _CONFIG_PATH = Path(__file__).parent.parent / "config.json"
 
+@st.cache_data(ttl=60)
 def _load_config() -> dict:
     if _CONFIG_PATH.exists():
         try:
@@ -66,6 +67,7 @@ def _load_config() -> dict:
 
 def _save_config(cfg: dict) -> None:
     _CONFIG_PATH.write_text(json.dumps(cfg, indent=2), encoding="utf-8")
+    _load_config.clear()  # bust cache after save
 from src.trade_tracker import (
     load_trades,
     update_all_open_trades,
@@ -82,6 +84,10 @@ from src.trade_tracker import (
 @st.cache_data(ttl=60)
 def _cached_load_trades():
     return load_trades()
+
+@st.cache_data(ttl=60)
+def _cached_load_paper_trades():
+    return load_paper_trades()
 
 @st.cache_data(ttl=60)
 def _cached_load_cache():
@@ -386,19 +392,18 @@ get_scheduler(n_states=4, trade_mode="paper")
 if not st.session_state["results"]:
     cache = load_cache()
     if cache:
+        st.session_state["results"] = cache["results"]
+        st.session_state["proposed_orders"] = cache.get("proposed", [])
+        st.session_state["cache_mtime_seen"] = cache_mtime()
         _cached_tickers = set(cache["results"].keys())
         _config_tickers  = set(_load_config().get("tickers", []))
         _missing = _config_tickers - _cached_tickers
         if _missing:
             st.toast(
-                f"Cache is stale — {len(_missing)} new tickers not yet fitted. "
-                "Click Fetch yfinance then Fit HMM.",
+                f"{len(_missing)} new tickers not yet fitted ({', '.join(sorted(_missing))}). "
+                "Click Fetch yfinance then Fit HMM to add them.",
                 icon="ℹ️",
             )
-        else:
-            st.session_state["results"] = cache["results"]
-            st.session_state["proposed_orders"] = cache.get("proposed", [])
-            st.session_state["cache_mtime_seen"] = cache_mtime()
 
 # ---------------------------------------------------------------------------
 # Auto-refresh fragment — checks for new cache every 5 minutes
@@ -450,7 +455,6 @@ with st.sidebar:
     st.divider()
     st.header("Data")
     # Scheduler status
-    from src.scheduler import _is_market_hours
     cache = _cached_load_cache()
     if cache:
         updated_at = cache.get("updated_at")
@@ -733,13 +737,16 @@ def _render_tab1():
     st.dataframe(styled.data[display_cols], width='stretch')
     st.divider()
 
-    for t, res in results.items():
-        with st.expander(f"{t} — detail", expanded=False):
-            if res.error:
-                st.error(res.error); continue
-            rc = res.characteristics.get(res.current_regime)
-            if rc is None:
-                st.warning("No regime characteristics."); continue
+    # Single-ticker detail (selectbox instead of 20+ expanders each generating 2 charts)
+    detail_ticker = st.selectbox("Ticker detail", list(results.keys()), key="tab1_detail_ticker")
+    res = results[detail_ticker]
+    if res.error:
+        st.error(res.error)
+    else:
+        rc = res.characteristics.get(res.current_regime)
+        if rc is None:
+            st.warning("No regime characteristics.")
+        else:
             fc = res.forecast
             m1, m2, m3, m4 = st.columns(4)
             m1.metric("Regime", rc.name)
@@ -748,8 +755,8 @@ def _render_tab1():
             m4.metric(_h_label, f"{fc.get('prob_change_by_horizon', 0):.1%}")
             df_p = res.df_prices.tail(500)
             df_r = res.df_reg.tail(500)
-            st.plotly_chart(_plot_price_regimes(df_p, df_r, t, res.n_states), width='stretch', key=f"tab1_regimes_{t}")
-            st.plotly_chart(_plot_posteriors(df_r, res.n_states, t), width='stretch', key=f"tab1_post_{t}")
+            st.plotly_chart(_plot_price_regimes(df_p, df_r, detail_ticker, res.n_states), width='stretch', key=f"tab1_regimes_{detail_ticker}")
+            st.plotly_chart(_plot_posteriors(df_r, res.n_states, detail_ticker), width='stretch', key=f"tab1_post_{detail_ticker}")
 
     # -----------------------------------------------------------------------
     # Documentation
@@ -950,7 +957,7 @@ def _render_tab3():
         st.caption("Click **Execute trades** in the sidebar to paper/live execute all proposals.")
     st.divider()
     st.subheader("Trade log")
-    trades = load_paper_trades()
+    trades = _cached_load_paper_trades()
     if not trades:
         st.info("No trades recorded yet.")
     else:
@@ -1043,38 +1050,39 @@ def _render_tab5():
                 "recommendations — they will be saved automatically.")
         return
 
-    # Sort all tracked trades latest-first — applied uniformly to all three sections
-    tracked = sorted(
-        tracked,
-        key=lambda t: (t.recommended_at or t.date_recommended or ""),
-        reverse=True,
-    )
-
-    # Current regime lookup from HMM results
-    results = st.session_state.get("results", {})
-
-    def _current_regime_name(ticker: str) -> str:
-        res = results.get(ticker)
-        if res is None or res.error:
-            return "—"
-        rc = res.characteristics.get(res.current_regime)
-        return rc.name if rc else "—"
-
-    def _current_regime_type(ticker: str) -> str:
-        res = results.get(ticker)
-        if res is None or res.error:
-            return ""
-        rc = res.characteristics.get(res.current_regime)
-        return rc.regime_type if rc else ""
-
-    def _regime_changed(tr) -> bool:
-        """Compare by regime type (bull/bear/vol/mean_rev), not state number."""
-        cur_type = _current_regime_type(tr.ticker)
-        return cur_type != "" and cur_type != tr.regime_type
-
     from datetime import datetime, timezone
     import zoneinfo
     _est_tz = zoneinfo.ZoneInfo("America/New_York")
+
+    # Sort all tracked trades latest-first by full datetime
+    def _sort_key(t):
+        raw = t.recommended_at or t.date_recommended or ""
+        try:
+            s = raw.replace(" UTC", "").strip()
+            return datetime.fromisoformat(s)
+        except Exception:
+            return datetime.min
+    tracked = sorted(tracked, key=_sort_key, reverse=True)
+
+    # Pre-compute regime lookups once (used by recs, P&L, and detail sections)
+    results = st.session_state.get("results", {})
+    _regime_cache: dict[str, tuple[str, str]] = {}  # ticker -> (name, type)
+    for _tk, _res in results.items():
+        if _res is None or _res.error:
+            _regime_cache[_tk] = ("—", "")
+        else:
+            _rc = _res.characteristics.get(_res.current_regime)
+            _regime_cache[_tk] = (_rc.name if _rc else "—", _rc.regime_type if _rc else "")
+
+    def _current_regime_name(ticker: str) -> str:
+        return _regime_cache.get(ticker, ("—", ""))[0]
+
+    def _current_regime_type(ticker: str) -> str:
+        return _regime_cache.get(ticker, ("—", ""))[1]
+
+    def _regime_changed(tr) -> bool:
+        cur_type = _current_regime_type(tr.ticker)
+        return cur_type != "" and cur_type != tr.regime_type
 
     def _to_est(ts: str) -> str:
         """Convert a UTC ISO timestamp string to EST display string."""
@@ -1085,7 +1093,8 @@ def _render_tab5():
             dt = datetime.fromisoformat(s)
             if dt.tzinfo is None:
                 dt = dt.replace(tzinfo=timezone.utc)
-            return dt.astimezone(_est_tz).strftime("%Y-%m-%d %H:%M EST")
+            dt_et = dt.astimezone(_est_tz)
+            return dt_et.strftime("%Y-%m-%d %H:%M ") + ("EDT" if dt_et.dst() else "EST")
         except Exception:
             return ts
 
