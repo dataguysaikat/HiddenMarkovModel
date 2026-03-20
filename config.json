@@ -37,7 +37,7 @@
   "learned_policy": {
     "min_confidence": 0.75,
     "max_p_change": 0.30,
-    "skip_regimes": [],
+    "skip_regimes": ["vol_expansion"],
     "caution_regimes": []
   }
 }

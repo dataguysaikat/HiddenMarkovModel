@@ -58,7 +58,7 @@ def _refresh_job(n_states: int = 4, trade_mode: str = "paper") -> None:
     from src.hmm_model import run_all_tickers
     from src.options import select_and_build_order
     from src.broker import execute_order
-    from src.trade_tracker import load_trades, check_regime_alerts, _save_all
+    from src.trade_tracker import load_trades, check_regime_alerts, update_trade_prices, _save_all
 
     print(f"[scheduler] refresh started at {datetime.now(NY_TZ).strftime('%H:%M ET')}")
 
@@ -83,10 +83,30 @@ def _refresh_job(n_states: int = 4, trade_mode: str = "paper") -> None:
         }
         trades = load_trades()
         trades = check_regime_alerts(trades, current_regime_types)
+
+        # Auto-close trades where regime has changed to incompatible type
+        closed_tickers = []
+        for tr in trades:
+            if tr.status == "open" and tr.regime_alert:
+                try:
+                    tr = update_trade_prices(tr)
+                except Exception:
+                    pass  # close with last known price
+                tr.status = "closed"
+                # Set underlying_at_close from latest daily snapshot
+                if tr.daily_prices:
+                    tr.underlying_at_close = tr.daily_prices[-1].get("underlying", tr.underlying_at_entry)
+                else:
+                    tr.underlying_at_close = tr.underlying_at_entry
+                new_regime = current_regime_types.get(tr.ticker, "unknown")
+                closed_tickers.append(f"{tr.ticker}({tr.strategy}->{new_regime})")
+
         _save_all(trades)
-        alerts = [t for t in trades if t.regime_alert]
+        if closed_tickers:
+            print(f"[scheduler] AUTO-CLOSED: {', '.join(closed_tickers)}")
+        alerts = [t for t in trades if t.regime_alert and t.status == "open"]
         if alerts:
-            print(f"[scheduler] REGIME ALERTS: {', '.join(t.ticker for t in alerts)}")
+            print(f"[scheduler] REGIME ALERTS (still open): {', '.join(t.ticker for t in alerts)}")
     except Exception as e:
         print(f"[scheduler] regime alert check error: {e}")
 

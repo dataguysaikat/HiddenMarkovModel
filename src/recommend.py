@@ -22,7 +22,7 @@ from src.hmm_model import (
     regime_forecast, TickerResult,
 )
 from src import thetadata as td
-from src.trade_tracker import build_trade, save_trade
+from src.trade_tracker import build_trade, save_trade, load_trades
 
 _CACHE_PATH = Path(__file__).parent.parent / "data" / "hmm_cache.pkl"
 _CACHE_MAX_AGE_HOURS = 168  # reuse cached HMM model for up to 7 days
@@ -193,6 +193,19 @@ def main():
     bars  = load_all_tickers()
     today = date.today()
 
+    # Load existing trades for dedup check
+    _existing = load_trades()
+    _open_keys = {
+        (t.ticker, t.expiry, t.strategy)
+        for t in _existing if t.status == "open"
+    }
+    _REGIME_TO_STRAT = {
+        "directional_bull": "bull_call_spread",
+        "directional_bear": "bear_put_spread",
+        "vol_expansion": "long_strangle",
+        "mean_reverting": "iron_condor",
+    }
+
     cached = _load_hmm_cache()
     if cached is not None:
         print("Using cached HMM models — re-predicting on fresh bars...")
@@ -253,6 +266,12 @@ def main():
         strat = rc.regime_type
         saved = False
 
+        # --- Dedup: skip if identical open trade exists ---
+        _strat_name = _REGIME_TO_STRAT.get(strat, strat)
+        if (ticker, exp, _strat_name) in _open_keys:
+            print(f"  [DEDUP] Skipping — open {_strat_name} already exists for {ticker} exp {exp}.")
+            continue
+
         # --- Apply learned policy (populated by src/retrain_policy.py) ---
         if strat in _SKIP_REGIMES:
             print(f"  [POLICY] Skipping {strat} — win rate too low from closed-trade history.")
@@ -269,6 +288,13 @@ def main():
 
         try:
             if strat == "directional_bull":
+                # Momentum filter: price must be above 10-bar SMA
+                _closes = res.df_prices["close"]
+                if len(_closes) >= 10:
+                    _sma10 = float(_closes.iloc[-10:].mean())
+                    if S < _sma10:
+                        print(f"  [FILTER] Skipping bull_call_spread — price ${S:.2f} below SMA10 ${_sma10:.2f}.")
+                        continue
                 lc = nearest_delta(calls, DELTA_VERT)
                 sc = next_strike_above(calls, lc["strike"]) if lc is not None else None
                 if lc is None or sc is None:
@@ -286,7 +312,7 @@ def main():
                     {"action": "SELL", "right": "CALL", "strike": sc["strike"], "entry_mid": sc["mid"], "entry_ask": sc["ask"], "entry_bid": sc["bid"]},
                 ]
                 trade = build_trade(ticker, exp, S, "bull_call_spread", strat, rc.name, "debit",  net, wid-net, net, legs, conf)
-                save_trade(trade); saved = True
+                save_trade(trade); saved = True; _open_keys.add((ticker, exp, _strat_name))
 
             elif strat == "directional_bear":
                 lp = nearest_delta(puts, -DELTA_VERT)
@@ -306,7 +332,7 @@ def main():
                     {"action": "SELL", "right": "PUT", "strike": sp["strike"], "entry_mid": sp["mid"], "entry_ask": sp["ask"], "entry_bid": sp["bid"]},
                 ]
                 trade = build_trade(ticker, exp, S, "bear_put_spread", strat, rc.name, "debit",  net, wid-net, net, legs, conf)
-                save_trade(trade); saved = True
+                save_trade(trade); saved = True; _open_keys.add((ticker, exp, _strat_name))
 
             elif strat == "vol_expansion":
                 cl = nearest_strike(calls, S * (1 + OTM_PCT))
@@ -325,7 +351,7 @@ def main():
                     {"action": "BUY", "right": "PUT",  "strike": pl["strike"], "entry_mid": pl["mid"], "entry_ask": pl["ask"], "entry_bid": pl["bid"]},
                 ]
                 trade = build_trade(ticker, exp, S, "long_strangle", strat, rc.name, "debit",  net, float("inf"), net, legs, conf)
-                save_trade(trade); saved = True
+                save_trade(trade); saved = True; _open_keys.add((ticker, exp, _strat_name))
 
             elif strat == "mean_reverting":
                 sc = nearest_delta(calls,  DELTA_WING)
@@ -353,7 +379,7 @@ def main():
                     {"action": "BUY",  "right": "PUT",  "strike": lp["strike"], "entry_mid": lp["mid"], "entry_ask": lp["ask"], "entry_bid": lp["bid"]},
                 ]
                 trade = build_trade(ticker, exp, S, "iron_condor", strat, rc.name, "credit", cr, cr, abs(ml), legs, conf)
-                save_trade(trade); saved = True
+                save_trade(trade); saved = True; _open_keys.add((ticker, exp, _strat_name))
 
         except Exception as exc:
             import traceback
