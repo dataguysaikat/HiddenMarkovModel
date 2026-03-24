@@ -1,0 +1,155 @@
+
+============================================================
+  DAILY SUPERVISOR REPORT
+  2026-03-23 16:30 EDT
+============================================================
+
+MODEL HEALTH
+------------------------------------------------------------
+  Last HMM fit: 2026-03-23 14:39 EDT
+  AAPL    OK  regime=mean_reverting       conf=98%  bars=7650
+  MSFT    OK  regime=mean_reverting       conf=86%  bars=7656
+  NVDA    OK  regime=directional_bull     conf=100%  bars=7662
+  AMZN    OK  regime=vol_expansion        conf=100%  bars=7854
+  GOOGL   OK  regime=mean_reverting       conf=100%  bars=8271
+  META    OK  regime=vol_expansion        conf=98%  bars=7687
+  TSLA    OK  regime=mean_reverting       conf=99%  bars=3474
+  AVGO    OK  regime=vol_expansion        conf=96%  bars=3475
+  LLY     OK  regime=directional_bull     conf=98%  bars=3474
+  COST    OK  regime=mean_reverting       conf=100%  bars=3474
+  QQQ     OK  regime=vol_expansion        conf=97%  bars=3475
+  SPY     OK  regime=vol_expansion        conf=100%  bars=3474
+  IWM     OK  regime=vol_expansion        conf=100%  bars=3474
+  AMD     OK  regime=mean_reverting       conf=99%  bars=3474
+  NFLX    OK  regime=directional_bear     conf=100%  bars=3474
+  JPM     OK  regime=vol_expansion        conf=100%  bars=3473
+  GLD     OK  regime=directional_bear     conf=100%  bars=3473
+  TLT     OK  regime=directional_bear     conf=100%  bars=3474
+  XLF     OK  regime=directional_bull     conf=86%  bars=3473
+  XLE     OK  regime=vol_expansion        conf=100%  bars=3473
+  QCOM    OK  regime=mean_reverting       conf=93%  bars=3466
+  PLTR    OK  regime=directional_bull     conf=80%  bars=3466
+  Summary: 22 OK, 0 errors out of 22 tickers
+
+TRADE SUMMARY
+------------------------------------------------------------
+  Open:    41 trades
+    AAPL   iron_condor            P&L $ +182.00 (+14.8%)  DTE 4
+    NVDA   long_strangle          P&L $-1043.00 (-78.6%)  DTE 4
+    AMZN   iron_condor            P&L $ +197.50 (+16.4%)  DTE 4
+    AAPL   iron_condor            P&L $ +168.00 (+13.8%)  DTE 4
+    NVDA   long_strangle          P&L $ -998.00 (-77.8%)  DTE 4
+    AMZN   iron_condor            P&L $ +178.50 (+15.0%)  DTE 4
+    AAPL   iron_condor            P&L $ +135.00 (+11.0%)  DTE 4
+    NVDA   long_strangle          P&L $ -961.00 (-77.2%)  DTE 4
+    AMZN   iron_condor            P&L $ +162.00 (+13.8%)  DTE 4
+    AAPL   iron_condor            P&L $ +106.00 ( +8.8%)  DTE 4
+    NVDA   bull_call_spread       P&L $ -172.00 (-98.3%)  DTE 4
+    AAPL   iron_condor            P&L $ +105.50 ( +8.8%)  DTE 10
+    NVDA   bull_call_spread       P&L $ -155.00 (-90.1%)  DTE 10
+    AAPL   iron_condor            P&L $  +68.50 ( +5.9%)  DTE 10
+    NVDA   bull_call_spread       P&L $ -173.00 (-91.1%)  DTE 10
+    AAPL   iron_condor            P&L $  +99.50 ( +8.3%)  DTE 10
+    NVDA   bull_call_spread       P&L $ -185.00 (-91.6%)  DTE 10
+    AAPL   iron_condor            P&L $  +90.00 ( +7.8%)  DTE 10
+    MSFT   iron_condor            P&L $  +63.00 ( +5.2%)  DTE 10
+    NVDA   bull_call_spread       P&L $ -153.00 (-90.0%)  DTE 10
+    AMZN   iron_condor            P&L $ +153.00 (+12.5%)  DTE 10
+    AAPL   iron_condor            P&L $ +109.50 ( +9.3%)  DTE 10
+    MSFT   iron_condor            P&L $  +90.00 ( +7.6%)  DTE 10
+    NVDA   bull_call_spread       P&L $ -150.00 (-72.5%)  DTE 10
+    AMZN   iron_condor            P&L $ +125.00 (+10.5%)  DTE 10
+    AAPL   iron_condor            P&L $ +110.50 ( +9.3%)  DTE 10
+    MSFT   iron_condor            P&L $  +90.00 ( +7.6%)  DTE 10
+    NVDA   bull_call_spread       P&L $ -148.00 (-72.2%)  DTE 10
+    AMZN   iron_condor            P&L $ +124.00 (+10.4%)  DTE 10
+    AAPL   iron_condor            P&L $ +110.50 ( +9.3%)  DTE 10
+    MSFT   iron_condor            P&L $  +86.00 ( +7.2%)  DTE 10
+    NVDA   bull_call_spread       P&L $ -150.00 (-72.5%)  DTE 10
+    AMZN   iron_condor            P&L $ +123.00 (+10.3%)  DTE 10
+    AAPL   iron_condor            P&L $ +131.50 (+10.9%)  DTE 10
+    MSFT   iron_condor            P&L $ +114.50 ( +9.4%)  DTE 10
+    NVDA   bull_call_spread       P&L $ -130.00 (-69.5%)  DTE 10
+    AMZN   iron_condor            P&L $ +107.00 ( +9.1%)  DTE 10
+    AAPL   iron_condor            P&L $ +131.50 (+10.9%)  DTE 10
+    MSFT   iron_condor            P&L $ +114.50 ( +9.4%)  DTE 10
+    NVDA   bull_call_spread       P&L $ -130.00 (-69.5%)  DTE 10
+    AMZN   iron_condor            P&L $ +107.00 ( +9.1%)  DTE 10
+                                             Total $-1165.00
+  Closed/Expired: 73 trades
+    Win rate: 58%  (42/73)  Total P&L: $+1585.50
+
+DATA QUALITY
+------------------------------------------------------------
+  AAPL    last bar: 2026-03-23 17:30:00+00:00
+  MSFT    last bar: 2026-03-23 17:30:00+00:00
+  NVDA    last bar: 2026-03-23 17:30:00+00:00
+  AMZN    last bar: 2026-03-23 17:30:00+00:00
+  GOOGL   last bar: 2026-03-23 17:30:00+00:00
+  META    last bar: 2026-03-23 18:30:00+00:00
+  TSLA    last bar: 2026-03-23 17:30:00+00:00
+  AVGO    last bar: 2026-03-23 18:30:00+00:00
+  LLY     last bar: 2026-03-23 18:30:00+00:00
+  COST    last bar: 2026-03-23 17:30:00+00:00
+  QQQ     last bar: 2026-03-23 18:30:00+00:00
+  SPY     last bar: 2026-03-23 18:30:00+00:00
+  IWM     last bar: 2026-03-23 18:30:00+00:00
+  AMD     last bar: 2026-03-23 18:30:00+00:00
+  NFLX    last bar: 2026-03-23 18:30:00+00:00
+  JPM     last bar: 2026-03-23 18:30:00+00:00
+  GLD     last bar: 2026-03-23 18:30:00+00:00
+  TLT     last bar: 2026-03-23 18:30:00+00:00
+  XLF     last bar: 2026-03-23 18:30:00+00:00
+  XLE     last bar: 2026-03-23 18:30:00+00:00
+  QCOM    last bar: 2026-03-23 18:30:00+00:00
+  PLTR    last bar: 2026-03-23 18:30:00+00:00
+  ThetaData: connected
+
+POLICY STATUS
+------------------------------------------------------------
+  Min confidence : 70%
+  Skip regimes   : directional_bull
+  Caution regimes: none
+  Confirmed harmful: none
+  Cleared (false+) : mean_reverting->directional_bear, mean_reverting->vol_expansion, directional_bear->mean_reverting, mean_reverting->directional_bull
+  Per-regime performance:
+    mean_reverting           N=36  WR=86%  avg=$+67.72  [ok]
+    directional_bear         N=4  WR=100%  avg=$+83.75  [ok]
+    directional_bull         N=19  WR=5%  avg=$-125.53  [skip]
+    vol_expansion            N=14  WR=43%  avg=$+85.54  [ok]
+
+IMPROVEMENT OPPORTUNITIES
+------------------------------------------------------------
+  * Regime 'directional_bull' has 5% win rate across 19 trades — consider adding to skip list
+  * AAPL: regime alert active for 11 days — original thesis may be invalid
+  * AMZN: regime alert active for 5 days — original thesis may be invalid
+  * AAPL: regime alert active for 11 days — original thesis may be invalid
+  * AMZN: regime alert active for 5 days — original thesis may be invalid
+  * AAPL: regime alert active for 11 days — original thesis may be invalid
+  * AMZN: regime alert active for 5 days — original thesis may be invalid
+  * AAPL: regime alert active for 11 days — original thesis may be invalid
+  * AAPL: regime alert active for 11 days — original thesis may be invalid
+  * AAPL: regime alert active for 11 days — original thesis may be invalid
+  * AAPL: regime alert active for 11 days — original thesis may be invalid
+  * AAPL: regime alert active for 7 days — original thesis may be invalid
+  * MSFT: regime alert active for 5 days — original thesis may be invalid
+  * AMZN: regime alert active for 5 days — original thesis may be invalid
+  * AAPL: regime alert active for 7 days — original thesis may be invalid
+  * MSFT: regime alert active for 5 days — original thesis may be invalid
+  * AMZN: regime alert active for 5 days — original thesis may be invalid
+  * AAPL: regime alert active for 7 days — original thesis may be invalid
+  * MSFT: regime alert active for 5 days — original thesis may be invalid
+  * AMZN: regime alert active for 5 days — original thesis may be invalid
+  * AAPL: regime alert active for 7 days — original thesis may be invalid
+  * MSFT: regime alert active for 5 days — original thesis may be invalid
+  * AMZN: regime alert active for 5 days — original thesis may be invalid
+  * AAPL: regime alert active for 7 days — original thesis may be invalid
+  * MSFT: regime alert active for 5 days — original thesis may be invalid
+  * AMZN: regime alert active for 5 days — original thesis may be invalid
+  * AAPL: regime alert active for 7 days — original thesis may be invalid
+  * MSFT: regime alert active for 5 days — original thesis may be invalid
+  * AMZN: regime alert active for 5 days — original thesis may be invalid
+
+============================================================
+  Report generated at 16:30:00 EDT
+============================================================
