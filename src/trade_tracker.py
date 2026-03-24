@@ -105,12 +105,24 @@ def _save_all(trades: list[TrackedTrade]) -> None:
 
 
 def save_trade(trade: TrackedTrade) -> None:
-    """Append or overwrite a trade (matched by id)."""
+    """Append or overwrite a trade (matched by id).
+
+    Dedup: refuses to save if an open trade with the same
+    (ticker, expiry, strategy) already exists under a different id.
+    """
     trades = load_trades()
     ids = [t.id for t in trades]
     if trade.id in ids:
         trades[ids.index(trade.id)] = trade
     else:
+        # Check for logical duplicate among open trades
+        for t in trades:
+            if (t.status == "open"
+                    and t.ticker == trade.ticker
+                    and t.expiry == trade.expiry
+                    and t.strategy == trade.strategy
+                    and t.id != trade.id):
+                return  # silently skip duplicate
         trades.append(trade)
     _save_all(trades)
 

@@ -23,21 +23,76 @@
     "QCOM",
     "PLTR"
   ],
-
   "option_strategy": {
     "target_dte": 21,
     "dte_min": 14,
     "dte_max": 45,
-    "delta_vert": 0.40,
+    "delta_vert": 0.4,
     "delta_wing": 0.16,
     "otm_pct": 0.03,
     "strike_range": 20
   },
-
   "learned_policy": {
-    "min_confidence": 0.75,
-    "max_p_change": 0.30,
-    "skip_regimes": ["vol_expansion"],
+    "min_confidence": 0.7,
+    "max_p_change": 0.50,
+    "skip_regimes": [
+      "directional_bull"
+    ],
     "caution_regimes": []
+  },
+  "strategy_performance": {
+    "mean_reverting": {
+      "count": 36,
+      "wins": 31,
+      "win_rate": 0.8611,
+      "avg_pnl": 67.72,
+      "avg_pnl_pct": 0.0578,
+      "status": "ok"
+    },
+    "directional_bear": {
+      "count": 4,
+      "wins": 4,
+      "win_rate": 1.0,
+      "avg_pnl": 83.75,
+      "avg_pnl_pct": 1.0082,
+      "status": "ok"
+    },
+    "directional_bull": {
+      "count": 19,
+      "wins": 1,
+      "win_rate": 0.0526,
+      "avg_pnl": -125.53,
+      "avg_pnl_pct": -0.7262,
+      "status": "skip"
+    },
+    "vol_expansion": {
+      "count": 14,
+      "wins": 6,
+      "win_rate": 0.4286,
+      "avg_pnl": 85.54,
+      "avg_pnl_pct": -0.1184,
+      "status": "ok"
+    }
+  },
+  "regime_alert_policy": {
+    "confirmed_incompatible": [],
+    "cleared_incompatible": [
+      [
+        "mean_reverting",
+        "directional_bear"
+      ],
+      [
+        "mean_reverting",
+        "vol_expansion"
+      ],
+      [
+        "directional_bear",
+        "mean_reverting"
+      ],
+      [
+        "mean_reverting",
+        "directional_bull"
+      ]
+    ]
   }
 }
