@@ -12,6 +12,7 @@ P&L convention (per 1 contract = 100 shares):
 from __future__ import annotations
 
 import json
+import math
 import os
 import tempfile
 import uuid
@@ -58,8 +59,8 @@ class TrackedTrade:
     regime_name:          str
     price_type:           str          # "debit" | "credit"
     entry_net:            float        # always positive
-    max_profit:           float
-    max_loss:             float
+    max_profit:           Optional[float]
+    max_loss:             Optional[float]
     legs:                 list[dict]   # serialised TradeLeg dicts
     daily_prices:         list[dict]   # serialised DailyPrice dicts
     status:               str = "open" # "open" | "closed" | "expired"
@@ -80,8 +81,28 @@ def load_trades() -> list[TrackedTrade]:
     try:
         raw = json.loads(TRACKED_PATH.read_text(encoding="utf-8"))
         return [TrackedTrade(**t) for t in raw]
-    except Exception:
-        return []
+    except Exception as exc:
+        raise RuntimeError(f"Unable to load trade ledger {TRACKED_PATH}: {exc}") from exc
+
+
+def _json_safe(value):
+    if isinstance(value, float) and not math.isfinite(value):
+        return None
+    if isinstance(value, dict):
+        return {k: _json_safe(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_json_safe(v) for v in value]
+    return value
+
+
+def _finite_or_none(value: float | None) -> float | None:
+    if value is None:
+        return None
+    try:
+        value_f = float(value)
+    except (TypeError, ValueError):
+        return None
+    return value_f if math.isfinite(value_f) else None
 
 
 def _atomic_write(path: Path, data: str) -> None:
@@ -101,7 +122,8 @@ def _atomic_write(path: Path, data: str) -> None:
 
 
 def _save_all(trades: list[TrackedTrade]) -> None:
-    _atomic_write(TRACKED_PATH, json.dumps([asdict(t) for t in trades], indent=2))
+    payload = _json_safe([asdict(t) for t in trades])
+    _atomic_write(TRACKED_PATH, json.dumps(payload, indent=2, allow_nan=False))
 
 
 def save_trade(trade: TrackedTrade) -> None:
@@ -235,8 +257,8 @@ def build_trade(
     regime_name: str,
     price_type: str,
     entry_net: float,
-    max_profit: float,
-    max_loss: float,
+    max_profit: float | None,
+    max_loss: float | None,
     legs: list[dict],  # each: {action, right, strike, entry_mid, entry_ask, entry_bid}
     confidence: float = 0.0,
 ) -> TrackedTrade:
@@ -244,6 +266,8 @@ def build_trade(
     dte   = (date.fromisoformat(expiry) - today).days
     tid   = f"{ticker}-{expiry}-{strategy}-{today.isoformat()}-{str(uuid.uuid4())[:4]}"
     now   = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+    max_profit_safe = _finite_or_none(max_profit)
+    max_loss_safe = _finite_or_none(max_loss)
 
     initial = DailyPrice(
         date=today.isoformat(),
@@ -264,8 +288,8 @@ def build_trade(
         regime_name=regime_name,
         price_type=price_type,
         entry_net=entry_net,
-        max_profit=max_profit,
-        max_loss=max_loss,
+        max_profit=max_profit_safe,
+        max_loss=max_loss_safe,
         legs=legs,
         daily_prices=[asdict(initial)],
         status="open",
@@ -392,10 +416,11 @@ def pnl_pct(trade: TrackedTrade) -> float:
     """P&L as a percentage of risk (max_loss, or entry_net for unlimited-risk trades)."""
     _, pnl = latest_pnl(trade)
     ml = trade.max_loss
-    if ml is None or ml == 0 or ml == float("inf"):
+    ml_safe = _finite_or_none(ml)
+    if ml_safe is None or ml_safe == 0:
         ref = abs(trade.entry_net) * 100   # fall back to cost basis for strangles
     else:
-        ref = abs(ml) * 100
+        ref = abs(ml_safe) * 100
     return pnl / ref if ref else 0.0
 
 

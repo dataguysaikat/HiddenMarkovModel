@@ -13,6 +13,7 @@ recommend.py reads "learned_policy" on startup to:
 from __future__ import annotations
 
 import json
+import math
 import os
 import tempfile
 from collections import defaultdict
@@ -35,6 +36,17 @@ def _final_pnl(trade) -> float | None:
     return trade.daily_prices[-1]["pnl_dollars"]
 
 
+def _risk_basis(trade) -> float | None:
+    max_loss = getattr(trade, "max_loss", None)
+    if max_loss is None:
+        return None
+    try:
+        risk = abs(float(max_loss)) * 100
+    except (TypeError, ValueError):
+        return None
+    return risk if risk and math.isfinite(risk) else None
+
+
 def compute_stats(trades) -> dict[str, dict]:
     """
     Group closed/expired trades by regime_type and compute performance stats.
@@ -51,7 +63,7 @@ def compute_stats(trades) -> dict[str, dict]:
         pnl = _final_pnl(t)
         if pnl is None:
             continue
-        max_risk = abs(t.max_loss) * 100 if t.max_loss else None
+        max_risk = _risk_basis(t)
         pnl_pct  = pnl / max_risk if max_risk else 0.0
         buckets[t.regime_type].append({
             "pnl":     pnl,
@@ -101,7 +113,7 @@ def compute_stats_by_ticker(trades) -> dict[tuple, dict]:
         pnl = _final_pnl(t)
         if pnl is None:
             continue
-        max_risk = abs(t.max_loss) * 100 if t.max_loss else None
+        max_risk = _risk_basis(t)
         pnl_pct  = pnl / max_risk if max_risk else 0.0
         buckets[(t.ticker, t.strategy)].append({
             "pnl":     pnl,

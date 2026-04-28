@@ -365,20 +365,22 @@ def main():
                 cr = round((sc["mid"]+sp["mid"]) - (lc["mid"]+lp["mid"]), 2)
                 if cr <= 0:
                     print(f"  Strategy: IRON CONDOR -- bad pricing (credit={cr:.2f}), skipping"); continue
-                ml = round(sc["strike"] - lc["strike"] - cr, 2)
+                call_width = lc["strike"] - sc["strike"]
+                put_width = sp["strike"] - lp["strike"]
+                ml = round(max(call_width, put_width) - cr, 2)
                 print(f"  Strategy: IRON CONDOR  |  Confidence: {conf:.0%}")
                 print(_row_line("SELL", exp, sc["strike"], "C", "bid", sc["bid"], sc["delta"], sc["iv"]))
                 print(_row_line("BUY",  exp, lc["strike"], "C", "ask", lc["ask"], lc["delta"], lc["iv"]))
                 print(_row_line("SELL", exp, sp["strike"], "P", "bid", sp["bid"], sp["delta"], sp["iv"]))
                 print(_row_line("BUY",  exp, lp["strike"], "P", "ask", lp["ask"], lp["delta"], lp["iv"]))
-                print(f"  Net credit ${cr:.2f}  |  Max profit ${cr:.2f}  |  Max loss ${abs(ml):.2f}")
+                print(f"  Net credit ${cr:.2f}  |  Max profit ${cr:.2f}  |  Max loss ${ml:.2f}")
                 legs = [
                     {"action": "SELL", "right": "CALL", "strike": sc["strike"], "entry_mid": sc["mid"], "entry_ask": sc["ask"], "entry_bid": sc["bid"]},
                     {"action": "BUY",  "right": "CALL", "strike": lc["strike"], "entry_mid": lc["mid"], "entry_ask": lc["ask"], "entry_bid": lc["bid"]},
                     {"action": "SELL", "right": "PUT",  "strike": sp["strike"], "entry_mid": sp["mid"], "entry_ask": sp["ask"], "entry_bid": sp["bid"]},
                     {"action": "BUY",  "right": "PUT",  "strike": lp["strike"], "entry_mid": lp["mid"], "entry_ask": lp["ask"], "entry_bid": lp["bid"]},
                 ]
-                trade = build_trade(ticker, exp, S, "iron_condor", strat, rc.name, "credit", cr, cr, abs(ml), legs, conf)
+                trade = build_trade(ticker, exp, S, "iron_condor", strat, rc.name, "credit", cr, cr, ml, legs, conf)
                 save_trade(trade); saved = True; _open_keys.add((ticker, exp, _strat_name))
 
         except Exception as exc:

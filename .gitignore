@@ -15,6 +15,12 @@ schwab_token.json
 # Barchart source CSVs (parquets in data/ already contain this data)
 data/*.csv
 
+# Runtime market/trade data — regenerated or mutated by the app
+data/*.parquet
+data/paper_trades.json
+data/tracked_trades.json
+data/reports/*.txt
+
 # HMM cache — regenerated automatically on dashboard startup
 data/hmm_cache.pkl
 

@@ -19,12 +19,13 @@ CLI usage:
 from __future__ import annotations
 
 import json
+import math
 import os
 import sys
 import tempfile
 import uuid
 from dataclasses import asdict, dataclass
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
@@ -125,8 +126,18 @@ def load_paper_trades() -> list[TradeRecord]:
     try:
         raw = json.loads(PAPER_TRADES_PATH.read_text(encoding="utf-8"))
         return [TradeRecord(**r) for r in raw]
-    except Exception:  # noqa: BLE001
-        return []
+    except Exception as exc:  # noqa: BLE001
+        raise RuntimeError(f"Unable to load paper trade ledger {PAPER_TRADES_PATH}: {exc}") from exc
+
+
+def _json_safe(value):
+    if isinstance(value, float) and not math.isfinite(value):
+        return None
+    if isinstance(value, dict):
+        return {k: _json_safe(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_json_safe(v) for v in value]
+    return value
 
 
 def _atomic_write(path: Path, data: str) -> None:
@@ -148,7 +159,8 @@ def _atomic_write(path: Path, data: str) -> None:
 def save_paper_trade(record: TradeRecord) -> None:
     trades = load_paper_trades()
     trades.append(record)
-    _atomic_write(PAPER_TRADES_PATH, json.dumps([asdict(t) for t in trades], indent=2))
+    payload = _json_safe([asdict(t) for t in trades])
+    _atomic_write(PAPER_TRADES_PATH, json.dumps(payload, indent=2, allow_nan=False))
 
 
 # ---------------------------------------------------------------------------
@@ -183,6 +195,24 @@ def execute_paper(order: Optional[dict], metadata: dict) -> TradeRecord:
     return record
 
 
+def _resolve_option_symbol(leg: dict, metadata: dict) -> str:
+    """Return a Schwab option symbol for a leg."""
+    symbol = str(leg.get("symbol") or "").strip()
+    if symbol:
+        return symbol
+
+    ticker = metadata.get("ticker")
+    expiry = metadata.get("expiry")
+    right = leg.get("right")
+    strike = leg.get("strike")
+    if not ticker or not expiry or not right or strike is None:
+        raise ValueError(f"Cannot build option symbol for leg: {leg}")
+
+    from schwab.orders.options import OptionSymbol
+    expiration = date.fromisoformat(expiry) if isinstance(expiry, str) and "-" in expiry else expiry
+    return OptionSymbol(ticker, expiration, str(right).upper(), f"{float(strike):g}").build()
+
+
 def execute_live(client: Any, account_hash: str, order: dict, metadata: dict) -> TradeRecord:
     """
     Submit a live order via Schwab.
@@ -197,9 +227,6 @@ def execute_live(client: Any, account_hash: str, order: dict, metadata: dict) ->
         if not SCHWAB_AVAILABLE:
             raise RuntimeError("schwab-py not installed")
 
-        from schwab.orders.options import option_buy_to_open_limit, option_sell_to_open_limit
-        from schwab.orders.common import one_cancels_other
-
         # Build a multi-leg order using schwab-py's builder
         builder = schwab.orders.generic.OrderBuilder()
         builder.set_order_type(schwab.orders.common.OrderType.NET_DEBIT if order["price_type"] == "debit"
@@ -209,14 +236,16 @@ def execute_live(client: Any, account_hash: str, order: dict, metadata: dict) ->
         builder.set_session(schwab.orders.common.Session.NORMAL)
 
         for leg in order["legs"]:
-            sym = leg["symbol"]
+            sym = _resolve_option_symbol(leg, metadata)
             qty = leg["quantity"]
             action = leg["action"]
-            instr = schwab.orders.options.OptionSymbol(sym).build()
             if action == "BUY_TO_OPEN":
-                builder.add_option_leg(schwab.orders.common.OptionInstruction.BUY_TO_OPEN, instr, qty)
+                instruction = schwab.orders.common.OptionInstruction.BUY_TO_OPEN
+            elif action == "SELL_TO_OPEN":
+                instruction = schwab.orders.common.OptionInstruction.SELL_TO_OPEN
             else:
-                builder.add_option_leg(schwab.orders.common.OptionInstruction.SELL_TO_OPEN, instr, qty)
+                raise ValueError(f"Unsupported option leg action: {action}")
+            builder.add_option_leg(instruction, sym, qty)
 
         resp = client.place_order(account_hash, builder)
         if resp.status_code in (200, 201):

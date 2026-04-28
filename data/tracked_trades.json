@@ -12,7 +12,7 @@
     "price_type": "credit",
     "entry_net": 1.08,
     "max_profit": 1.08,
-    "max_loss": 6.08,
+    "max_loss": 3.92,
     "legs": [
       {
         "action": "SELL",
@@ -329,7 +329,7 @@
     "regime_name": "Vol Exp (R3)",
     "price_type": "debit",
     "entry_net": 8.0,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 8.0,
     "legs": [
       {
@@ -431,7 +431,7 @@
     "price_type": "credit",
     "entry_net": 1.52,
     "max_profit": 1.52,
-    "max_loss": 6.52,
+    "max_loss": 8.48,
     "legs": [
       {
         "action": "SELL",
@@ -548,7 +548,7 @@
     "price_type": "credit",
     "entry_net": 2.51,
     "max_profit": 2.51,
-    "max_loss": 12.51,
+    "max_loss": 7.49,
     "legs": [
       {
         "action": "SELL",
@@ -675,7 +675,7 @@
     "price_type": "credit",
     "entry_net": 2.23,
     "max_profit": 2.23,
-    "max_loss": 12.23,
+    "max_loss": 7.77,
     "legs": [
       {
         "action": "SELL",
@@ -801,7 +801,7 @@
     "regime_name": "Vol Exp (R3)",
     "price_type": "debit",
     "entry_net": 7.1,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 7.1,
     "legs": [
       {
@@ -1081,7 +1081,7 @@
     "price_type": "credit",
     "entry_net": 1.05,
     "max_profit": 1.05,
-    "max_loss": 6.05,
+    "max_loss": 3.95,
     "legs": [
       {
         "action": "SELL",
@@ -1191,7 +1191,7 @@
     "regime_name": "Vol Exp (R1)",
     "price_type": "debit",
     "entry_net": 10.78,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 10.78,
     "legs": [
       {
@@ -1286,7 +1286,7 @@
     "regime_name": "Vol Exp (R1)",
     "price_type": "debit",
     "entry_net": 22.42,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 22.42,
     "legs": [
       {
@@ -1382,7 +1382,7 @@
     "price_type": "credit",
     "entry_net": 2.36,
     "max_profit": 2.36,
-    "max_loss": 12.36,
+    "max_loss": 7.64,
     "legs": [
       {
         "action": "SELL",
@@ -1503,7 +1503,7 @@
     "price_type": "credit",
     "entry_net": 1.08,
     "max_profit": 1.08,
-    "max_loss": 6.08,
+    "max_loss": 3.92,
     "legs": [
       {
         "action": "SELL",
@@ -1612,7 +1612,7 @@
     "regime_name": "Vol Exp (R1)",
     "price_type": "debit",
     "entry_net": 11.5,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 11.5,
     "legs": [
       {
@@ -1791,7 +1791,7 @@
     "price_type": "credit",
     "entry_net": 1.22,
     "max_profit": 1.22,
-    "max_loss": 6.22,
+    "max_loss": 3.78,
     "legs": [
       {
         "action": "SELL",
@@ -1895,7 +1895,7 @@
     "regime_name": "Vol Exp (R1)",
     "price_type": "debit",
     "entry_net": 10.85,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 10.85,
     "legs": [
       {
@@ -1991,7 +1991,7 @@
     "price_type": "credit",
     "entry_net": 2.2,
     "max_profit": 2.2,
-    "max_loss": 12.2,
+    "max_loss": 7.8,
     "legs": [
       {
         "action": "SELL",
@@ -2106,7 +2106,7 @@
     "price_type": "credit",
     "entry_net": 2.27,
     "max_profit": 2.27,
-    "max_loss": 12.27,
+    "max_loss": 7.73,
     "legs": [
       {
         "action": "SELL",
@@ -2189,12 +2189,18 @@
         "underlying": 251.49,
         "net_mid": 0.45,
         "pnl_dollars": 182.0
+      },
+      {
+        "date": "2026-03-27",
+        "underlying": 248.8,
+        "net_mid": 0.0,
+        "pnl_dollars": 227.0
       }
     ],
-    "status": "open",
+    "status": "expired",
     "confidence": 0.9962736918067967,
     "recommended_at": "2026-03-03 14:59:21 UTC",
-    "underlying_at_close": 0.0,
+    "underlying_at_close": 248.8,
     "regime_alert": "",
     "alert_log": [
       {
@@ -2221,7 +2227,7 @@
     "regime_name": "Vol Exp (R0)",
     "price_type": "debit",
     "entry_net": 15.92,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 15.92,
     "legs": [
       {
@@ -2310,7 +2316,7 @@
     "regime_name": "Vol Exp (R1)",
     "price_type": "debit",
     "entry_net": 13.27,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 13.27,
     "legs": [
       {
@@ -2380,12 +2386,18 @@
         "pnl_dollars": -1043.0
       }
     ],
-    "status": "open",
+    "status": "closed",
     "confidence": 0.9989562706078773,
     "recommended_at": "2026-03-03 14:59:23 UTC",
-    "underlying_at_close": 0.0,
-    "regime_alert": "",
-    "alert_log": []
+    "underlying_at_close": 175.68,
+    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-31 19:40 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-31 19:40 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": -1043.0
+      }
+    ]
   },
   {
     "id": "AMZN-2026-03-27-iron_condor-2026-03-03-c41c",
@@ -2400,7 +2412,7 @@
     "price_type": "credit",
     "entry_net": 2.07,
     "max_profit": 2.07,
-    "max_loss": 12.07,
+    "max_loss": 7.93,
     "legs": [
       {
         "action": "SELL",
@@ -2483,12 +2495,18 @@
         "underlying": 210.25,
         "net_mid": 0.1,
         "pnl_dollars": 197.5
+      },
+      {
+        "date": "2026-03-27",
+        "underlying": 199.34,
+        "net_mid": 0.0,
+        "pnl_dollars": 207.0
       }
     ],
-    "status": "open",
+    "status": "expired",
     "confidence": 0.9838427929239159,
     "recommended_at": "2026-03-03 14:59:25 UTC",
-    "underlying_at_close": 0.0,
+    "underlying_at_close": 199.34,
     "regime_alert": "",
     "alert_log": [
       {
@@ -2511,7 +2529,7 @@
     "price_type": "credit",
     "entry_net": 2.1,
     "max_profit": 2.1,
-    "max_loss": 12.1,
+    "max_loss": 7.9,
     "legs": [
       {
         "action": "SELL",
@@ -2616,7 +2634,7 @@
     "price_type": "credit",
     "entry_net": 2.55,
     "max_profit": 2.55,
-    "max_loss": 12.55,
+    "max_loss": 7.45,
     "legs": [
       {
         "action": "SELL",
@@ -2731,7 +2749,7 @@
     "price_type": "credit",
     "entry_net": 2.46,
     "max_profit": 2.46,
-    "max_loss": 12.46,
+    "max_loss": 7.54,
     "legs": [
       {
         "action": "SELL",
@@ -2845,7 +2863,7 @@
     "regime_name": "Vol Exp (R0)",
     "price_type": "debit",
     "entry_net": 15.32,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 15.32,
     "legs": [
       {
@@ -2935,7 +2953,7 @@
     "price_type": "credit",
     "entry_net": 1.96,
     "max_profit": 1.96,
-    "max_loss": 11.96,
+    "max_loss": 8.04,
     "legs": [
       {
         "action": "SELL",
@@ -3040,7 +3058,7 @@
     "price_type": "credit",
     "entry_net": 2.51,
     "max_profit": 2.51,
-    "max_loss": 12.51,
+    "max_loss": 7.49,
     "legs": [
       {
         "action": "SELL",
@@ -3155,7 +3173,7 @@
     "price_type": "credit",
     "entry_net": 2.33,
     "max_profit": 2.33,
-    "max_loss": 12.33,
+    "max_loss": 7.67,
     "legs": [
       {
         "action": "SELL",
@@ -3269,7 +3287,7 @@
     "regime_name": "Vol Exp (R0)",
     "price_type": "debit",
     "entry_net": 14.88,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 14.88,
     "legs": [
       {
@@ -3353,7 +3371,7 @@
     "price_type": "credit",
     "entry_net": 2.13,
     "max_profit": 2.13,
-    "max_loss": 12.13,
+    "max_loss": 7.87,
     "legs": [
       {
         "action": "SELL",
@@ -3458,7 +3476,7 @@
     "price_type": "credit",
     "entry_net": 2.54,
     "max_profit": 2.54,
-    "max_loss": 12.54,
+    "max_loss": 7.46,
     "legs": [
       {
         "action": "SELL",
@@ -3573,7 +3591,7 @@
     "price_type": "credit",
     "entry_net": 2.15,
     "max_profit": 2.15,
-    "max_loss": 12.15,
+    "max_loss": 7.85,
     "legs": [
       {
         "action": "SELL",
@@ -3856,12 +3874,18 @@
         "pnl_dollars": -172.0
       }
     ],
-    "status": "open",
+    "status": "closed",
     "confidence": 0.9969379136768043,
     "recommended_at": "2026-03-05 14:07:37 UTC",
-    "underlying_at_close": 0.0,
-    "regime_alert": "",
-    "alert_log": []
+    "underlying_at_close": 175.68,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-31 19:40 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-31 19:40 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": -172.0
+      }
+    ]
   },
   {
     "id": "AMZN-2026-03-27-bull_call_spread-2026-03-05-112e",
@@ -3974,7 +3998,7 @@
     "regime_name": "Vol Exp (R0)",
     "price_type": "debit",
     "entry_net": 13.55,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 13.55,
     "legs": [
       {
@@ -4063,7 +4087,7 @@
     "regime_name": "Vol Exp (R1)",
     "price_type": "debit",
     "entry_net": 25.6,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 25.6,
     "legs": [
       {
@@ -4356,7 +4380,7 @@
     "price_type": "credit",
     "entry_net": 1.98,
     "max_profit": 1.98,
-    "max_loss": 11.98,
+    "max_loss": 8.02,
     "legs": [
       {
         "action": "SELL",
@@ -4439,6 +4463,12 @@
         "underlying": 251.49,
         "net_mid": 0.93,
         "pnl_dollars": 105.5
+      },
+      {
+        "date": "2026-03-31",
+        "underlying": 253.79,
+        "net_mid": 0.04,
+        "pnl_dollars": 194.0
       }
     ],
     "status": "open",
@@ -4727,14 +4757,26 @@
         "underlying": 175.68,
         "net_mid": 0.17,
         "pnl_dollars": -155.0
+      },
+      {
+        "date": "2026-03-31",
+        "underlying": 174.4,
+        "net_mid": 0.0,
+        "pnl_dollars": -172.0
       }
     ],
-    "status": "open",
+    "status": "closed",
     "confidence": 0.9661893953885001,
     "recommended_at": "2026-03-10 13:52:51 UTC",
-    "underlying_at_close": 0.0,
-    "regime_alert": "",
-    "alert_log": []
+    "underlying_at_close": 174.4,
+    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-31 19:40 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "alert_log": [
+      {
+        "timestamp": "2026-03-31 19:40 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": -155.0
+      }
+    ]
   },
   {
     "id": "META-2026-04-02-long_strangle-2026-03-10-797d",
@@ -4748,7 +4790,7 @@
     "regime_name": "Vol Exp (R1)",
     "price_type": "debit",
     "entry_net": 26.28,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 26.28,
     "legs": [
       {
@@ -5228,7 +5270,7 @@
     "regime_name": "Vol Exp (R1)",
     "price_type": "debit",
     "entry_net": 25.42,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 25.42,
     "legs": [
       {
@@ -5690,7 +5732,7 @@
     "regime_name": "Vol Exp (R1)",
     "price_type": "debit",
     "entry_net": 23.98,
-    "max_profit": Infinity,
+    "max_profit": null,
     "max_loss": 23.98,
     "legs": [
       {
@@ -5872,7 +5914,7 @@
     "price_type": "credit",
     "entry_net": 2.04,
     "max_profit": 2.04,
-    "max_loss": 12.04,
+    "max_loss": 7.96,
     "legs": [
       {
         "action": "SELL",
@@ -5943,6 +5985,12 @@
         "underlying": 383.21,
         "net_mid": 1.41,
         "pnl_dollars": 63.0
+      },
+      {
+        "date": "2026-03-31",
+        "underlying": 370.17,
+        "net_mid": 2.73,
+        "pnl_dollars": -69.0
       }
     ],
     "status": "open",
@@ -5976,7 +6024,7 @@
     "price_type": "credit",
     "entry_net": 2.21,
     "max_profit": 2.21,
-    "max_loss": 12.21,
+    "max_loss": 7.79,
     "legs": [
       {
         "action": "SELL",
@@ -6047,6 +6095,12 @@
         "underlying": 210.25,
         "net_mid": 0.68,
         "pnl_dollars": 153.0
+      },
+      {
+        "date": "2026-03-31",
+        "underlying": 208.31,
+        "net_mid": 0.04,
+        "pnl_dollars": 217.0
       }
     ],
     "status": "open",
@@ -6075,7 +6129,7 @@
     "price_type": "credit",
     "entry_net": 2.48,
     "max_profit": 2.48,
-    "max_loss": 12.48,
+    "max_loss": 7.52,
     "legs": [
       {
         "action": "SELL",
@@ -6168,7 +6222,7 @@
     "price_type": "credit",
     "entry_net": 2.45,
     "max_profit": 2.45,
-    "max_loss": 12.45,
+    "max_loss": 7.55,
     "legs": [
       {
         "action": "SELL",
@@ -6266,7 +6320,7 @@
     "price_type": "credit",
     "entry_net": 2.35,
     "max_profit": 2.35,
-    "max_loss": 12.35,
+    "max_loss": 7.65,
     "legs": [
       {
         "action": "SELL",
@@ -6369,7 +6423,7 @@
     "price_type": "credit",
     "entry_net": 2.27,
     "max_profit": 2.27,
-    "max_loss": 12.27,
+    "max_loss": 7.73,
     "legs": [
       {
         "action": "SELL",
@@ -6462,7 +6516,7 @@
     "price_type": "credit",
     "entry_net": 2.5,
     "max_profit": 2.5,
-    "max_loss": 12.5,
+    "max_loss": 7.5,
     "legs": [
       {
         "action": "SELL",
@@ -6560,7 +6614,7 @@
     "price_type": "credit",
     "entry_net": 2.26,
     "max_profit": 2.26,
-    "max_loss": 12.26,
+    "max_loss": 7.74,
     "legs": [
       {
         "action": "SELL",
@@ -6653,7 +6707,7 @@
     "price_type": "credit",
     "entry_net": 2.48,
     "max_profit": 2.48,
-    "max_loss": 12.48,
+    "max_loss": 7.52,
     "legs": [
       {
         "action": "SELL",
@@ -6751,7 +6805,7 @@
     "price_type": "credit",
     "entry_net": 2.4,
     "max_profit": 2.4,
-    "max_loss": 12.4,
+    "max_loss": 7.6,
     "legs": [
       {
         "action": "SELL",
@@ -6854,7 +6908,7 @@
     "price_type": "credit",
     "entry_net": 2.25,
     "max_profit": 2.25,
-    "max_loss": 12.25,
+    "max_loss": 7.75,
     "legs": [
       {
         "action": "SELL",
@@ -6947,7 +7001,7 @@
     "price_type": "credit",
     "entry_net": 2.43,
     "max_profit": 2.43,
-    "max_loss": 12.43,
+    "max_loss": 7.57,
     "legs": [
       {
         "action": "SELL",
@@ -7045,7 +7099,7 @@
     "price_type": "credit",
     "entry_net": 2.18,
     "max_profit": 2.18,
-    "max_loss": 12.18,
+    "max_loss": 7.82,
     "legs": [
       {
         "action": "SELL",
@@ -7148,7 +7202,7 @@
     "price_type": "credit",
     "entry_net": 2.25,
     "max_profit": 2.25,
-    "max_loss": 12.25,
+    "max_loss": 7.75,
     "legs": [
       {
         "action": "SELL",
@@ -7235,7 +7289,7 @@
     "price_type": "credit",
     "entry_net": 2.5,
     "max_profit": 2.5,
-    "max_loss": 12.5,
+    "max_loss": 7.5,
     "legs": [
       {
         "action": "SELL",
@@ -7327,7 +7381,7 @@
     "price_type": "credit",
     "entry_net": 2.23,
     "max_profit": 2.23,
-    "max_loss": 12.23,
+    "max_loss": 7.77,
     "legs": [
       {
         "action": "SELL",
@@ -7424,7 +7478,7 @@
     "price_type": "credit",
     "entry_net": 1.98,
     "max_profit": 1.98,
-    "max_loss": 11.98,
+    "max_loss": 8.02,
     "legs": [
       {
         "action": "SELL",
@@ -7511,7 +7565,7 @@
     "price_type": "credit",
     "entry_net": 2.5,
     "max_profit": 2.5,
-    "max_loss": 12.5,
+    "max_loss": 7.5,
     "legs": [
       {
         "action": "SELL",
@@ -7603,7 +7657,7 @@
     "price_type": "credit",
     "entry_net": 2.23,
     "max_profit": 2.23,
-    "max_loss": 12.23,
+    "max_loss": 7.77,
     "legs": [
       {
         "action": "SELL",
@@ -7930,7 +7984,7 @@
     "price_type": "credit",
     "entry_net": 0.48,
     "max_profit": 0.48,
-    "max_loss": 2.48,
+    "max_loss": 1.52,
     "legs": [
       {
         "action": "SELL",
@@ -7991,5 +8045,52 @@
         "pnl_at_alert": 0.0
       }
     ]
+  },
+  {
+    "id": "NFLX-2026-04-24-bear_put_spread-2026-03-31-626e",
+    "date_recommended": "2026-03-31",
+    "ticker": "NFLX",
+    "expiry": "2026-04-24",
+    "dte_at_entry": 24,
+    "underlying_at_entry": 94.69999694824219,
+    "strategy": "bear_put_spread",
+    "regime_type": "directional_bear",
+    "regime_name": "Bear (R1)",
+    "price_type": "debit",
+    "entry_net": 0.4,
+    "max_profit": 0.6,
+    "max_loss": 0.4,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 93.0,
+        "entry_mid": 3.575,
+        "entry_ask": 3.65,
+        "entry_bid": 3.5
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 92.0,
+        "entry_mid": 3.175,
+        "entry_ask": 3.25,
+        "entry_bid": 3.1
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-03-31",
+        "underlying": 96.12,
+        "net_mid": 0.37,
+        "pnl_dollars": -3.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9999966685099136,
+    "recommended_at": "2026-03-31 13:49:30 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
   }
 ]

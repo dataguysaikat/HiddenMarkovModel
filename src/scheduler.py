@@ -120,6 +120,10 @@ def _refresh_job(n_states: int = 4, trade_mode: str = "paper") -> None:
             continue
         last_close = float(res.df_prices["close"].iloc[-1])
         order, meta = select_and_build_order(t, rc.regime_type, {}, last_close)
+        if order is None:
+            proposed.append({"ticker": t, "order": order, "meta": meta, "rc": rc, "record": None})
+            print(f"[scheduler] {t}: skipped ({meta.get('error') or rc.regime_type})")
+            continue
         rec = execute_order(order, meta, mode=trade_mode)
         proposed.append({"ticker": t, "order": order, "meta": meta, "rc": rc, "record": rec})
         print(f"[scheduler] {t}: {rec.status} ({rc.regime_type})")

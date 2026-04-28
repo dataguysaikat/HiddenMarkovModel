@@ -116,6 +116,15 @@ def _build_order_from_thetadata(ticker, rc, S, exp, calls, puts,
         "error": None, "legs": [], "est_net_price": 0.0,
     }
 
+    def _order_leg(leg: dict, action: str) -> dict:
+        return {
+            "symbol": leg.get("symbol", ""),
+            "action": action,
+            "quantity": 1,
+            "right": leg["right"],
+            "strike": float(leg["strike"]),
+        }
+
     try:
         if strat == "bull_call_vertical":
             lc = nearest_delta(calls, delta_vert)
@@ -131,6 +140,11 @@ def _build_order_from_thetadata(ticker, rc, S, exp, calls, puts,
                 {"action": "BUY",  "right": "CALL", "strike": lc["strike"], "entry_mid": lc["mid"], "entry_ask": lc["ask"], "entry_bid": lc["bid"]},
                 {"action": "SELL", "right": "CALL", "strike": sc["strike"], "entry_mid": sc["mid"], "entry_ask": sc["ask"], "entry_bid": sc["bid"]},
             ]
+            order_legs = [
+                _order_leg(meta["legs"][0], "BUY_TO_OPEN"),
+                _order_leg(meta["legs"][1], "SELL_TO_OPEN"),
+            ]
+            price_type = "debit"
 
         elif strat == "bear_put_vertical":
             lp = nearest_delta(puts, -delta_vert)
@@ -146,6 +160,11 @@ def _build_order_from_thetadata(ticker, rc, S, exp, calls, puts,
                 {"action": "BUY",  "right": "PUT", "strike": lp["strike"], "entry_mid": lp["mid"], "entry_ask": lp["ask"], "entry_bid": lp["bid"]},
                 {"action": "SELL", "right": "PUT", "strike": sp["strike"], "entry_mid": sp["mid"], "entry_ask": sp["ask"], "entry_bid": sp["bid"]},
             ]
+            order_legs = [
+                _order_leg(meta["legs"][0], "BUY_TO_OPEN"),
+                _order_leg(meta["legs"][1], "SELL_TO_OPEN"),
+            ]
+            price_type = "debit"
 
         elif strat == "long_strangle":
             cl = nearest_strike(calls, S * (1 + otm_pct))
@@ -160,6 +179,11 @@ def _build_order_from_thetadata(ticker, rc, S, exp, calls, puts,
                 {"action": "BUY", "right": "CALL", "strike": cl["strike"], "entry_mid": cl["mid"], "entry_ask": cl["ask"], "entry_bid": cl["bid"]},
                 {"action": "BUY", "right": "PUT",  "strike": pl["strike"], "entry_mid": pl["mid"], "entry_ask": pl["ask"], "entry_bid": pl["bid"]},
             ]
+            order_legs = [
+                _order_leg(meta["legs"][0], "BUY_TO_OPEN"),
+                _order_leg(meta["legs"][1], "BUY_TO_OPEN"),
+            ]
+            price_type = "debit"
 
         elif strat == "iron_condor":
             sc = nearest_delta(calls,  delta_wing)
@@ -180,13 +204,25 @@ def _build_order_from_thetadata(ticker, rc, S, exp, calls, puts,
                 {"action": "SELL", "right": "PUT",  "strike": sp["strike"], "entry_mid": sp["mid"], "entry_ask": sp["ask"], "entry_bid": sp["bid"]},
                 {"action": "BUY",  "right": "PUT",  "strike": lp["strike"], "entry_mid": lp["mid"], "entry_ask": lp["ask"], "entry_bid": lp["bid"]},
             ]
+            order_legs = [
+                _order_leg(meta["legs"][0], "SELL_TO_OPEN"),
+                _order_leg(meta["legs"][1], "BUY_TO_OPEN"),
+                _order_leg(meta["legs"][2], "SELL_TO_OPEN"),
+                _order_leg(meta["legs"][3], "BUY_TO_OPEN"),
+            ]
+            price_type = "credit"
 
     except Exception as exc:
         meta["error"] = str(exc)
         return None, meta
 
-    # Return a lightweight order dict so broker registers as filled_simulated
-    order = {"legs": meta["legs"], "net_price": meta["est_net_price"], "quantity": 1}
+    order = {
+        "strategy": strat,
+        "legs": order_legs,
+        "net_price": meta["est_net_price"],
+        "price_type": price_type,
+        "quantity": 1,
+    }
     return order, meta
 
 
@@ -644,6 +680,10 @@ if btn_execute:
     else:
         msgs = []
         for item in st.session_state["proposed_orders"]:
+            if item["order"] is None:
+                meta = item["meta"]
+                msgs.append(f"{meta.get('ticker', '')}: skipped ({meta.get('error') or 'no executable order'})")
+                continue
             rec = execute_order(item["order"], item["meta"], mode=trade_mode)
             msgs.append(f"{rec.ticker}: {rec.status} (id={rec.id})")
         status_bar.success("\n\n".join(msgs))
@@ -1098,6 +1138,14 @@ def _render_tab5():
         except Exception:
             return ts
 
+    def _fmt_money(value, *, unlimited_label: str = "unlimited") -> str:
+        try:
+            if value is None or not np.isfinite(float(value)):
+                return unlimited_label
+            return f"${float(value):.2f}"
+        except (TypeError, ValueError):
+            return "n/a"
+
     st.markdown("#### Recommendations")
     rec_rows = []
     for tr in tracked:
@@ -1181,8 +1229,8 @@ def _render_tab5():
             "Expiry": tr.expiry, "DTE left": dte_remaining(tr), "Days held": days_held(tr),
             "Entry $": tr.entry_net, "Current $": round(net_mid, 2),
             "P&L $": round(pnl_d, 2), "P&L %": f"{pct:.1%}",
-            "Max profit $": f"{tr.max_profit:.2f}" if tr.max_profit != float("inf") else "unlimited",
-            "Max loss $": tr.max_loss, "Status": tr.status,
+            "Max profit $": _fmt_money(tr.max_profit),
+            "Max loss $": _fmt_money(tr.max_loss, unlimited_label="n/a"), "Status": tr.status,
         })
     df_tt = pd.DataFrame(summary_rows)
     _pnl_display_cols = [c for c in df_tt.columns if c != "_id"]
@@ -1263,8 +1311,8 @@ def _render_tab5():
                 _close_ul = getattr(tr, "underlying_at_close", 0.0) or tr.underlying_at_entry
                 mn2.metric("Close price", f"${_close_ul:.2f}",
                            delta=f"{_close_ul - tr.underlying_at_entry:+.2f}")
-            mn3.metric("Max profit", f"${tr.max_profit:.2f}")
-            mn4.metric("Max loss", f"${tr.max_loss:.2f}")
+            mn3.metric("Max profit", _fmt_money(tr.max_profit))
+            mn4.metric("Max loss", _fmt_money(tr.max_loss, unlimited_label="n/a"))
             mn5.metric("Opened", _opened_full)
             st.markdown("**Legs**")
             leg_rows = []
