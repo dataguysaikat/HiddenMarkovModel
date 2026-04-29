@@ -38,10 +38,8 @@ from src.hmm_model import (
     run_all_tickers,
 )
 from src.options import (
-    STRATEGY_MAP,
-    OptionSelectionParams,
-    fetch_option_chain,
-    select_and_build_order,
+    build_order_from_thetadata_chain,
+    option_chain_unavailable_meta,
 )
 from src.broker import (
     execute_order,
@@ -106,124 +104,17 @@ def _thetadata_available() -> bool:
 def _build_order_from_thetadata(ticker, rc, S, exp, calls, puts,
                                 delta_vert, delta_wing, otm_pct):
     """Build order metadata from ThetaData chain DataFrames."""
-    from src.recommend import nearest_delta, nearest_strike, next_strike_above, next_strike_below
-    from src.options import STRATEGY_MAP
-
-    strat = STRATEGY_MAP.get(rc.regime_type, "iron_condor")
-    meta = {
-        "ticker": ticker, "regime_type": rc.regime_type,
-        "strategy": strat, "underlying_price": S, "expiry": exp,
-        "error": None, "legs": [], "est_net_price": 0.0,
-    }
-
-    def _order_leg(leg: dict, action: str) -> dict:
-        return {
-            "symbol": leg.get("symbol", ""),
-            "action": action,
-            "quantity": 1,
-            "right": leg["right"],
-            "strike": float(leg["strike"]),
-        }
-
-    try:
-        if strat == "bull_call_vertical":
-            lc = nearest_delta(calls, delta_vert)
-            sc = next_strike_above(calls, lc["strike"]) if lc is not None else None
-            if lc is None or sc is None:
-                meta["error"] = "Insufficient strikes for bull call spread"; return None, meta
-            net = round(lc["mid"] - sc["mid"], 2)
-            if net <= 0:
-                meta["error"] = f"Bad pricing (net={net:.2f})"; return None, meta
-            wid = sc["strike"] - lc["strike"]
-            meta["est_net_price"] = net
-            meta["legs"] = [
-                {"action": "BUY",  "right": "CALL", "strike": lc["strike"], "entry_mid": lc["mid"], "entry_ask": lc["ask"], "entry_bid": lc["bid"]},
-                {"action": "SELL", "right": "CALL", "strike": sc["strike"], "entry_mid": sc["mid"], "entry_ask": sc["ask"], "entry_bid": sc["bid"]},
-            ]
-            order_legs = [
-                _order_leg(meta["legs"][0], "BUY_TO_OPEN"),
-                _order_leg(meta["legs"][1], "SELL_TO_OPEN"),
-            ]
-            price_type = "debit"
-
-        elif strat == "bear_put_vertical":
-            lp = nearest_delta(puts, -delta_vert)
-            sp = next_strike_below(puts, lp["strike"]) if lp is not None else None
-            if lp is None or sp is None:
-                meta["error"] = "Insufficient strikes for bear put spread"; return None, meta
-            net = round(lp["mid"] - sp["mid"], 2)
-            if net <= 0:
-                meta["error"] = f"Bad pricing (net={net:.2f})"; return None, meta
-            wid = lp["strike"] - sp["strike"]
-            meta["est_net_price"] = net
-            meta["legs"] = [
-                {"action": "BUY",  "right": "PUT", "strike": lp["strike"], "entry_mid": lp["mid"], "entry_ask": lp["ask"], "entry_bid": lp["bid"]},
-                {"action": "SELL", "right": "PUT", "strike": sp["strike"], "entry_mid": sp["mid"], "entry_ask": sp["ask"], "entry_bid": sp["bid"]},
-            ]
-            order_legs = [
-                _order_leg(meta["legs"][0], "BUY_TO_OPEN"),
-                _order_leg(meta["legs"][1], "SELL_TO_OPEN"),
-            ]
-            price_type = "debit"
-
-        elif strat == "long_strangle":
-            cl = nearest_strike(calls, S * (1 + otm_pct))
-            pl = nearest_strike(puts,  S * (1 - otm_pct))
-            if cl is None or pl is None:
-                meta["error"] = "Insufficient strikes for strangle"; return None, meta
-            net = round(cl["mid"] + pl["mid"], 2)
-            if net <= 0:
-                meta["error"] = f"Bad pricing (net={net:.2f})"; return None, meta
-            meta["est_net_price"] = net
-            meta["legs"] = [
-                {"action": "BUY", "right": "CALL", "strike": cl["strike"], "entry_mid": cl["mid"], "entry_ask": cl["ask"], "entry_bid": cl["bid"]},
-                {"action": "BUY", "right": "PUT",  "strike": pl["strike"], "entry_mid": pl["mid"], "entry_ask": pl["ask"], "entry_bid": pl["bid"]},
-            ]
-            order_legs = [
-                _order_leg(meta["legs"][0], "BUY_TO_OPEN"),
-                _order_leg(meta["legs"][1], "BUY_TO_OPEN"),
-            ]
-            price_type = "debit"
-
-        elif strat == "iron_condor":
-            sc = nearest_delta(calls,  delta_wing)
-            sp = nearest_delta(puts,  -delta_wing)
-            if sc is None or sp is None:
-                meta["error"] = "No short legs found for iron condor"; return None, meta
-            lc = next_strike_above(calls, sc["strike"], n=2)
-            lp = next_strike_below(puts,  sp["strike"], n=2)
-            if lc is None or lp is None:
-                meta["error"] = "No wing strikes found for iron condor"; return None, meta
-            cr = round((sc["mid"] + sp["mid"]) - (lc["mid"] + lp["mid"]), 2)
-            if cr <= 0:
-                meta["error"] = f"Bad pricing (credit={cr:.2f})"; return None, meta
-            meta["est_net_price"] = cr
-            meta["legs"] = [
-                {"action": "SELL", "right": "CALL", "strike": sc["strike"], "entry_mid": sc["mid"], "entry_ask": sc["ask"], "entry_bid": sc["bid"]},
-                {"action": "BUY",  "right": "CALL", "strike": lc["strike"], "entry_mid": lc["mid"], "entry_ask": lc["ask"], "entry_bid": lc["bid"]},
-                {"action": "SELL", "right": "PUT",  "strike": sp["strike"], "entry_mid": sp["mid"], "entry_ask": sp["ask"], "entry_bid": sp["bid"]},
-                {"action": "BUY",  "right": "PUT",  "strike": lp["strike"], "entry_mid": lp["mid"], "entry_ask": lp["ask"], "entry_bid": lp["bid"]},
-            ]
-            order_legs = [
-                _order_leg(meta["legs"][0], "SELL_TO_OPEN"),
-                _order_leg(meta["legs"][1], "BUY_TO_OPEN"),
-                _order_leg(meta["legs"][2], "SELL_TO_OPEN"),
-                _order_leg(meta["legs"][3], "BUY_TO_OPEN"),
-            ]
-            price_type = "credit"
-
-    except Exception as exc:
-        meta["error"] = str(exc)
-        return None, meta
-
-    order = {
-        "strategy": strat,
-        "legs": order_legs,
-        "net_price": meta["est_net_price"],
-        "price_type": price_type,
-        "quantity": 1,
-    }
-    return order, meta
+    return build_order_from_thetadata_chain(
+        ticker=ticker,
+        regime_type=rc.regime_type,
+        underlying_price=S,
+        expiry=exp,
+        calls=calls,
+        puts=puts,
+        delta_vert=delta_vert,
+        delta_wing=delta_wing,
+        otm_pct=otm_pct,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -626,13 +517,17 @@ if btn_fit and HMM_AVAILABLE:
                 S = get_price(t, last_close)
                 exp = td.find_expiry(t, target_dte, dte_min, dte_max)
                 if exp is None:
-                    order, meta = select_and_build_order(t, rc.regime_type, {}, S)
-                    meta["error"] = f"No expiry in {dte_min}-{dte_max} DTE range"
+                    order = None
+                    meta = option_chain_unavailable_meta(
+                        t, rc.regime_type, S, f"No expiry in {dte_min}-{dte_max} DTE range"
+                    )
                 else:
                     chain_df = td.get_chain(t, exp, S, strike_range=strike_range)
                     if chain_df.empty:
-                        order, meta = select_and_build_order(t, rc.regime_type, {}, S)
-                        meta["error"] = "Empty chain from ThetaData"
+                        order = None
+                        meta = option_chain_unavailable_meta(
+                            t, rc.regime_type, S, "Empty chain from ThetaData", expiry=exp
+                        )
                     else:
                         calls = td.get_calls(chain_df)
                         puts  = td.get_puts(chain_df)
@@ -641,7 +536,10 @@ if btn_fit and HMM_AVAILABLE:
                             delta_vert, delta_wing, otm_pct,
                         )
             else:
-                order, meta = select_and_build_order(t, rc.regime_type, {}, last_close)
+                order = None
+                meta = option_chain_unavailable_meta(
+                    t, rc.regime_type, last_close, "ThetaData unavailable - option chain required"
+                )
 
             proposed.append({"ticker": t, "order": order, "meta": meta, "rc": rc})
         st.session_state["proposed_orders"] = proposed

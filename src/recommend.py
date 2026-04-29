@@ -221,7 +221,7 @@ def main():
         results = run_all_tickers(bars, n_states=4)
 
     td_up = td.is_available()
-    print(f"ThetaData terminal: {'connected' if td_up else 'UNAVAILABLE — falling back to yfinance'}")
+    print(f"ThetaData terminal: {'connected' if td_up else 'UNAVAILABLE — option chains disabled'}")
     if not td_up:
         print("  Start ThetaData Terminal and ensure it's running on http://127.0.0.1:25503")
         return

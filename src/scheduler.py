@@ -12,6 +12,7 @@ Start once per process via get_scheduler().
 """
 from __future__ import annotations
 
+import json
 import os
 import pickle
 import tempfile
@@ -26,6 +27,24 @@ NY_TZ = pytz.timezone("America/New_York")
 
 _scheduler_lock = threading.Lock()
 _scheduler_started = False
+
+
+def _get_yfinance_price(ticker: str, fallback: float) -> float:
+    """Return the latest yfinance spot price, or fallback if unavailable."""
+    try:
+        import yfinance as yf
+        price = float(yf.Ticker(ticker).fast_info.last_price)
+        return price if price > 0 else fallback
+    except Exception:
+        return fallback
+
+
+def _option_strategy_config() -> dict:
+    config_path = Path(__file__).parent.parent / "config.json"
+    try:
+        return json.loads(config_path.read_text(encoding="utf-8")).get("option_strategy", {})
+    except Exception:
+        return {}
 
 
 # ---------------------------------------------------------------------------
@@ -56,9 +75,10 @@ def _refresh_job(n_states: int = 4, trade_mode: str = "paper") -> None:
 
     from src.data_loader import load_all_tickers, update_with_yfinance, TICKERS
     from src.hmm_model import run_all_tickers
-    from src.options import select_and_build_order
+    from src.options import build_order_from_thetadata_chain, option_chain_unavailable_meta
     from src.broker import execute_order
     from src.trade_tracker import load_trades, check_regime_alerts, update_trade_prices, _save_all
+    from src import thetadata as td
 
     print(f"[scheduler] refresh started at {datetime.now(NY_TZ).strftime('%H:%M ET')}")
 
@@ -110,7 +130,18 @@ def _refresh_job(n_states: int = 4, trade_mode: str = "paper") -> None:
     except Exception as e:
         print(f"[scheduler] regime alert check error: {e}")
 
-    # 4. Execute paper trades (broker log)
+    # 4. Build orders from ThetaData option quotes and execute paper/live trades.
+    opt_cfg = _option_strategy_config()
+    target_dte = opt_cfg.get("target_dte", 21)
+    dte_min = opt_cfg.get("dte_min", 14)
+    dte_max = opt_cfg.get("dte_max", 45)
+    delta_vert = opt_cfg.get("delta_vert", 0.40)
+    delta_wing = opt_cfg.get("delta_wing", 0.16)
+    otm_pct = opt_cfg.get("otm_pct", 0.03)
+    strike_range = opt_cfg.get("strike_range", 20)
+    td_up = td.is_available()
+    print(f"[scheduler] ThetaData terminal: {'connected' if td_up else 'unavailable - option orders disabled'}")
+
     proposed = []
     for t, res in results.items():
         if res.error or not res.characteristics:
@@ -119,7 +150,42 @@ def _refresh_job(n_states: int = 4, trade_mode: str = "paper") -> None:
         if rc is None:
             continue
         last_close = float(res.df_prices["close"].iloc[-1])
-        order, meta = select_and_build_order(t, rc.regime_type, {}, last_close)
+        spot = _get_yfinance_price(t, last_close)
+
+        if not td_up:
+            order = None
+            meta = option_chain_unavailable_meta(
+                t, rc.regime_type, spot, "ThetaData unavailable - option chain required"
+            )
+        else:
+            exp = td.find_expiry(t, target_dte, dte_min, dte_max)
+            if exp is None:
+                order = None
+                meta = option_chain_unavailable_meta(
+                    t, rc.regime_type, spot, f"No expiry in {dte_min}-{dte_max} DTE range"
+                )
+            else:
+                chain_df = td.get_chain(t, exp, spot, strike_range=strike_range)
+                if chain_df.empty:
+                    order = None
+                    meta = option_chain_unavailable_meta(
+                        t, rc.regime_type, spot, "Empty chain from ThetaData", expiry=exp
+                    )
+                else:
+                    calls = td.get_calls(chain_df)
+                    puts = td.get_puts(chain_df)
+                    order, meta = build_order_from_thetadata_chain(
+                        ticker=t,
+                        regime_type=rc.regime_type,
+                        underlying_price=spot,
+                        expiry=exp,
+                        calls=calls,
+                        puts=puts,
+                        delta_vert=delta_vert,
+                        delta_wing=delta_wing,
+                        otm_pct=otm_pct,
+                    )
+
         if order is None:
             proposed.append({"ticker": t, "order": order, "meta": meta, "rc": rc, "record": None})
             print(f"[scheduler] {t}: skipped ({meta.get('error') or rc.regime_type})")

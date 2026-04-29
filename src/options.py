@@ -1,8 +1,9 @@
 """
-options.py — Strategy selection, option chain lookup, order building.
+options.py — Strategy selection and order building.
 
-When no live Schwab client is available (chain={}), the module still returns
-order metadata so the paper-trade path can log a simulated position.
+Active dashboard/scheduler order proposals use ThetaData quote DataFrames for
+option prices. Schwab helpers are retained for broker execution compatibility
+and legacy chain-shaped inputs.
 """
 from __future__ import annotations
 
@@ -32,6 +33,28 @@ STRATEGY_MAP: dict[str, str] = {
     "vol_expansion": "long_strangle",
     "mean_reverting": "iron_condor",
 }
+
+
+def option_chain_unavailable_meta(
+    ticker: str,
+    regime_type: str,
+    underlying_price: float,
+    error: str,
+    expiry: str | None = None,
+) -> dict:
+    """Return proposal metadata when a ThetaData option chain is unavailable."""
+    meta = {
+        "ticker": ticker,
+        "regime_type": regime_type,
+        "strategy": STRATEGY_MAP.get(regime_type, "iron_condor"),
+        "underlying_price": underlying_price,
+        "error": error,
+        "legs": [],
+        "est_net_price": 0.0,
+    }
+    if expiry is not None:
+        meta["expiry"] = expiry
+    return meta
 
 
 @dataclass
@@ -133,6 +156,195 @@ def find_strike_by_offset(
     if not strikes:
         return None
     return min(strikes, key=lambda s: abs(s["strike"] - target))
+
+
+# ---------------------------------------------------------------------------
+# ThetaData DataFrame selectors
+# ---------------------------------------------------------------------------
+
+def _nearest_delta_df(df: Any, target: float):
+    valid = df.dropna(subset=["delta"])
+    if valid.empty:
+        return None
+    return valid.loc[(valid["delta"].abs() - abs(target)).abs().idxmin()]
+
+
+def _nearest_strike_df(df: Any, price: float):
+    if df.empty:
+        return None
+    return df.loc[(df["strike"] - price).abs().idxmin()]
+
+
+def _next_strike_above_df(df: Any, strike: float, n: int = 1):
+    above = df[df["strike"] > strike]
+    return above.iloc[n - 1] if len(above) >= n else None
+
+
+def _next_strike_below_df(df: Any, strike: float, n: int = 1):
+    below = df[df["strike"] < strike]
+    return below.iloc[-n] if len(below) >= n else None
+
+
+def _tracking_leg_from_quote(row: Any, action: str) -> dict:
+    return {
+        "action": action,
+        "right": str(row["right"]).upper(),
+        "strike": float(row["strike"]),
+        "entry_mid": float(row.get("mid", 0.0)),
+        "entry_ask": float(row.get("ask", 0.0)),
+        "entry_bid": float(row.get("bid", 0.0)),
+    }
+
+
+def _order_leg_from_tracking_leg(leg: dict, action: str, quantity: int) -> dict:
+    return {
+        "symbol": leg.get("symbol", ""),
+        "action": action,
+        "quantity": quantity,
+        "right": leg["right"],
+        "strike": float(leg["strike"]),
+    }
+
+
+def build_order_from_thetadata_chain(
+    ticker: str,
+    regime_type: str,
+    underlying_price: float,
+    expiry: str,
+    calls: Any,
+    puts: Any,
+    delta_vert: float = 0.40,
+    delta_wing: float = 0.16,
+    otm_pct: float = 0.03,
+    quantity: int = 1,
+) -> tuple[Optional[dict], dict]:
+    """
+    Build an executable order from ThetaData quote DataFrames.
+
+    `calls` and `puts` are the DataFrames returned by thetadata.get_calls()
+    and thetadata.get_puts(). Prices in the returned metadata come from
+    ThetaData bid/ask mids; the underlying price should be supplied by the
+    caller, normally from yfinance.
+    """
+    strategy = STRATEGY_MAP.get(regime_type, "iron_condor")
+    meta: dict = {
+        "ticker": ticker,
+        "regime_type": regime_type,
+        "strategy": strategy,
+        "underlying_price": underlying_price,
+        "expiry": expiry,
+        "error": None,
+        "legs": [],
+        "est_net_price": 0.0,
+    }
+
+    try:
+        if strategy == "bull_call_vertical":
+            long_call = _nearest_delta_df(calls, delta_vert)
+            short_call = _next_strike_above_df(calls, long_call["strike"]) if long_call is not None else None
+            if long_call is None or short_call is None:
+                meta["error"] = "Insufficient strikes for bull call spread"
+                return None, meta
+            net_price = round(float(long_call["mid"] - short_call["mid"]), 2)
+            if net_price <= 0:
+                meta["error"] = f"Bad pricing (net={net_price:.2f})"
+                return None, meta
+            meta["legs"] = [
+                _tracking_leg_from_quote(long_call, "BUY"),
+                _tracking_leg_from_quote(short_call, "SELL"),
+            ]
+            order_legs = [
+                _order_leg_from_tracking_leg(meta["legs"][0], "BUY_TO_OPEN", quantity),
+                _order_leg_from_tracking_leg(meta["legs"][1], "SELL_TO_OPEN", quantity),
+            ]
+            price_type = "debit"
+
+        elif strategy == "bear_put_vertical":
+            long_put = _nearest_delta_df(puts, -delta_vert)
+            short_put = _next_strike_below_df(puts, long_put["strike"]) if long_put is not None else None
+            if long_put is None or short_put is None:
+                meta["error"] = "Insufficient strikes for bear put spread"
+                return None, meta
+            net_price = round(float(long_put["mid"] - short_put["mid"]), 2)
+            if net_price <= 0:
+                meta["error"] = f"Bad pricing (net={net_price:.2f})"
+                return None, meta
+            meta["legs"] = [
+                _tracking_leg_from_quote(long_put, "BUY"),
+                _tracking_leg_from_quote(short_put, "SELL"),
+            ]
+            order_legs = [
+                _order_leg_from_tracking_leg(meta["legs"][0], "BUY_TO_OPEN", quantity),
+                _order_leg_from_tracking_leg(meta["legs"][1], "SELL_TO_OPEN", quantity),
+            ]
+            price_type = "debit"
+
+        elif strategy == "long_strangle":
+            call_leg = _nearest_strike_df(calls, underlying_price * (1 + otm_pct))
+            put_leg = _nearest_strike_df(puts, underlying_price * (1 - otm_pct))
+            if call_leg is None or put_leg is None:
+                meta["error"] = "Insufficient strikes for strangle"
+                return None, meta
+            net_price = round(float(call_leg["mid"] + put_leg["mid"]), 2)
+            if net_price <= 0:
+                meta["error"] = f"Bad pricing (net={net_price:.2f})"
+                return None, meta
+            meta["legs"] = [
+                _tracking_leg_from_quote(call_leg, "BUY"),
+                _tracking_leg_from_quote(put_leg, "BUY"),
+            ]
+            order_legs = [
+                _order_leg_from_tracking_leg(meta["legs"][0], "BUY_TO_OPEN", quantity),
+                _order_leg_from_tracking_leg(meta["legs"][1], "BUY_TO_OPEN", quantity),
+            ]
+            price_type = "debit"
+
+        elif strategy == "iron_condor":
+            short_call = _nearest_delta_df(calls, delta_wing)
+            short_put = _nearest_delta_df(puts, -delta_wing)
+            if short_call is None or short_put is None:
+                meta["error"] = "No short legs found for iron condor"
+                return None, meta
+            long_call = _next_strike_above_df(calls, short_call["strike"], n=2)
+            long_put = _next_strike_below_df(puts, short_put["strike"], n=2)
+            if long_call is None or long_put is None:
+                meta["error"] = "No wing strikes found for iron condor"
+                return None, meta
+            net_price = round(float((short_call["mid"] + short_put["mid"]) - (long_call["mid"] + long_put["mid"])), 2)
+            if net_price <= 0:
+                meta["error"] = f"Bad pricing (credit={net_price:.2f})"
+                return None, meta
+            meta["legs"] = [
+                _tracking_leg_from_quote(short_call, "SELL"),
+                _tracking_leg_from_quote(long_call, "BUY"),
+                _tracking_leg_from_quote(short_put, "SELL"),
+                _tracking_leg_from_quote(long_put, "BUY"),
+            ]
+            order_legs = [
+                _order_leg_from_tracking_leg(meta["legs"][0], "SELL_TO_OPEN", quantity),
+                _order_leg_from_tracking_leg(meta["legs"][1], "BUY_TO_OPEN", quantity),
+                _order_leg_from_tracking_leg(meta["legs"][2], "SELL_TO_OPEN", quantity),
+                _order_leg_from_tracking_leg(meta["legs"][3], "BUY_TO_OPEN", quantity),
+            ]
+            price_type = "credit"
+
+        else:
+            meta["error"] = f"Unknown strategy: {strategy}"
+            return None, meta
+
+    except Exception as exc:  # noqa: BLE001
+        meta["error"] = str(exc)
+        return None, meta
+
+    meta["est_net_price"] = net_price
+    order = {
+        "strategy": strategy,
+        "legs": order_legs,
+        "net_price": net_price,
+        "price_type": price_type,
+        "quantity": quantity,
+    }
+    return order, meta
 
 
 # ---------------------------------------------------------------------------
