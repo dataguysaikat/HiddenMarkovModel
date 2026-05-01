@@ -8230,6 +8230,12 @@
         "underlying": 93.55,
         "net_mid": 0.38,
         "pnl_dollars": 4.0
+      },
+      {
+        "date": "2026-05-01",
+        "underlying": 92.06,
+        "net_mid": 0.35,
+        "pnl_dollars": 6.5
       }
     ],
     "status": "open",
@@ -8274,9 +8280,9 @@
     "daily_prices": [
       {
         "date": "2026-05-01",
-        "underlying": 93.66500091552734,
-        "net_mid": 3.08,
-        "pnl_dollars": 0.0
+        "underlying": 92.06,
+        "net_mid": 3.15,
+        "pnl_dollars": 7.5
       }
     ],
     "status": "open",

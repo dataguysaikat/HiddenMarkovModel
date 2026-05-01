@@ -5262,5 +5262,5433 @@
     "status": "filled_simulated",
     "schwab_order_id": null,
     "error": null
+  },
+  {
+    "id": "92e27e93",
+    "timestamp_utc": "2026-05-01T15:09:31.999116+00:00",
+    "ticker": "AAPL",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 280.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 275.0
+      }
+    ],
+    "est_net_price": 1.88,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "c86714e4",
+    "timestamp_utc": "2026-05-01T15:09:34.503694+00:00",
+    "ticker": "MSFT",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 420.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 425.0
+      }
+    ],
+    "est_net_price": 1.72,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "a3da4421",
+    "timestamp_utc": "2026-05-01T15:09:37.003047+00:00",
+    "ticker": "NVDA",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 205.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 210.0
+      }
+    ],
+    "est_net_price": 1.8,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "5c3d0839",
+    "timestamp_utc": "2026-05-01T15:09:39.480047+00:00",
+    "ticker": "AMZN",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 275.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 260.0
+      }
+    ],
+    "est_net_price": 8.77,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "07a95e63",
+    "timestamp_utc": "2026-05-01T15:09:41.927060+00:00",
+    "ticker": "GOOGL",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 395.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 370.0
+      }
+    ],
+    "est_net_price": 12.67,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "11d86c97",
+    "timestamp_utc": "2026-05-01T15:09:44.491133+00:00",
+    "ticker": "META",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 630.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 595.0
+      }
+    ],
+    "est_net_price": 22.38,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "854f5b92",
+    "timestamp_utc": "2026-05-01T15:09:47.346026+00:00",
+    "ticker": "TSLA",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 385.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 380.0
+      }
+    ],
+    "est_net_price": 2.02,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "69cf7a62",
+    "timestamp_utc": "2026-05-01T15:09:50.113512+00:00",
+    "ticker": "AVGO",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 470.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 480.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 380.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 370.0
+      }
+    ],
+    "est_net_price": 2.36,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "ef81ae60",
+    "timestamp_utc": "2026-05-01T15:09:53.007967+00:00",
+    "ticker": "LLY",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 960.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 955.0
+      }
+    ],
+    "est_net_price": 2.53,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "262fefca",
+    "timestamp_utc": "2026-05-01T15:09:55.666369+00:00",
+    "ticker": "COST",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 1055.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 995.0
+      }
+    ],
+    "est_net_price": 18.42,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "f02b3926",
+    "timestamp_utc": "2026-05-01T15:10:04.049523+00:00",
+    "ticker": "IWM",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 292.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 294.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 263.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 262.0
+      }
+    ],
+    "est_net_price": 0.4,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "d966377a",
+    "timestamp_utc": "2026-05-01T15:10:07.001448+00:00",
+    "ticker": "AMD",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 430.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 450.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 300.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 290.0
+      }
+    ],
+    "est_net_price": 3.07,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "2c6e4b65",
+    "timestamp_utc": "2026-05-01T15:10:09.539506+00:00",
+    "ticker": "NFLX",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 97.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 91.0
+      }
+    ],
+    "est_net_price": 2.76,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "933f1be5",
+    "timestamp_utc": "2026-05-01T15:10:12.051785+00:00",
+    "ticker": "JPM",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 330.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 340.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 295.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 285.0
+      }
+    ],
+    "est_net_price": 1.89,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "a545cbcb",
+    "timestamp_utc": "2026-05-01T15:10:14.504928+00:00",
+    "ticker": "GLD",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 433.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 434.0
+      }
+    ],
+    "est_net_price": 0.33,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "4e25aa77",
+    "timestamp_utc": "2026-05-01T15:10:17.082611+00:00",
+    "ticker": "TLT",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 88.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 89.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 83.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 82.5
+      }
+    ],
+    "est_net_price": 0.16,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "bda6c28d",
+    "timestamp_utc": "2026-05-01T15:10:19.812158+00:00",
+    "ticker": "XLF",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 54.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 56.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 50.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 49.0
+      }
+    ],
+    "est_net_price": 0.21,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "87d1c170",
+    "timestamp_utc": "2026-05-01T15:10:22.499091+00:00",
+    "ticker": "XLE",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 61.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 57.5
+      }
+    ],
+    "est_net_price": 1.74,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "3f728f8d",
+    "timestamp_utc": "2026-05-01T15:10:25.164227+00:00",
+    "ticker": "QCOM",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 170.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 167.5
+      }
+    ],
+    "est_net_price": 1.12,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "66b8025f",
+    "timestamp_utc": "2026-05-01T15:10:27.642298+00:00",
+    "ticker": "PLTR",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 152.5
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 155.0
+      }
+    ],
+    "est_net_price": 0.75,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "dec30b32",
+    "timestamp_utc": "2026-05-01T15:41:30.273402+00:00",
+    "ticker": "AAPL",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 280.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 275.0
+      }
+    ],
+    "est_net_price": 1.55,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "abb0dab0",
+    "timestamp_utc": "2026-05-01T15:41:32.970639+00:00",
+    "ticker": "MSFT",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 425.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 430.0
+      }
+    ],
+    "est_net_price": 1.67,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "c81f945f",
+    "timestamp_utc": "2026-05-01T15:41:35.736355+00:00",
+    "ticker": "NVDA",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 205.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 210.0
+      }
+    ],
+    "est_net_price": 1.78,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "2a06e88f",
+    "timestamp_utc": "2026-05-01T15:41:38.602057+00:00",
+    "ticker": "AMZN",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 280.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 260.0
+      }
+    ],
+    "est_net_price": 7.2,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "9f1dbfed",
+    "timestamp_utc": "2026-05-01T15:41:41.242528+00:00",
+    "ticker": "GOOGL",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 395.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 375.0
+      }
+    ],
+    "est_net_price": 14.23,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "d916631a",
+    "timestamp_utc": "2026-05-01T15:41:44.146103+00:00",
+    "ticker": "META",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 630.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 595.0
+      }
+    ],
+    "est_net_price": 21.88,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "951083b7",
+    "timestamp_utc": "2026-05-01T15:41:46.888297+00:00",
+    "ticker": "TSLA",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 390.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 385.0
+      }
+    ],
+    "est_net_price": 2.12,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "46114916",
+    "timestamp_utc": "2026-05-01T15:41:49.582930+00:00",
+    "ticker": "AVGO",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 470.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 480.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 380.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 370.0
+      }
+    ],
+    "est_net_price": 2.59,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "458af1b6",
+    "timestamp_utc": "2026-05-01T15:41:52.286544+00:00",
+    "ticker": "LLY",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 995.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 935.0
+      }
+    ],
+    "est_net_price": 39.35,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "71795509",
+    "timestamp_utc": "2026-05-01T15:41:54.954348+00:00",
+    "ticker": "COST",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 1015.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 1010.0
+      }
+    ],
+    "est_net_price": 2.0,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "1a901b0c",
+    "timestamp_utc": "2026-05-01T15:41:57.450806+00:00",
+    "ticker": "QQQ",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 695.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 656.0
+      }
+    ],
+    "est_net_price": 10.66,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "0cde32c6",
+    "timestamp_utc": "2026-05-01T15:42:02.778068+00:00",
+    "ticker": "IWM",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 292.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 294.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 264.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 262.5
+      }
+    ],
+    "est_net_price": 0.47,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "e9397d78",
+    "timestamp_utc": "2026-05-01T15:42:05.436256+00:00",
+    "ticker": "AMD",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 430.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 450.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 305.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 295.0
+      }
+    ],
+    "est_net_price": 3.28,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "63827fe4",
+    "timestamp_utc": "2026-05-01T15:42:08.095457+00:00",
+    "ticker": "NFLX",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 97.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 91.0
+      }
+    ],
+    "est_net_price": 2.77,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "7c84eec4",
+    "timestamp_utc": "2026-05-01T15:42:10.702134+00:00",
+    "ticker": "JPM",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 330.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 340.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 295.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 285.0
+      }
+    ],
+    "est_net_price": 1.89,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "17e893b7",
+    "timestamp_utc": "2026-05-01T15:42:13.236004+00:00",
+    "ticker": "GLD",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 434.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 435.0
+      }
+    ],
+    "est_net_price": 0.38,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "07e70864",
+    "timestamp_utc": "2026-05-01T15:42:15.930993+00:00",
+    "ticker": "TLT",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 88.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 89.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 83.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 82.5
+      }
+    ],
+    "est_net_price": 0.15,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "21d1ba1c",
+    "timestamp_utc": "2026-05-01T15:42:18.490485+00:00",
+    "ticker": "XLF",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 54.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 56.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 50.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 49.0
+      }
+    ],
+    "est_net_price": 0.21,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "80a1ccb0",
+    "timestamp_utc": "2026-05-01T15:42:21.181193+00:00",
+    "ticker": "XLE",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 60.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 60.5
+      }
+    ],
+    "est_net_price": 0.18,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "48a9ee6c",
+    "timestamp_utc": "2026-05-01T15:42:23.755373+00:00",
+    "ticker": "QCOM",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 170.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 167.5
+      }
+    ],
+    "est_net_price": 1.0,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "2d1ad634",
+    "timestamp_utc": "2026-05-01T15:42:26.390212+00:00",
+    "ticker": "PLTR",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 152.5
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 155.0
+      }
+    ],
+    "est_net_price": 0.8,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "7875766a",
+    "timestamp_utc": "2026-05-01T16:16:23.805262+00:00",
+    "ticker": "AAPL",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 280.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 275.0
+      }
+    ],
+    "est_net_price": 1.56,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "fbdd6d45",
+    "timestamp_utc": "2026-05-01T16:16:26.855422+00:00",
+    "ticker": "MSFT",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 410.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 405.0
+      }
+    ],
+    "est_net_price": 2.08,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "cfe8b62b",
+    "timestamp_utc": "2026-05-01T16:16:30.053471+00:00",
+    "ticker": "NVDA",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 205.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 210.0
+      }
+    ],
+    "est_net_price": 1.77,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "b0628478",
+    "timestamp_utc": "2026-05-01T16:16:33.146203+00:00",
+    "ticker": "AMZN",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 280.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 260.0
+      }
+    ],
+    "est_net_price": 7.15,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "48f236c5",
+    "timestamp_utc": "2026-05-01T16:16:36.220499+00:00",
+    "ticker": "GOOGL",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 395.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 375.0
+      }
+    ],
+    "est_net_price": 14.15,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "ce5098e3",
+    "timestamp_utc": "2026-05-01T16:16:39.790057+00:00",
+    "ticker": "META",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 630.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 595.0
+      }
+    ],
+    "est_net_price": 21.98,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "c10004a9",
+    "timestamp_utc": "2026-05-01T16:16:42.923731+00:00",
+    "ticker": "TSLA",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 390.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 385.0
+      }
+    ],
+    "est_net_price": 2.2,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "18187a87",
+    "timestamp_utc": "2026-05-01T16:16:45.965758+00:00",
+    "ticker": "AVGO",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 470.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 480.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 380.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 370.0
+      }
+    ],
+    "est_net_price": 2.2,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "345cf3d5",
+    "timestamp_utc": "2026-05-01T16:16:48.928844+00:00",
+    "ticker": "LLY",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 990.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 930.0
+      }
+    ],
+    "est_net_price": 39.9,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "351270a1",
+    "timestamp_utc": "2026-05-01T16:16:52.053569+00:00",
+    "ticker": "COST",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 1050.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 985.0
+      }
+    ],
+    "est_net_price": 16.85,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "449b621e",
+    "timestamp_utc": "2026-05-01T16:16:54.684992+00:00",
+    "ticker": "QQQ",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 694.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 655.0
+      }
+    ],
+    "est_net_price": 10.86,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "5ea0cdf4",
+    "timestamp_utc": "2026-05-01T16:17:00.246332+00:00",
+    "ticker": "IWM",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 292.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 294.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 264.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 262.5
+      }
+    ],
+    "est_net_price": 0.49,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "c1a6599f",
+    "timestamp_utc": "2026-05-01T16:17:02.989528+00:00",
+    "ticker": "AMD",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 430.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 450.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 305.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 295.0
+      }
+    ],
+    "est_net_price": 3.4,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "4956b465",
+    "timestamp_utc": "2026-05-01T16:17:05.594100+00:00",
+    "ticker": "NFLX",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 96.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 91.0
+      }
+    ],
+    "est_net_price": 3.12,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "c75316f1",
+    "timestamp_utc": "2026-05-01T16:17:08.418379+00:00",
+    "ticker": "JPM",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 330.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 340.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 295.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 285.0
+      }
+    ],
+    "est_net_price": 1.86,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "0dc28da9",
+    "timestamp_utc": "2026-05-01T16:17:11.136112+00:00",
+    "ticker": "GLD",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 435.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 436.0
+      }
+    ],
+    "est_net_price": 0.35,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "4a388ca1",
+    "timestamp_utc": "2026-05-01T16:17:13.645675+00:00",
+    "ticker": "TLT",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 88.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 89.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 83.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 82.5
+      }
+    ],
+    "est_net_price": 0.15,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "a4e39d13",
+    "timestamp_utc": "2026-05-01T16:17:16.121794+00:00",
+    "ticker": "XLF",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 54.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 56.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 50.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 49.0
+      }
+    ],
+    "est_net_price": 0.21,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "f150024f",
+    "timestamp_utc": "2026-05-01T16:17:18.664600+00:00",
+    "ticker": "XLE",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 60.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 57.0
+      }
+    ],
+    "est_net_price": 1.72,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "2479bc7c",
+    "timestamp_utc": "2026-05-01T16:17:21.287625+00:00",
+    "ticker": "QCOM",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 180.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 170.0
+      }
+    ],
+    "est_net_price": 9.85,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "43620f17",
+    "timestamp_utc": "2026-05-01T16:17:23.992598+00:00",
+    "ticker": "PLTR",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 152.5
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 155.0
+      }
+    ],
+    "est_net_price": 0.7,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "c69c0cb9",
+    "timestamp_utc": "2026-05-01T16:41:03.734433+00:00",
+    "ticker": "AAPL",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 290.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 295.0
+      }
+    ],
+    "est_net_price": 1.41,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "b1955d07",
+    "timestamp_utc": "2026-05-01T16:41:06.567049+00:00",
+    "ticker": "MSFT",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 425.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 430.0
+      }
+    ],
+    "est_net_price": 1.42,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "0d3fed0a",
+    "timestamp_utc": "2026-05-01T16:41:09.739064+00:00",
+    "ticker": "NVDA",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 205.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 210.0
+      }
+    ],
+    "est_net_price": 1.75,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "af231441",
+    "timestamp_utc": "2026-05-01T16:41:12.662797+00:00",
+    "ticker": "AMZN",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 275.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 260.0
+      }
+    ],
+    "est_net_price": 8.68,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "c06808e9",
+    "timestamp_utc": "2026-05-01T16:41:15.394103+00:00",
+    "ticker": "GOOGL",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 395.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 375.0
+      }
+    ],
+    "est_net_price": 14.5,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "424e9cb5",
+    "timestamp_utc": "2026-05-01T16:41:18.260931+00:00",
+    "ticker": "META",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 630.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 595.0
+      }
+    ],
+    "est_net_price": 21.9,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "ff4331c0",
+    "timestamp_utc": "2026-05-01T16:41:21.375958+00:00",
+    "ticker": "TSLA",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 405.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 410.0
+      }
+    ],
+    "est_net_price": 1.72,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "57fd83dd",
+    "timestamp_utc": "2026-05-01T16:41:24.250394+00:00",
+    "ticker": "AVGO",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 470.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 480.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 380.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 370.0
+      }
+    ],
+    "est_net_price": 2.4,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "a3a19a12",
+    "timestamp_utc": "2026-05-01T16:41:27.063430+00:00",
+    "ticker": "LLY",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 995.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 935.0
+      }
+    ],
+    "est_net_price": 39.38,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "8089a20b",
+    "timestamp_utc": "2026-05-01T16:41:29.875343+00:00",
+    "ticker": "COST",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 1045.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 985.0
+      }
+    ],
+    "est_net_price": 18.4,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "fd25a1d8",
+    "timestamp_utc": "2026-05-01T16:41:32.629513+00:00",
+    "ticker": "QQQ",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 694.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 655.0
+      }
+    ],
+    "est_net_price": 10.81,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "6c4bf619",
+    "timestamp_utc": "2026-05-01T16:41:35.353497+00:00",
+    "ticker": "SPY",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 742.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 703.0
+      }
+    ],
+    "est_net_price": 6.22,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "5bdba563",
+    "timestamp_utc": "2026-05-01T16:41:38.107153+00:00",
+    "ticker": "IWM",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 292.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 294.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 263.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 262.0
+      }
+    ],
+    "est_net_price": 0.41,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "8a233272",
+    "timestamp_utc": "2026-05-01T16:41:40.717208+00:00",
+    "ticker": "AMD",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 430.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 450.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 305.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 295.0
+      }
+    ],
+    "est_net_price": 3.38,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "671b1231",
+    "timestamp_utc": "2026-05-01T16:41:43.289980+00:00",
+    "ticker": "NFLX",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 96.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 91.0
+      }
+    ],
+    "est_net_price": 3.14,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "91840e16",
+    "timestamp_utc": "2026-05-01T16:41:46.178982+00:00",
+    "ticker": "JPM",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 330.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 340.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 295.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 285.0
+      }
+    ],
+    "est_net_price": 1.94,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "5080a5b5",
+    "timestamp_utc": "2026-05-01T16:41:48.715541+00:00",
+    "ticker": "GLD",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 434.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 435.0
+      }
+    ],
+    "est_net_price": 0.35,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "01b1fe8e",
+    "timestamp_utc": "2026-05-01T16:41:51.377854+00:00",
+    "ticker": "TLT",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 88.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 89.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 83.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 82.5
+      }
+    ],
+    "est_net_price": 0.17,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "19626045",
+    "timestamp_utc": "2026-05-01T16:41:53.931710+00:00",
+    "ticker": "XLF",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 54.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 56.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 50.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 49.0
+      }
+    ],
+    "est_net_price": 0.2,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "6b864ca0",
+    "timestamp_utc": "2026-05-01T16:41:56.815918+00:00",
+    "ticker": "XLE",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 60.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 57.0
+      }
+    ],
+    "est_net_price": 1.69,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "e7eef5a3",
+    "timestamp_utc": "2026-05-01T16:41:59.583864+00:00",
+    "ticker": "QCOM",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 172.5
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 170.0
+      }
+    ],
+    "est_net_price": 1.0,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "2997c881",
+    "timestamp_utc": "2026-05-01T16:42:02.033881+00:00",
+    "ticker": "PLTR",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 152.5
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 155.0
+      }
+    ],
+    "est_net_price": 0.8,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "9e1f2b52",
+    "timestamp_utc": "2026-05-01T17:10:21.184229+00:00",
+    "ticker": "AAPL",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 280.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 275.0
+      }
+    ],
+    "est_net_price": 1.73,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "1327d48b",
+    "timestamp_utc": "2026-05-01T17:10:23.805332+00:00",
+    "ticker": "MSFT",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 425.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 430.0
+      }
+    ],
+    "est_net_price": 1.53,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "7b5481ea",
+    "timestamp_utc": "2026-05-01T17:10:26.396156+00:00",
+    "ticker": "NVDA",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 205.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 210.0
+      }
+    ],
+    "est_net_price": 1.85,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "27568d41",
+    "timestamp_utc": "2026-05-01T17:10:29.052209+00:00",
+    "ticker": "AMZN",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 275.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 260.0
+      }
+    ],
+    "est_net_price": 8.5,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "17c18e48",
+    "timestamp_utc": "2026-05-01T17:10:31.778828+00:00",
+    "ticker": "GOOGL",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 395.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 400.0
+      }
+    ],
+    "est_net_price": 1.42,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "46305a41",
+    "timestamp_utc": "2026-05-01T17:10:34.326052+00:00",
+    "ticker": "META",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 630.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 595.0
+      }
+    ],
+    "est_net_price": 21.42,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "a73ff212",
+    "timestamp_utc": "2026-05-01T17:10:36.930511+00:00",
+    "ticker": "TSLA",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 440.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 450.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 360.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 350.0
+      }
+    ],
+    "est_net_price": 2.41,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "12df4a50",
+    "timestamp_utc": "2026-05-01T17:10:39.490506+00:00",
+    "ticker": "AVGO",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 470.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 480.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 380.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 370.0
+      }
+    ],
+    "est_net_price": 2.31,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "9f868a25",
+    "timestamp_utc": "2026-05-01T17:10:42.226934+00:00",
+    "ticker": "LLY",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 950.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 945.0
+      }
+    ],
+    "est_net_price": 1.45,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "f54caac5",
+    "timestamp_utc": "2026-05-01T17:10:44.703840+00:00",
+    "ticker": "COST",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 1045.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 985.0
+      }
+    ],
+    "est_net_price": 17.53,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "5d6ca8c0",
+    "timestamp_utc": "2026-05-01T17:10:52.038347+00:00",
+    "ticker": "IWM",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 293.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 295.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 263.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 262.0
+      }
+    ],
+    "est_net_price": 0.38,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "9de1c2af",
+    "timestamp_utc": "2026-05-01T17:10:54.588855+00:00",
+    "ticker": "AMD",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 430.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 450.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 305.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 295.0
+      }
+    ],
+    "est_net_price": 3.32,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "0390ab95",
+    "timestamp_utc": "2026-05-01T17:10:57.039990+00:00",
+    "ticker": "NFLX",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 96.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 90.0
+      }
+    ],
+    "est_net_price": 2.76,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "411079b5",
+    "timestamp_utc": "2026-05-01T17:10:59.634301+00:00",
+    "ticker": "JPM",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 330.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 340.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 295.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 285.0
+      }
+    ],
+    "est_net_price": 1.89,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "24a9c3ee",
+    "timestamp_utc": "2026-05-01T17:11:04.591483+00:00",
+    "ticker": "TLT",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 88.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 89.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 83.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 82.5
+      }
+    ],
+    "est_net_price": 0.16,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "05194bb2",
+    "timestamp_utc": "2026-05-01T17:11:07.152200+00:00",
+    "ticker": "XLF",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 54.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 56.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 50.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 49.0
+      }
+    ],
+    "est_net_price": 0.2,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "89d83fdb",
+    "timestamp_utc": "2026-05-01T17:11:09.780142+00:00",
+    "ticker": "XLE",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 60.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 57.0
+      }
+    ],
+    "est_net_price": 1.72,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "f77a0742",
+    "timestamp_utc": "2026-05-01T17:11:12.346794+00:00",
+    "ticker": "QCOM",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 185.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 172.5
+      }
+    ],
+    "est_net_price": 9.4,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "0b3512fb",
+    "timestamp_utc": "2026-05-01T17:11:14.909524+00:00",
+    "ticker": "PLTR",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 152.5
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 155.0
+      }
+    ],
+    "est_net_price": 0.85,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "9f7af008",
+    "timestamp_utc": "2026-05-01T17:40:19.053714+00:00",
+    "ticker": "AAPL",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 280.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 275.0
+      }
+    ],
+    "est_net_price": 1.75,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "d5187400",
+    "timestamp_utc": "2026-05-01T17:40:21.704890+00:00",
+    "ticker": "MSFT",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 425.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 430.0
+      }
+    ],
+    "est_net_price": 1.4,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "5f223249",
+    "timestamp_utc": "2026-05-01T17:40:24.296489+00:00",
+    "ticker": "NVDA",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 210.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 215.0
+      }
+    ],
+    "est_net_price": 1.47,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "e6889d41",
+    "timestamp_utc": "2026-05-01T17:40:26.917502+00:00",
+    "ticker": "AMZN",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 275.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 260.0
+      }
+    ],
+    "est_net_price": 8.32,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "763aded9",
+    "timestamp_utc": "2026-05-01T17:40:29.467333+00:00",
+    "ticker": "GOOGL",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 395.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 400.0
+      }
+    ],
+    "est_net_price": 1.87,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "974e612a",
+    "timestamp_utc": "2026-05-01T17:40:32.091887+00:00",
+    "ticker": "META",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 635.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 595.0
+      }
+    ],
+    "est_net_price": 19.7,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "4dcc2e01",
+    "timestamp_utc": "2026-05-01T17:40:34.743954+00:00",
+    "ticker": "TSLA",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 390.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 385.0
+      }
+    ],
+    "est_net_price": 2.08,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "5f2c4e4b",
+    "timestamp_utc": "2026-05-01T17:40:37.695458+00:00",
+    "ticker": "AVGO",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 470.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 480.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 380.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 370.0
+      }
+    ],
+    "est_net_price": 2.34,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "d5954662",
+    "timestamp_utc": "2026-05-01T17:40:40.554031+00:00",
+    "ticker": "LLY",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 950.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 945.0
+      }
+    ],
+    "est_net_price": 1.45,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "bcabca8e",
+    "timestamp_utc": "2026-05-01T17:40:43.741691+00:00",
+    "ticker": "COST",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 1045.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 985.0
+      }
+    ],
+    "est_net_price": 17.32,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "4764deec",
+    "timestamp_utc": "2026-05-01T17:40:46.916693+00:00",
+    "ticker": "QQQ",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 695.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 656.0
+      }
+    ],
+    "est_net_price": 10.62,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "53e67912",
+    "timestamp_utc": "2026-05-01T17:40:52.671395+00:00",
+    "ticker": "IWM",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 293.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 295.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 264.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 262.5
+      }
+    ],
+    "est_net_price": 0.46,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "3d11052e",
+    "timestamp_utc": "2026-05-01T17:40:55.331751+00:00",
+    "ticker": "AMD",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 440.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 460.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 310.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 300.0
+      }
+    ],
+    "est_net_price": 3.21,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "412746d3",
+    "timestamp_utc": "2026-05-01T17:40:58.217208+00:00",
+    "ticker": "NFLX",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 95.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 90.0
+      }
+    ],
+    "est_net_price": 3.07,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "68ddd402",
+    "timestamp_utc": "2026-05-01T17:41:00.977982+00:00",
+    "ticker": "JPM",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 330.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 340.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 295.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 285.0
+      }
+    ],
+    "est_net_price": 1.92,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "c45876cd",
+    "timestamp_utc": "2026-05-01T17:41:03.522525+00:00",
+    "ticker": "GLD",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 433.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 434.0
+      }
+    ],
+    "est_net_price": 0.38,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "c37b3131",
+    "timestamp_utc": "2026-05-01T17:41:06.161175+00:00",
+    "ticker": "TLT",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 88.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 89.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 83.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 82.5
+      }
+    ],
+    "est_net_price": 0.16,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "2005e9fe",
+    "timestamp_utc": "2026-05-01T17:41:08.891658+00:00",
+    "ticker": "XLF",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 54.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 56.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 50.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 49.0
+      }
+    ],
+    "est_net_price": 0.21,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "5afa4748",
+    "timestamp_utc": "2026-05-01T17:41:11.440425+00:00",
+    "ticker": "XLE",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 60.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 57.0
+      }
+    ],
+    "est_net_price": 1.71,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "18f731be",
+    "timestamp_utc": "2026-05-01T17:41:13.998774+00:00",
+    "ticker": "QCOM",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 185.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 172.5
+      }
+    ],
+    "est_net_price": 9.6,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "9947c124",
+    "timestamp_utc": "2026-05-01T17:41:16.493513+00:00",
+    "ticker": "PLTR",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 152.5
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 155.0
+      }
+    ],
+    "est_net_price": 0.85,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "f39a7bd4",
+    "timestamp_utc": "2026-05-01T18:09:21.571357+00:00",
+    "ticker": "AAPL",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 280.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 275.0
+      }
+    ],
+    "est_net_price": 2.0,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "e0931d5d",
+    "timestamp_utc": "2026-05-01T18:09:24.521839+00:00",
+    "ticker": "MSFT",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 410.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 405.0
+      }
+    ],
+    "est_net_price": 1.85,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "c4056d63",
+    "timestamp_utc": "2026-05-01T18:09:27.346709+00:00",
+    "ticker": "NVDA",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 205.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 210.0
+      }
+    ],
+    "est_net_price": 1.83,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "9b3c6613",
+    "timestamp_utc": "2026-05-01T18:09:30.418526+00:00",
+    "ticker": "AMZN",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 275.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 260.0
+      }
+    ],
+    "est_net_price": 8.45,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "d442e457",
+    "timestamp_utc": "2026-05-01T18:09:33.069526+00:00",
+    "ticker": "GOOGL",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 395.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 400.0
+      }
+    ],
+    "est_net_price": 1.62,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "a73690c0",
+    "timestamp_utc": "2026-05-01T18:09:35.684568+00:00",
+    "ticker": "META",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 630.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 595.0
+      }
+    ],
+    "est_net_price": 21.5,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "3f66c83f",
+    "timestamp_utc": "2026-05-01T18:09:38.447789+00:00",
+    "ticker": "TSLA",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 390.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 385.0
+      }
+    ],
+    "est_net_price": 2.05,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "ffb33d73",
+    "timestamp_utc": "2026-05-01T18:09:41.157900+00:00",
+    "ticker": "AVGO",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 470.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 480.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 380.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 370.0
+      }
+    ],
+    "est_net_price": 2.34,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "e8dcd3c0",
+    "timestamp_utc": "2026-05-01T18:09:43.871679+00:00",
+    "ticker": "LLY",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 955.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 950.0
+      }
+    ],
+    "est_net_price": 2.43,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "557c9a5f",
+    "timestamp_utc": "2026-05-01T18:09:46.516080+00:00",
+    "ticker": "COST",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 1045.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 980.0
+      }
+    ],
+    "est_net_price": 16.33,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "58932f2e",
+    "timestamp_utc": "2026-05-01T18:09:54.444745+00:00",
+    "ticker": "IWM",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 293.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 295.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 264.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 262.5
+      }
+    ],
+    "est_net_price": 0.45,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "086e2ea4",
+    "timestamp_utc": "2026-05-01T18:09:57.062900+00:00",
+    "ticker": "AMD",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 440.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 460.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 310.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 300.0
+      }
+    ],
+    "est_net_price": 3.45,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "aef2ec1c",
+    "timestamp_utc": "2026-05-01T18:09:59.553479+00:00",
+    "ticker": "NFLX",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 95.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 90.0
+      }
+    ],
+    "est_net_price": 3.05,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "60908438",
+    "timestamp_utc": "2026-05-01T18:10:02.054548+00:00",
+    "ticker": "JPM",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 320.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 325.0
+      }
+    ],
+    "est_net_price": 1.69,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "f2bd37f2",
+    "timestamp_utc": "2026-05-01T18:10:04.584154+00:00",
+    "ticker": "GLD",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 437.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 412.0
+      }
+    ],
+    "est_net_price": 9.18,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "7e10a538",
+    "timestamp_utc": "2026-05-01T18:10:07.292901+00:00",
+    "ticker": "TLT",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 88.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 89.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 83.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 82.5
+      }
+    ],
+    "est_net_price": 0.15,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "1e9b0ba8",
+    "timestamp_utc": "2026-05-01T18:10:09.815373+00:00",
+    "ticker": "XLF",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 54.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 56.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 50.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 49.0
+      }
+    ],
+    "est_net_price": 0.2,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "85aa0e65",
+    "timestamp_utc": "2026-05-01T18:10:12.325795+00:00",
+    "ticker": "XLE",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 60.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 60.5
+      }
+    ],
+    "est_net_price": 0.18,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "8b516987",
+    "timestamp_utc": "2026-05-01T18:10:14.873815+00:00",
+    "ticker": "QCOM",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 175.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 172.5
+      }
+    ],
+    "est_net_price": 1.1,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "d48e1969",
+    "timestamp_utc": "2026-05-01T18:10:17.323435+00:00",
+    "ticker": "PLTR",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 152.5
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 155.0
+      }
+    ],
+    "est_net_price": 0.82,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "1f7697fc",
+    "timestamp_utc": "2026-05-01T18:39:38.136658+00:00",
+    "ticker": "AAPL",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 280.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 275.0
+      }
+    ],
+    "est_net_price": 2.0,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "e73dfa2c",
+    "timestamp_utc": "2026-05-01T18:39:40.771901+00:00",
+    "ticker": "MSFT",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 410.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 405.0
+      }
+    ],
+    "est_net_price": 1.93,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "d1231533",
+    "timestamp_utc": "2026-05-01T18:39:43.384421+00:00",
+    "ticker": "NVDA",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 205.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 210.0
+      }
+    ],
+    "est_net_price": 1.72,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "3b36592c",
+    "timestamp_utc": "2026-05-01T18:39:46.073647+00:00",
+    "ticker": "AMZN",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 275.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 260.0
+      }
+    ],
+    "est_net_price": 8.43,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "49260043",
+    "timestamp_utc": "2026-05-01T18:39:48.712408+00:00",
+    "ticker": "GOOGL",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 395.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 400.0
+      }
+    ],
+    "est_net_price": 1.7,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "4962b963",
+    "timestamp_utc": "2026-05-01T18:39:51.887708+00:00",
+    "ticker": "META",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 630.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 595.0
+      }
+    ],
+    "est_net_price": 21.73,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "11f8fc5c",
+    "timestamp_utc": "2026-05-01T18:39:54.710218+00:00",
+    "ticker": "TSLA",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 440.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 450.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 360.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 350.0
+      }
+    ],
+    "est_net_price": 2.37,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "b577106a",
+    "timestamp_utc": "2026-05-01T18:39:57.692669+00:00",
+    "ticker": "AVGO",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 470.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 480.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 380.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 370.0
+      }
+    ],
+    "est_net_price": 2.37,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "6556f7be",
+    "timestamp_utc": "2026-05-01T18:40:00.339433+00:00",
+    "ticker": "LLY",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 950.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 945.0
+      }
+    ],
+    "est_net_price": 2.45,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "f2a62049",
+    "timestamp_utc": "2026-05-01T18:40:03.021438+00:00",
+    "ticker": "COST",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 1040.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 975.0
+      }
+    ],
+    "est_net_price": 15.55,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "5a852a3f",
+    "timestamp_utc": "2026-05-01T18:40:10.791144+00:00",
+    "ticker": "IWM",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 293.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 295.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 264.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 262.5
+      }
+    ],
+    "est_net_price": 0.45,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "58ed1286",
+    "timestamp_utc": "2026-05-01T18:40:13.309180+00:00",
+    "ticker": "AMD",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 440.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 460.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 305.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 295.0
+      }
+    ],
+    "est_net_price": 3.15,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "da21b7aa",
+    "timestamp_utc": "2026-05-01T18:40:16.068335+00:00",
+    "ticker": "NFLX",
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 95.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 89.0
+      }
+    ],
+    "est_net_price": 2.74,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "60099d14",
+    "timestamp_utc": "2026-05-01T18:40:18.721269+00:00",
+    "ticker": "JPM",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 320.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 325.0
+      }
+    ],
+    "est_net_price": 1.6,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "ca20fd49",
+    "timestamp_utc": "2026-05-01T18:40:21.384851+00:00",
+    "ticker": "GLD",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 432.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 433.0
+      }
+    ],
+    "est_net_price": 0.35,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "38c09baf",
+    "timestamp_utc": "2026-05-01T18:40:24.174893+00:00",
+    "ticker": "TLT",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 88.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 89.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 83.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 82.5
+      }
+    ],
+    "est_net_price": 0.16,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "d3372094",
+    "timestamp_utc": "2026-05-01T18:40:26.716621+00:00",
+    "ticker": "XLF",
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 54.0
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 55.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 49.5
+      },
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 48.5
+      }
+    ],
+    "est_net_price": 0.2,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "77db7159",
+    "timestamp_utc": "2026-05-01T18:40:29.342052+00:00",
+    "ticker": "XLE",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 60.0
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 60.5
+      }
+    ],
+    "est_net_price": 0.18,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "1bc3e134",
+    "timestamp_utc": "2026-05-01T18:40:31.990584+00:00",
+    "ticker": "QCOM",
+    "strategy": "bear_put_vertical",
+    "regime_type": "directional_bear",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 172.5
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "PUT",
+        "strike": 170.0
+      }
+    ],
+    "est_net_price": 1.0,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
+  },
+  {
+    "id": "4dca0383",
+    "timestamp_utc": "2026-05-01T18:40:34.515833+00:00",
+    "ticker": "PLTR",
+    "strategy": "bull_call_vertical",
+    "regime_type": "directional_bull",
+    "legs": [
+      {
+        "symbol": "",
+        "action": "BUY_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 152.5
+      },
+      {
+        "symbol": "",
+        "action": "SELL_TO_OPEN",
+        "quantity": 1,
+        "right": "CALL",
+        "strike": 155.0
+      }
+    ],
+    "est_net_price": 0.8,
+    "quantity": 1,
+    "mode": "paper",
+    "status": "filled_simulated",
+    "schwab_order_id": null,
+    "error": null
   }
 ]
