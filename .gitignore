@@ -20,6 +20,8 @@ data/*.parquet
 data/paper_trades.json
 data/tracked_trades.json
 data/reports/*.txt
+data/dashboard.pid
+logs/
 
 # HMM cache — regenerated automatically on dashboard startup
 data/hmm_cache.pkl

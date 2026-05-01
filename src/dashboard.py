@@ -47,7 +47,13 @@ from src.broker import (
     load_paper_trades,
     SCHWAB_AVAILABLE,
 )
-from src.scheduler import get_scheduler, load_cache, cache_mtime, _is_market_hours
+from src.scheduler import (
+    get_scheduler,
+    load_cache,
+    cache_mtime,
+    _is_market_hours,
+    _is_refresh_window,
+)
 
 # ---------------------------------------------------------------------------
 # Config helpers
@@ -88,13 +94,29 @@ def _cached_load_paper_trades():
     return load_paper_trades()
 
 @st.cache_data(ttl=60)
-def _cached_load_cache():
-    return load_cache()
-
-@st.cache_data(ttl=60)
 def _thetadata_available() -> bool:
     from src import thetadata as td
     return td.is_available()
+
+
+def _sync_results_from_cache() -> bool:
+    """
+    Pull the latest cache into session state when the file has changed.
+
+    Returns True when session state was refreshed.
+    """
+    mtime = cache_mtime()
+    if mtime <= st.session_state.get("cache_mtime_seen", 0.0):
+        return False
+
+    cache = load_cache()
+    if not cache:
+        return False
+
+    st.session_state["results"] = cache["results"]
+    st.session_state["proposed_orders"] = cache.get("proposed", [])
+    st.session_state["cache_mtime_seen"] = mtime
+    return True
 
 
 # ---------------------------------------------------------------------------
@@ -317,12 +339,9 @@ get_scheduler(n_states=4, trade_mode="paper")
 # Discard cache if it is missing tickers that are now in config.json —
 # this prevents a stale pkl from hiding newly-added tickers.
 if not st.session_state["results"]:
-    cache = load_cache()
-    if cache:
-        st.session_state["results"] = cache["results"]
-        st.session_state["proposed_orders"] = cache.get("proposed", [])
-        st.session_state["cache_mtime_seen"] = cache_mtime()
-        _cached_tickers = set(cache["results"].keys())
+    if _sync_results_from_cache():
+        cache = st.session_state["results"]
+        _cached_tickers = set(cache.keys())
         _config_tickers  = set(_load_config().get("tickers", []))
         _missing = _config_tickers - _cached_tickers
         if _missing:
@@ -331,21 +350,24 @@ if not st.session_state["results"]:
                 "Click Fetch yfinance then Fit HMM to add them.",
                 icon="ℹ️",
             )
+    else:
+        cache = None
+
+# Keep session state aligned with the latest cache on every rerun.
+_sync_results_from_cache()
 
 # ---------------------------------------------------------------------------
-# Auto-refresh fragment — checks for new cache every 5 minutes
+# Auto-refresh fragment — checks for new cache every 30 seconds
 # ---------------------------------------------------------------------------
-@st.fragment(run_every="5m")
+@st.fragment(run_every="30s")
 def _auto_refresh_check():
-    mtime = cache_mtime()
-    if mtime > st.session_state.get("cache_mtime_seen", 0.0):
+    if _sync_results_from_cache():
         cache = load_cache()
-        if cache:
-            st.session_state["results"] = cache["results"]
-            st.session_state["proposed_orders"] = cache.get("proposed", [])
-            st.session_state["cache_mtime_seen"] = mtime
-            updated_at = cache.get("updated_at")
-            st.toast(f"Auto-refreshed at {updated_at.strftime('%H:%M ET') if updated_at else 'unknown'}", icon="🔄")
+        updated_at = cache.get("updated_at") if cache else None
+        st.toast(
+            f"Auto-refreshed at {updated_at.strftime('%H:%M ET') if updated_at else 'unknown'}",
+            icon="🔄",
+        )
 
 _auto_refresh_check()
 
@@ -382,15 +404,15 @@ with st.sidebar:
     st.divider()
     st.header("Data")
     # Scheduler status
-    cache = _cached_load_cache()
+    cache = load_cache()
     if cache:
         updated_at = cache.get("updated_at")
         ts = updated_at.strftime("%Y-%m-%d %H:%M ET") if updated_at else "unknown"
         st.success(f"Last auto-refresh: {ts}")
-    if _is_market_hours():
-        st.info("Market open — auto-refreshing hourly at :30")
+    if _is_refresh_window():
+        st.info("Refresh window active - auto-refreshing every 30 minutes")
     else:
-        st.caption("Market closed — scheduler paused until next session")
+        st.caption("Scheduler paused until next refresh window")
 
     col_a, col_b = st.columns(2)
     with col_a:

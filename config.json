@@ -37,23 +37,25 @@
     "skip_regimes": [
       "directional_bull"
     ],
-    "caution_regimes": []
+    "caution_regimes": [
+      "vol_expansion"
+    ]
   },
   "strategy_performance": {
     "mean_reverting": {
-      "count": 38,
-      "wins": 33,
-      "win_rate": 0.8684,
-      "avg_pnl": 75.58,
-      "avg_pnl_pct": 0.0642,
+      "count": 41,
+      "wins": 36,
+      "win_rate": 0.878,
+      "avg_pnl": 85.24,
+      "avg_pnl_pct": 0.1081,
       "status": "ok"
     },
     "directional_bear": {
-      "count": 4,
-      "wins": 4,
+      "count": 5,
+      "wins": 5,
       "win_rate": 1.0,
-      "avg_pnl": 83.75,
-      "avg_pnl_pct": 1.0082,
+      "avg_pnl": 70.2,
+      "avg_pnl_pct": 0.8866,
       "status": "ok"
     },
     "directional_bull": {
@@ -65,12 +67,12 @@
       "status": "skip"
     },
     "vol_expansion": {
-      "count": 15,
+      "count": 16,
       "wins": 6,
-      "win_rate": 0.4,
-      "avg_pnl": 10.3,
-      "avg_pnl_pct": -0.1629,
-      "status": "ok"
+      "win_rate": 0.375,
+      "avg_pnl": 9.56,
+      "avg_pnl_pct": -0.153,
+      "status": "caution"
     }
   },
   "regime_alert_policy": {

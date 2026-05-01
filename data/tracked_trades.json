@@ -2390,7 +2390,7 @@
     "confidence": 0.9989562706078773,
     "recommended_at": "2026-03-03 14:59:23 UTC",
     "underlying_at_close": 175.68,
-    "regime_alert": "Regime shifted vol_expansion \u2192 mean_reverting at 2026-03-31 19:40 UTC. Original thesis (long_strangle) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "",
     "alert_log": [
       {
         "timestamp": "2026-03-31 19:40 UTC",
@@ -3878,7 +3878,7 @@
     "confidence": 0.9969379136768043,
     "recommended_at": "2026-03-05 14:07:37 UTC",
     "underlying_at_close": 175.68,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-31 19:40 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "",
     "alert_log": [
       {
         "timestamp": "2026-03-31 19:40 UTC",
@@ -4469,12 +4469,18 @@
         "underlying": 253.79,
         "net_mid": 0.04,
         "pnl_dollars": 194.0
+      },
+      {
+        "date": "2026-04-02",
+        "underlying": 255.92,
+        "net_mid": 0.0,
+        "pnl_dollars": 198.0
       }
     ],
-    "status": "open",
+    "status": "expired",
     "confidence": 0.9820220868709535,
     "recommended_at": "2026-03-10 13:52:50 UTC",
-    "underlying_at_close": 0.0,
+    "underlying_at_close": 255.92,
     "regime_alert": "",
     "alert_log": [
       {
@@ -4769,7 +4775,7 @@
     "confidence": 0.9661893953885001,
     "recommended_at": "2026-03-10 13:52:51 UTC",
     "underlying_at_close": 174.4,
-    "regime_alert": "Regime shifted directional_bull \u2192 mean_reverting at 2026-03-31 19:40 UTC. Original thesis (bull_call_spread) may no longer apply \u2014 consider exiting.",
+    "regime_alert": "",
     "alert_log": [
       {
         "timestamp": "2026-03-31 19:40 UTC",
@@ -5991,12 +5997,18 @@
         "underlying": 370.17,
         "net_mid": 2.73,
         "pnl_dollars": -69.0
+      },
+      {
+        "date": "2026-04-02",
+        "underlying": 373.46,
+        "net_mid": 0.0,
+        "pnl_dollars": 204.0
       }
     ],
-    "status": "open",
+    "status": "expired",
     "confidence": 0.9406435185807314,
     "recommended_at": "2026-03-13 13:29:51 UTC",
-    "underlying_at_close": 0.0,
+    "underlying_at_close": 373.46,
     "regime_alert": "",
     "alert_log": [
       {
@@ -6101,12 +6113,18 @@
         "underlying": 208.31,
         "net_mid": 0.04,
         "pnl_dollars": 217.0
+      },
+      {
+        "date": "2026-04-02",
+        "underlying": 209.77,
+        "net_mid": 0.0,
+        "pnl_dollars": 221.0
       }
     ],
-    "status": "open",
+    "status": "expired",
     "confidence": 0.9989739718573015,
     "recommended_at": "2026-03-13 13:29:53 UTC",
-    "underlying_at_close": 0.0,
+    "underlying_at_close": 209.77,
     "regime_alert": "",
     "alert_log": [
       {
@@ -8084,11 +8102,186 @@
         "underlying": 96.12,
         "net_mid": 0.37,
         "pnl_dollars": -3.0
+      },
+      {
+        "date": "2026-04-24",
+        "underlying": 92.44,
+        "net_mid": 0.56,
+        "pnl_dollars": 16.0
+      }
+    ],
+    "status": "expired",
+    "confidence": 0.9999966685099136,
+    "recommended_at": "2026-03-31 13:49:30 UTC",
+    "underlying_at_close": 92.44,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "NFLX-2026-05-22-long_strangle-2026-04-28-e4dd",
+    "date_recommended": "2026-04-28",
+    "ticker": "NFLX",
+    "expiry": "2026-05-22",
+    "dte_at_entry": 24,
+    "underlying_at_entry": 90.08999633789062,
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "regime_name": "Vol Exp (R1)",
+    "price_type": "debit",
+    "entry_net": 3.23,
+    "max_profit": null,
+    "max_loss": 3.23,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 93.0,
+        "entry_mid": 1.73,
+        "entry_ask": 1.75,
+        "entry_bid": 1.71
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 87.0,
+        "entry_mid": 1.5,
+        "entry_ask": 1.52,
+        "entry_bid": 1.48
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-04-28",
+        "underlying": 90.93,
+        "net_mid": 3.21,
+        "pnl_dollars": -1.5
+      }
+    ],
+    "status": "closed",
+    "confidence": 0.9999986434547214,
+    "recommended_at": "2026-04-28 13:41:31 UTC",
+    "underlying_at_close": 90.93,
+    "regime_alert": "",
+    "alert_log": [
+      {
+        "timestamp": "2026-04-28 14:41 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 0.0
+      }
+    ]
+  },
+  {
+    "id": "NFLX-2026-05-22-iron_condor-2026-04-29-7b43",
+    "date_recommended": "2026-04-29",
+    "ticker": "NFLX",
+    "expiry": "2026-05-22",
+    "dte_at_entry": 23,
+    "underlying_at_entry": 91.83000183105469,
+    "strategy": "iron_condor",
+    "regime_type": "mean_reverting",
+    "regime_name": "Mean Rev (R1)",
+    "price_type": "credit",
+    "entry_net": 0.42,
+    "max_profit": 0.42,
+    "max_loss": 1.58,
+    "legs": [
+      {
+        "action": "SELL",
+        "right": "CALL",
+        "strike": 100.0,
+        "entry_mid": 0.615,
+        "entry_ask": 0.65,
+        "entry_bid": 0.58
+      },
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 102.0,
+        "entry_mid": 0.41500000000000004,
+        "entry_ask": 0.45,
+        "entry_bid": 0.38
+      },
+      {
+        "action": "SELL",
+        "right": "PUT",
+        "strike": 85.0,
+        "entry_mid": 0.5900000000000001,
+        "entry_ask": 0.63,
+        "entry_bid": 0.55
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 83.0,
+        "entry_mid": 0.37,
+        "entry_ask": 0.4,
+        "entry_bid": 0.34
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-04-29",
+        "underlying": 92.12,
+        "net_mid": 0.41,
+        "pnl_dollars": 0.5
+      },
+      {
+        "date": "2026-04-30",
+        "underlying": 93.55,
+        "net_mid": 0.38,
+        "pnl_dollars": 4.0
       }
     ],
     "status": "open",
-    "confidence": 0.9999966685099136,
-    "recommended_at": "2026-03-31 13:49:30 UTC",
+    "confidence": 0.9999566767472756,
+    "recommended_at": "2026-04-29 13:32:58 UTC",
+    "underlying_at_close": 0.0,
+    "regime_alert": "",
+    "alert_log": []
+  },
+  {
+    "id": "NFLX-2026-05-22-long_strangle-2026-05-01-6ff3",
+    "date_recommended": "2026-05-01",
+    "ticker": "NFLX",
+    "expiry": "2026-05-22",
+    "dte_at_entry": 21,
+    "underlying_at_entry": 93.66500091552734,
+    "strategy": "long_strangle",
+    "regime_type": "vol_expansion",
+    "regime_name": "Vol Exp (R1)",
+    "price_type": "debit",
+    "entry_net": 3.08,
+    "max_profit": null,
+    "max_loss": 3.08,
+    "legs": [
+      {
+        "action": "BUY",
+        "right": "CALL",
+        "strike": 96.0,
+        "entry_mid": 1.69,
+        "entry_ask": 1.71,
+        "entry_bid": 1.67
+      },
+      {
+        "action": "BUY",
+        "right": "PUT",
+        "strike": 91.0,
+        "entry_mid": 1.395,
+        "entry_ask": 1.41,
+        "entry_bid": 1.38
+      }
+    ],
+    "daily_prices": [
+      {
+        "date": "2026-05-01",
+        "underlying": 93.66500091552734,
+        "net_mid": 3.08,
+        "pnl_dollars": 0.0
+      }
+    ],
+    "status": "open",
+    "confidence": 0.9999988032057106,
+    "recommended_at": "2026-05-01 14:16:00 UTC",
     "underlying_at_close": 0.0,
     "regime_alert": "",
     "alert_log": []

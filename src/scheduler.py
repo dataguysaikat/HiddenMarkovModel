@@ -2,7 +2,7 @@
 scheduler.py — Background hourly refresh during market hours.
 
 Runs as a daemon thread (APScheduler BackgroundScheduler).
-Every hour Mon-Fri 10:00-16:00 ET it:
+Every hour Mon-Fri 10:00-15:00 ET it:
   1. Fetches latest 1h bars from yfinance for all tickers
   2. Refits GaussianHMM
   3. Executes paper trades
@@ -221,7 +221,7 @@ def _refresh_job(n_states: int = 4, trade_mode: str = "paper") -> None:
 # ---------------------------------------------------------------------------
 
 def _is_market_hours() -> bool:
-    """True if current NY time is Mon-Fri 09:30-16:00."""
+    """True if current NY time is Mon-Fri 09:30-16:00 ET."""
     now = datetime.now(NY_TZ)
     if now.weekday() >= 5:          # Saturday=5, Sunday=6
         return False
@@ -230,12 +230,22 @@ def _is_market_hours() -> bool:
     return time(9, 30) <= t < time(16, 0)
 
 
+def _is_refresh_window() -> bool:
+    """True if current NY time is Mon-Fri 10:00-15:00 ET."""
+    now = datetime.now(NY_TZ)
+    if now.weekday() >= 5:          # Saturday=5, Sunday=6
+        return False
+    t = now.time()
+    from datetime import time
+    return time(10, 0) <= t <= time(15, 0)
+
+
 def _market_hours_job(n_states: int, trade_mode: str) -> None:
-    """Wrapper that skips the job outside market hours."""
-    if _is_market_hours():
+    """Wrapper that skips the job outside the refresh window."""
+    if _is_refresh_window():
         _refresh_job(n_states=n_states, trade_mode=trade_mode)
     else:
-        print(f"[scheduler] outside market hours, skipping ({datetime.now(NY_TZ).strftime('%H:%M ET')})")
+        print(f"[scheduler] outside refresh window, skipping ({datetime.now(NY_TZ).strftime('%H:%M ET')})")
 
 
 # ---------------------------------------------------------------------------
@@ -245,7 +255,7 @@ def _market_hours_job(n_states: int, trade_mode: str) -> None:
 def get_scheduler(n_states: int = 4, trade_mode: str = "paper"):
     """
     Start (or return the already-running) APScheduler BackgroundScheduler.
-    Runs _market_hours_job every hour on the hour.
+    Runs _market_hours_job every 30 minutes from 10:00-15:00 ET.
     Safe to call multiple times — only starts once per process.
     """
     global _scheduler_started
@@ -262,13 +272,27 @@ def get_scheduler(n_states: int = 4, trade_mode: str = "paper"):
             func=_market_hours_job,
             trigger=CronTrigger(
                 day_of_week="mon-fri",
-                hour="9-15",
-                minute=30,          # fire at :30 past each hour (first bar complete)
+                hour="10-14",
+                minute="0,30",
                 timezone=NY_TZ,
             ),
             kwargs={"n_states": n_states, "trade_mode": trade_mode},
-            id="hourly_refresh",
-            name="Hourly HMM refresh",
+            id="half_hour_refresh",
+            name="Half-hour HMM refresh",
+            max_instances=1,
+            coalesce=True,
+        )
+        scheduler.add_job(
+            func=_market_hours_job,
+            trigger=CronTrigger(
+                day_of_week="mon-fri",
+                hour=15,
+                minute=0,
+                timezone=NY_TZ,
+            ),
+            kwargs={"n_states": n_states, "trade_mode": trade_mode},
+            id="close_refresh",
+            name="Close HMM refresh",
             max_instances=1,
             coalesce=True,
         )
@@ -302,7 +326,7 @@ def get_scheduler(n_states: int = 4, trade_mode: str = "paper"):
         )
         scheduler.start()
         _scheduler_started = True
-        print(f"[scheduler] started — HMM refresh Mon-Fri :30 ET, EOD price 16:05 ET, supervisor 16:30 ET")
+        print(f"[scheduler] started — HMM refresh Mon-Fri every 30 min 10:00-15:00 ET, EOD price 16:05 ET, supervisor 16:30 ET")
         return scheduler
 
 
