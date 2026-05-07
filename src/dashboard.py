@@ -642,11 +642,14 @@ def _render_tab1():
     _pol = _load_config().get("learned_policy", {})
     _min_conf  = float(_pol.get("min_confidence", 0.75))
     _max_pchg  = float(_pol.get("max_p_change",   0.30))
+    _skip_regimes = set(_pol.get("skip_regimes", []))
+    _caution_regimes = set(_pol.get("caution_regimes", []))
+    _skip_label = ", ".join(sorted(_skip_regimes)) if _skip_regimes else "none"
     st.info(
         f"**Entry filters (from config.json):** "
         f"Confidence ≥ **{_min_conf:.0%}**  ·  "
-        f"{_h_label} < **{_max_pchg:.0%}**  —  "
-        f"both conditions must be met for a trade to be recommended."
+        f"{_h_label} ≤ **{_max_pchg:.0%}**  ·  "
+        f"Skip regimes: **{_skip_label}**"
     )
 
     rows = []
@@ -655,7 +658,7 @@ def _render_tab1():
             rows.append({"Ticker": t, "Regime": "ERROR", "Name": res.error,
                          "Mean Ret (ann)": "-", "Vol": "-",
                          "Type": "-", "Confidence": "-", _h_label: "-",
-                         "Trade?": "-", "_type": ""})
+                         "Trade?": "-", "Reason": res.error, "_type": ""})
             continue
         rc = res.characteristics.get(res.current_regime)
         if rc is None:
@@ -663,7 +666,19 @@ def _render_tab1():
         fc = res.forecast
         conf    = fc.get("current_confidence", 0)
         p_chg   = fc.get("prob_change_by_horizon", 1.0)
-        tradeable = conf >= _min_conf and p_chg < _max_pchg
+        reasons = []
+        if rc.regime_type in _skip_regimes:
+            reasons.append("Skipped regime")
+        if conf < _min_conf:
+            reasons.append(f"Confidence < {_min_conf:.0%}")
+        if p_chg > _max_pchg:
+            reasons.append(f"{_h_label} > {_max_pchg:.0%}")
+        tradeable = not reasons
+        reason = "Eligible"
+        if reasons:
+            reason = "; ".join(reasons)
+        elif rc.regime_type in _caution_regimes:
+            reason = "Eligible (caution)"
         rows.append({
             "Ticker": t, "Regime": f"R{res.current_regime}", "Name": rc.name,
             "Mean Ret (ann)": f"{_annualised_ret(rc.mean_log_ret):.1%}",
@@ -671,6 +686,7 @@ def _render_tab1():
             "Confidence": f"{conf:.1%}",
             _h_label: f"{p_chg:.1%}",
             "Trade?": "YES" if tradeable else "NO",
+            "Reason": reason,
             "_type": rc.regime_type,
         })
 
@@ -770,7 +786,7 @@ def _render_tab1():
     with st.expander("Confidence — how to interpret it", expanded=True):
         col_c, col_d = st.columns(2)
         with col_c:
-            st.markdown("""
+            st.markdown(f"""
 **What it measures**
 
 Confidence is the HMM posterior probability for the current regime at the latest bar —
@@ -788,7 +804,7 @@ current regime at this bar. A value of 55% means the model is uncertain between 
 | < 60% | Weak signal — skip or paper-trade only |
 
 The `min_confidence` field in `config.json → learned_policy` sets the hard cutoff
-(currently **75%**) below which `recommend.py` will not generate a trade.
+(currently **{_min_conf:.0%}**) below which `recommend.py` will not generate a trade.
 """)
         with col_d:
             st.markdown(f"""
@@ -806,9 +822,10 @@ derived from the HMM transition matrix raised to the power of the forecast horiz
 
 **Active entry filters** (`config.json → learned_policy`)
 
-Both conditions must be met for `recommend.py` to generate a trade:
-- **Confidence ≥ 75%** (`min_confidence`)
-- **{_h_label} < 30%** (`max_p_change`)
+All active filters must pass for `recommend.py` to generate a trade:
+- **Confidence ≥ {_min_conf:.0%}** (`min_confidence`)
+- **{_h_label} ≤ {_max_pchg:.0%}** (`max_p_change`)
+- Current regime not listed in `skip_regimes` ({_skip_label})
 
 Tune these thresholds in `config.json` — tighter = fewer but higher-quality signals.
 """)

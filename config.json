@@ -37,9 +37,7 @@
     "skip_regimes": [
       "directional_bull"
     ],
-    "caution_regimes": [
-      "vol_expansion"
-    ]
+    "caution_regimes": []
   },
   "strategy_performance": {
     "mean_reverting": {
@@ -67,12 +65,12 @@
       "status": "skip"
     },
     "vol_expansion": {
-      "count": 16,
-      "wins": 6,
-      "win_rate": 0.375,
-      "avg_pnl": 9.56,
-      "avg_pnl_pct": -0.153,
-      "status": "caution"
+      "count": 17,
+      "wins": 7,
+      "win_rate": 0.4118,
+      "avg_pnl": 9.44,
+      "avg_pnl_pct": -0.1426,
+      "status": "ok"
     }
   },
   "regime_alert_policy": {

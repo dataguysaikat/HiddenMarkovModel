@@ -8236,6 +8236,18 @@
         "underlying": 92.06,
         "net_mid": 0.35,
         "pnl_dollars": 6.5
+      },
+      {
+        "date": "2026-05-05",
+        "underlying": 87.89,
+        "net_mid": 0.52,
+        "pnl_dollars": -10.5
+      },
+      {
+        "date": "2026-05-06",
+        "underlying": 88.27,
+        "net_mid": 0.46,
+        "pnl_dollars": -4.0
       }
     ],
     "status": "open",
@@ -8285,11 +8297,17 @@
         "pnl_dollars": 7.5
       }
     ],
-    "status": "open",
+    "status": "closed",
     "confidence": 0.9999988032057106,
     "recommended_at": "2026-05-01 14:16:00 UTC",
-    "underlying_at_close": 0.0,
+    "underlying_at_close": 92.06,
     "regime_alert": "",
-    "alert_log": []
+    "alert_log": [
+      {
+        "timestamp": "2026-05-04 15:13 UTC",
+        "to_regime": "mean_reverting",
+        "pnl_at_alert": 7.5
+      }
+    ]
   }
 ]
